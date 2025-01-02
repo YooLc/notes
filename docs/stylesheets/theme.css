@@ -1,0 +1,25 @@
+[data-md-color-scheme="goblue"] {
+    --md-primary-fg-color: #3388BB;
+    --md-default-bg-color: #FEFEFF;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #1B1B1B;
+    --md-default-bg-color: #151515;
+}
+
+/* 
+body {
+    font-family: "LXGW WenKai Screen", sans-serif;
+}
+
+.arithmatex {
+    font-family: sans-serif;
+} */
+
+img {
+    max-height: 60vh;
+    max-width: 100vw;
+    margin: auto;
+    display: block;
+}

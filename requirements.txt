@@ -1,0 +1,10 @@
+mkdocs
+mkdocs-material
+mkdocs-glightbox
+mkdocs-timetoread-plugin
+mkdocs-drawio-file
+mkdocs-encryptcontent-plugin
+mkdocs-git-revision-date-localized-plugin
+neoteroi-mkdocs
+mkdocs-include-dir-to-nav
+mkdocs-rss-plugin

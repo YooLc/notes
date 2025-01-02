@@ -1,0 +1,172 @@
+# 项目设置
+site_name: 笔记
+site_url: http://localhost:8000
+repo_name: 笔记
+repo_url: http://localhost:8000
+edit_uri: -/tree/main/docs/
+site_description: 笔记本
+site_author: YooLc
+copyright: YooLc
+
+nav:
+  - 首页:
+    - index.md
+  - 笔记:
+    - 大三:
+      - 汇编与接口:
+        - courses/24fall/assembly-and-interface/index.md
+        - courses/24fall/assembly-and-interface/section-1.md
+        - courses/24fall/assembly-and-interface/section-2.md
+        - courses/24fall/assembly-and-interface/section-3.md
+        - courses/24fall/assembly-and-interface/section-4.md
+        - courses/24fall/assembly-and-interface/section-7.md
+        - courses/24fall/assembly-and-interface/note.md
+        - courses/24fall/assembly-and-interface/final.md
+      - 计算机体系结构:
+        - courses/24fall/computer-architecture/index.md
+        - courses/24fall/computer-architecture/chapter-1.md
+        - courses/24fall/computer-architecture/chapter-2.md
+        - courses/24fall/computer-architecture/chapter-3.md
+        - courses/24fall/computer-architecture/chapter-4.md
+        - courses/24fall/computer-architecture/chapter-5.md
+      - 应用运筹学基础:
+        - courses/24fall/applied-operations-research/index.md
+      - 计算机网络:
+        - courses/24fall/computer-network/index.md
+      - 操作系统:
+        - courses/24fall/operating-system/index.md
+      - 编程语言原理:
+        - courses/24fall/principles-of-programming-languages/index.md
+        - courses/24fall/principles-of-programming-languages/practice.md
+      - 计算理论:
+        - courses/24fall/theory-of-computation/index.md
+        - courses/24fall/theory-of-computation/undecidability.md
+
+theme:
+  name: material
+  # logo:
+  # favicon:
+  icon:
+    repo: fontawesome/brands/gitlab
+  # 自适应主题
+  palette:
+    - media: "(prefers-color-scheme: light)" 
+      scheme: goblue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"  
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    # 代码块操作
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    # 底部导航
+    - navigation.footer
+    # 顶部导航
+    - navigation.tabs
+    # 侧边栏按 section 展开
+    - navigation.indexes
+    - navigation.sections
+    # - navigation.expand
+    # 章节首页
+    - navigation.indexes
+    # 锚点
+    - navigation.tracking
+    # 路径
+    - navigation.path
+    # 回到顶部
+    - navigation.top
+    - toc.follow
+    # 页面编辑
+    - content.action.edit
+    # 搜索
+    - search.suggest
+    - search.highlight
+    - search.share
+
+markdown_extensions:
+  # Admonition
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      # Mermaid
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format:
+            !!python/name:pymdownx.superfences.fence_code_format # Code Block
+
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  # Tab Card
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  # Grid, Image
+  - attr_list
+  - md_in_html
+  # Icon
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg # List
+
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  # TOC
+  - toc:
+      permalink: true
+  # 中文锚点
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  # MathJax
+  - pymdownx.arithmatex:
+      generic: true
+  # Keys
+  - pymdownx.keys
+  # Highlight
+  - pymdownx.critic
+  # 时间轴、甘特图
+  - neoteroi.timeline
+  - neoteroi.projects
+
+extra_javascript:
+  # MathJax
+  - javascripts/mathjax.js
+  - https://polyfill.alicdn.com/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  # Table Sort
+  # - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  # - javascripts/tablesort.js
+
+extra_css:
+  - fonts/fonts.css
+  - stylesheets/auto_counter.css
+  - stylesheets/theme.css
+  - stylesheets/mkdocs-plugins-v1.1.0.css
+
+plugins:
+  - git-revision-date-localized:
+      type: datetime
+      timezone: Asia/Shanghai
+      locale: zh
+      enable_creation_date: true
+  - glightbox
+  - drawio_file
+  - tags:
+      tags_file: index.md
+  - search
+  - rss
+  - include_dir_to_nav:
+      recurse: false
