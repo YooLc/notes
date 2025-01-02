@@ -44,6 +44,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   # logo:
   # favicon:
   icon:

@@ -20,7 +20,7 @@
 
 3. REX 前缀:
     - ah, bh, ch, dh 变成了 spl, bpl, sil, dil
-    - 详见 [REX 前缀](./section-4.md#rex-前缀)
+    - 详见 [REX 前缀](./chapter-4-6.md#rex-前缀)
 
 ### 状态寄存器
 
