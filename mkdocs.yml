@@ -1,8 +1,8 @@
 # 项目设置
 site_name: 笔记
-site_url: https://yoolc.github.io/note-mkdoc
-repo_name: YooLc/note-mkdoc
-repo_url: https://github.com/YooLc/note-mkdoc
+site_url: https://yoolc.github.io/notes
+repo_name: YooLc/notes
+repo_url: https://github.com/YooLc/notes
 edit_uri: -/tree/main/docs/
 site_description: YooLc 的笔记本
 site_author: YooLc
