@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("JetBrainsMono-Regular.woff2") format('woff2');
+}
+
+:root {
+  --md-text-font: "LXGW Wenkai Screen", "Hiragino Sans", "Microsoft YaHei";
+  --md-code-font: "JetBrains Mono", "LXGW WenKai Screen";
+}

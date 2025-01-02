@@ -1,0 +1,2582 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="YooLc 的笔记本">
+      
+      
+        <meta name="author" content="YooLc">
+      
+      
+        <link rel="canonical" href="https://yoolc.github.io/notes/courses/24fall/assembly-and-interface/note/">
+      
+      
+        <link rel="prev" href="../chapter-9-11/">
+      
+      
+        <link rel="next" href="../final/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>笔记 - 笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../fonts/fonts.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/auto_counter.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/mkdocs-plugins-v1.1.0.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#笔记" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="笔记" class="md-header__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YooLc/notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="笔记" class="md-nav__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YooLc/notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    大三
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            大三
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    汇编与接口
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            汇编与接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    微处理器及其结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    寻址方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-4-6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x86 汇编指令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-9-11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    接口
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末历年卷
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-architecture/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机体系结构
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机体系结构
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I - 计算机设计基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    II - 流水线
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    III - 内存层次结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IV - 指令并行 (ILP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V - 线程并行 (TLP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applied-operations-research/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    应用运筹学基础
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            应用运筹学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-network/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operating-system/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    操作系统
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../principles-of-programming-languages/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    编程语言原理
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../principles-of-programming-languages/practice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课件例题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../theory-of-computation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算理论
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_7" id="__nav_2_1_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory-of-computation/undecidability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    判定训练
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/YooLc/notes/-/tree/main/docs/courses/24fall/assembly-and-interface/note.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="笔记">笔记<a class="headerlink" href="#笔记" title="Permanent link">&para;</a></h1>
+<p>x86 平台的运算资源</p>
+<p>IA-32</p>
+<p>段寄存器</p>
+<p>A: Accumulator, (累加运算有特殊的编码，较短)
+B: Base index, C: Counter, D: Data</p>
+<p>通用寄存器</p>
+<p>EFLAGS</p>
+<p>EIP</p>
+<p>MMX (多媒体扩展) 复用了 x87 FPU 的寄存器的低 64 位，可以进行整数的向量化
+要进行浮点运算，需要用 EMMS 指令切换回 x87 FPU</p>
+<p>XMM[0-7]</p>
+<p>IA-64</p>
+<p>通用寄存器增加到 16 个: RAX, RBX, RCX, RDX, RSI, RDI, RSP, R[8-15]
+SSE2 寄存器: XMM[0-15]</p>
+<p>8-bit: R8B-R15B
+16-bit: R8W-R15W
+32-bit: R8D-R15D
+64-bit: R8-R15</p>
+<p>出于兼容考虑:
+写入 EAX, RAX 高位清零。但写入 AX, AL 时，高位不动。</p>
+<p>EAX 会让高位清零，所以不用必须看成 RAX 的 partial register，
+可以通过寄存器重命名让 EAX 实际上由多个寄存器并行运算</p>
+<p>但是一段代码里如果出现 EAX 和 AX，那么就没法做寄存器重命名了</p>
+<p>RFLAGS, EFLAGS, FLAGS:
+Parity Flag, Auxilary FLag</p>
+<p>Memory Management Requirements
+软件与硬件配合的内存管理</p>
+<ul>
+<li>Relocation: 重定位</li>
+<li>Protection: 保护与隔离</li>
+<li>Sharing: 共享部分资源 (父进程 -&gt; 子进程 -&gt; 线程)</li>
+</ul>
+<p>历史上的管理方案:</p>
+<ul>
+<li>Segmentation: 分段机制</li>
+<li>Paging: 分页机制</li>
+</ul>
+<p>Pitfalls:
+Segmentation leads to external fragmentation,
+Paging is subject to internal fragmentation</p>
+<p>Segmentation are faster than paging table lookups
+Paging needs MMU and TLB to accelerate look up</p>
+<p>Legacy Mode:
+实模式: 16+16 Segmentation
+虚拟 8086 模式: 16+16 Segmentation + 可选 Paging
+保护模式: 16+32 Segmentation + 可选 Paging
+Long Mode:
+兼容模式: 16+32 Segmentation + 必选 Paging
+64-bit 模式: 64-bit Paging</p>
+<p>内存寻址:</p>
+<ol>
+<li>
+<p>实模式
+    (Segment Addr &lt;&lt; 4) + Offset Addr = Physical Addr</p>
+<ul>
+<li>Relocatable</li>
+<li>Shared</li>
+<li>No protection
+问题:</li>
+<li>Wrap Around: FFFF:FFFF -&gt; 0x10FFEF 超出了 1M 空间 -&gt; 变成了 0x0FFEF
+               F800:8000 -&gt; 0x100000 -&gt; 0x00000
+               Only happens on 8086 / 8088 / 80186 until 80286 upgraded to 24-bit address lines
+               https://www.os2museum.com/wp/the-a20-gate-fallout/</li>
+</ul>
+</li>
+<li>
+<p>保护模式
+    16-bit Segment 指向全局描述符表 GDT 里的一个描述符 (descriptor)
+    段的基地址，长度和权限
+    设置了 CPU 的运行级别 ring-0 ... ring-3</p>
+<p>空描述符:
+1. 在初始化时，段寄存器还没有设置好，但可能发生意外，成为了段的选择值，
+这时候让他们 (=0) 都指向空描述符，就可以触发 #GP (general protection) 异常，而不造成问题
+2. 判断中断是否嵌套</p>
+<p>描述符的结构:</p>
+<p>Limit 段长度, Base 基地址 (80286: 24-bit, &gt;=80386: 32-bit)
+Access Right 访问权限
+G 粒度位: 为 1 时，Limit 长度 1bit 代表 4k, 4k * 2^20 = 2^32
+D, AV</p>
+<p>在 64-bit mode, 绝大多数部分不再使用，新增了 L 位，
+需要开启 Long bit 来进入 64-bit 模式</p>
+<p>必考计算:
+G=0 limit 1 bit = 1b, segment size = (limit+1) bytes
+G=1 limit 1 bit = 4kb, segment size = (limit+1)x4k bytes</p>
+<p>eg: Base: 1000 0000, limit: 001FF
+G=0, 1000 0000 - 1000 01FF
+G=1, 1000 0000 - 101F FFFF (结束位置 = 起始位置 + 段长度 - 1)
+左移3位，补FFF</p>
+<p>Access Rights:
+1. P 位 表示描述符是否有效
+2. DPL 位 (2 bit):
+    Ring 0, Ring 1, Ring 2, Ring 3
+    不得越权访问，需要通过 Gate Descriptor
+3. S 位 表示是否为系统描述符
+4. Type: 代码 / 堆栈 / 数据， 以及读写权限</p>
+<ol>
+<li>A 位: 段是否被访问过</li>
+</ol>
+<p>选择值 (CS / DS / SS 存的 16-bit):
+1. 15-3 (13-bit, 8k 个描述符): Descriptor index
+2. 2: TI, 表示描述符索引在 GDT (全局描述符) 还是 LDT (局部描述符)
+3. 1-0: RPL 选择值自身的权限 Ring 0 - Ring 3</p>
+<p>安全级别的设置:
+1. DPL 描述符权限级别
+2. RPL 请求的权限级别，放在 DS 寄存器的低 2 位
+2. CPL CPU 自身的权限级别，放在 CS 寄存器的低 2 位</p>
+<p>RPL 和 CPL，通过门描述符越级执行高权限的代码时，请求的内存地址还是原来的权限级别</p>
+<p>数据需要 MAX(RPL, CPL) &lt;= DPL
+堆栈需要 CPL = RPL = DPL</p>
+<p>描述符表的基地址由专门的寄存器存储: GDTR 全局描述符, LDTR 局部描述符, IDTR 中断描述符</p>
+</li>
+</ol>
+<p>Chapter 3 寻址方式</p>
+<p>默认地址长度和默认操作数长度:</p>
+<p><a class="glightbox" href="../assets/note/image-20240929100446670.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929100446670" src="../assets/note/image-20240929100446670.png" /></a></p>
+<p>在默认情况下指令编码较短</p>
+<p>比如 64-bit 模式下 <code>mov eax, [rbx]</code> 操作数长度为 32 位，地址长度为 64 位，编码为 <code>8B 03</code>, 相比之下 <code>mov rax, [rbx]</code> 的编码为 <code>48 8B 03</code>.</p>
+<p>Part 1 数据相关的寻址</p>
+<p>操作数可以是立即数，寄存器和内存上的值</p>
+<ol>
+<li>寄存器寻址 <code>mov ax, bx</code></li>
+<li>立即数寻址 <code>mov eax, 12345H</code></li>
+</ol>
+<p>需要注意: 16进制数字字母开头时，前加0，否则会被理解为 label</p>
+<p><a class="glightbox" href="../assets/note/image-20240929103348525.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929103348525" src="../assets/note/image-20240929103348525.png" /></a></p>
+<p>注意划线</p>
+<p><a class="glightbox" href="../assets/note/image-20240929103418840.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929103418840" src="../assets/note/image-20240929103418840.png" /></a></p>
+<p>寻址方式:</p>
+<ol>
+<li><code>Effective Address = Disp</code></li>
+</ol>
+<p>如果目的寄存器是 A 系列的寄存器，指令编码会短</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mov al, [1234H] ; A0 34 12
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mov cl, [1234H] ; 8A 0E 34 12
+</span></code></pre></div>
+<p><a class="glightbox" href="../assets/note/image-20240929103850499.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929103850499" src="../assets/note/image-20240929103850499.png" /></a></p>
+<ol>
+<li><code>Effective Address = Base</code></li>
+</ol>
+<p>8086-80286, 只允许使用 (base register:) bx, bp, (index register:) si, di 来作为基址寄存器</p>
+<p>80386 及之后可用任意 32 位通用寄存器</p>
+<p>64-bit 模式，段寄存器不用来进行寻址</p>
+<p>bp寻址时，默认段寄存器为 ss</p>
+<p><a class="glightbox" href="../assets/note/image-20240929105218139.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929105218139" src="../assets/note/image-20240929105218139.png" /></a></p>
+<p>上面的 size directive 如何影响指令编码:</p>
+<p><a class="glightbox" href="../assets/note/image-20240929110251777.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929110251777" src="../assets/note/image-20240929110251777.png" /></a></p>
+<ol>
+<li><code>Effective Address = Base + Index</code></li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20240929111943527.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929111943527" src="../assets/note/image-20240929111943527.png" /></a></p>
+<p>movsx 的使用非常细节，char -&gt; int 的转换发生在这里</p>
+<ol>
+<li>
+<p><code>Effective Address = Base / Index + Disp</code></p>
+</li>
+<li>
+<p><code>Effective Address = Base + Index + Disp</code></p>
+</li>
+</ol>
+<p>可用于二维数组/结构体的索引</p>
+<ol>
+<li><code>Effective Address = Base + (Scale×Index) + Disp</code></li>
+</ol>
+<p>也可用于二维数组/结构体的索引, scale 可以是 1, 2, 4, 8</p>
+<p><a class="glightbox" href="../assets/note/image-20240929112831878.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929112831878" src="../assets/note/image-20240929112831878.png" /></a></p>
+<p>64 位的新寻址方式: RIP relative addressing</p>
+<p>平坦内存方式，没有什么段了，可以直接用 rip 和偏移量寻址</p>
+<p><a class="glightbox" href="../assets/note/image-20240929113322565.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929113322565" src="../assets/note/image-20240929113322565.png" /></a></p>
+<p>实际上只用了 48 位虚拟地址，所以高 4 byte 必须是符号扩展，否则触发 #GP</p>
+<p><a class="glightbox" href="../assets/note/image-20240929113915187.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929113915187" src="../assets/note/image-20240929113915187.png" /></a></p>
+<p>总结: 8 种内存寻址方式</p>
+<p><a class="glightbox" href="../assets/note/image-20240929114949722.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929114949722" src="../assets/note/image-20240929114949722.png" /></a></p>
+<p>base 和 index register 的选择:</p>
+<p><a class="glightbox" href="../assets/note/image-20240929115247617.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929115247617" src="../assets/note/image-20240929115247617.png" /></a></p>
+<p>特殊规则: </p>
+<ol>
+<li>只要出现 BP/EBP, 或者 ESP, 那么段的基地址默认就是 ss</li>
+<li>ESP 不能做索引 index 寄存器</li>
+</ol>
+<p>例题:</p>
+<p><a class="glightbox" href="../assets/note/image-20240929115155303-1727581916882-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929115155303" src="../assets/note/image-20240929115155303-1727581916882-3.png" /></a></p>
+<p>ESP 只能做 base 不能作为 index，所以 D 是错的</p>
+<p>Part 2 代码相关的寻址 - 与程序控制流的指令有关</p>
+<p><a class="glightbox" href="../assets/note/image-20240929115356674.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929115356674" src="../assets/note/image-20240929115356674.png" /></a> </p>
+<p>Relative offset: 基于 ip + offset 跳转</p>
+<p>Absolute offset: 基于绝对地址跳转</p>
+<p>跳转方式与距离:</p>
+<p><a class="glightbox" href="../assets/note/image-20240929120002592.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929120002592" src="../assets/note/image-20240929120002592.png" /></a></p>
+<p>指令编码: 71AC - 71AA = 2</p>
+<p><a class="glightbox" href="../assets/note/image-20241011101133679.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011101133679" src="../assets/note/image-20241011101133679.png" /></a></p>
+<p>Far jump 跨段跳转时，必须跳转到相同 ring 级别</p>
+<p>进入保护模式时，cs 从段变成一个选择值，要刷新 cs，而只有跳转指令可以更改 cs</p>
+<p><a class="glightbox" href="../assets/note/image-20240929120605275.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240929120605275" src="../assets/note/image-20240929120605275.png" /></a>jmp 还可以使用内存里的值作为偏移
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">jmp</span><span class="w"> </span><span class="no">near</span><span class="w"> </span><span class="no">ptr</span><span class="p">[</span><span class="no">di</span><span class="err">+</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="c1">; 2 Byte, Offset</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">jmp</span><span class="w"> </span><span class="no">far</span><span class="w"> </span><span class="no">ptr</span><span class="p">[</span><span class="no">di</span><span class="err">+</span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c1">; 4 Byte, Segment + Offset</span>
+</span></code></pre></div></p>
+<p>栈内存的地址寻址方式</p>
+<p>栈的操作: push, pop，LIFO</p>
+<p>可以入栈或出栈的: 通用寄存器，标志寄存器，浮点寄存器，立即数</p>
+<p>入栈按照小端格式，也可以理解为: 高位先入栈，低位后入栈，低位先出栈，高位后出栈</p>
+<p>pusha (push all): 存入所有通用寄存器，不包括段寄存器（段寄存器不是通用寄存器），sp 为入栈前的值</p>
+<p>pushad (push all double): 存入 32 位寄存器</p>
+<p>pushf (push flags): 存入 flag 寄存器</p>
+<p>Chapter 4</p>
+<p>2-bit 编码 3 种指令操作模式</p>
+<p><a class="glightbox" href="../assets/note/image-20241011103814965.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011103814965" src="../assets/note/image-20241011103814965.png" /></a></p>
+<p>指令编码格式:</p>
+<p><a class="glightbox" href="../assets/note/image-20241011103938066.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011103938066" src="../assets/note/image-20241011103938066.png" /></a></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mov word ptr [eax], 5 ; 67 66 c7 00 05 00 - 64-bit
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mov word ptr [eax], 5 ;    66 c7 00 05 00 - 32-bit
+</span></code></pre></div>
+<p>最长的指令能达到 15 Byte</p>
+<p>OPCODE 中的方向位和宽度位</p>
+<p><a class="glightbox" href="../assets/note/image-20241011105638435.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011105638435" src="../assets/note/image-20241011105638435.png" /></a></p>
+<p>D=0 数据由 R/M 到 REG</p>
+<p>D=1, 数据由 REG 到 R/M</p>
+<p>W=0, 数据为 byte, 8 位</p>
+<p>W=1, 数据为 word / doubleword</p>
+<p><a class="glightbox" href="../assets/note/image-20241011105834435.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011105834435" src="../assets/note/image-20241011105834435.png" /></a></p>
+<p>MOD Field, 指定寻址方式</p>
+<p><a class="glightbox" href="../assets/note/image-20241011110145756.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011110145756" src="../assets/note/image-20241011110145756.png" /></a></p>
+<p>REG/Opcode Field</p>
+<p><a class="glightbox" href="../assets/note/image-20241011110504456.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011110504456" src="../assets/note/image-20241011110504456.png" /></a></p>
+<p>20/r 表示两个域都是寄存器，opcode 为 0x20</p>
+<p>80 /4 ib 表示 MOD 不是放寄存器，/4 表示扩展一个操作码，MOD 第二个域 R/M 设置为 3'b100，合起来代表带了一个立即数</p>
+<p>指令编码解析:</p>
+<p><a class="glightbox" href="../assets/note/image-20241011111201676.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011111201676" src="../assets/note/image-20241011111201676.png" /></a></p>
+<p>32 位下，几乎所有寄存器都可以作为 index （除了 esp）</p>
+<p>此时 R/M 域的编码有扩展</p>
+<p><a class="glightbox" href="../assets/note/image-20241011111738162.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011111738162" src="../assets/note/image-20241011111738162.png" /></a></p>
+<p>REX 寄存器扩展前缀，可以用来去找 r8-r15 这些寄存器，补充了原来的编码</p>
+<p><a class="glightbox" href="../assets/note/image-20241011112413375.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011112413375" src="../assets/note/image-20241011112413375.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241011112941697.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011112941697" src="../assets/note/image-20241011112941697.png" /></a></p>
+<p>Legacy Prefix: 组内不能重复，组之间可以组合</p>
+<p><a class="glightbox" href="../assets/note/image-20241011113022143.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011113022143" src="../assets/note/image-20241011113022143.png" /></a></p>
+<ol>
+<li>重复</li>
+<li>段改写</li>
+<li>操作数长度变化</li>
+<li>寻址长度变化</li>
+</ol>
+<p>LOCK 前缀: 原子操作，给不支持的指令加，会报 undefined opcode 异常</p>
+<p><a class="glightbox" href="../assets/note/image-20241011113214334.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011113214334" src="../assets/note/image-20241011113214334.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241011114145507.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011114145507" src="../assets/note/image-20241011114145507.png" /></a></p>
+<p>0FH 转义序列</p>
+<p><a class="glightbox" href="../assets/note/image-20241011115909460.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011115909460" src="../assets/note/image-20241011115909460.png" /></a></p>
+<p>扩展 opcode 的编码空间</p>
+<p>lea 用来灵活地计算地址偏移 / 简化计算</p>
+<p>mov 类指令不改变 flags</p>
+<p><a class="glightbox" href="../assets/note/image-20241011121132959.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011121132959" src="../assets/note/image-20241011121132959.png" /></a></p>
+<p>mov 的时候，汇编已经把 offset 算好了，</p>
+<p>而 lea 需要执行的时候才开始计算</p>
+<p>但 mov 只能是静态的立即数，lea 可以用地址表达式，可以组合多个寄存器</p>
+<p>装载指针的指令: lds, les, lfs, lgs, lss</p>
+<p><a class="glightbox" href="../assets/note/image-20241011121736901.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241011121736901" src="../assets/note/image-20241011121736901.png" /></a></p>
+<p>任务切换的时候可以用这个</p>
+<p>字符串操作指令: lods, stos, movs, ins, outs</p>
+<p>字符串比较指令: scas, cmps</p>
+<p>指令编码短，因为隐藏了操作数  (esi, edi / ds:si, es:di 以及 ecx 作为最大比较次数)，前加 repe 前缀</p>
+<p>这一套指令都有后缀: s, w, d 代表单次操作的长度</p>
+<p><a class="glightbox" href="../assets/note/image-20241025101325587.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241025101325587" src="../assets/note/image-20241025101325587.png" /></a></p>
+<p>rep 重复前缀也是一系列的:</p>
+<p><a class="glightbox" href="../assets/note/image-20241025101342189.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241025101342189" src="../assets/note/image-20241025101342189.png" /></a></p>
+<p>bswap 交换字节序</p>
+<p>因为没有 MOD， 编码寄存器放在了 Opcode 里，0F C8 的后三位
+64 位时，再和 REX.W 中的 1 位组合，编码 16 个寄存器</p>
+<p>条件移动 cmov， 根据 flags 中的状态位进行移动
+cmov 的好处在于可以减少 if-else 的分支指令，减少 branch misprediction</p>
+<p>Memory Organization</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>name SEGMENT
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>name ENDS
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>name MACRO
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>ENDM (不需要再写一次 name)
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>END start -&gt; 指示入口点
+</span></code></pre></div>
+<p>Arithmetic and Logic Instructions</p>
+<p>INC 指令保持 CF 不动，其他的 Flags 都有可能更新</p>
+<p>递增指令往往用于循环，希望这个递增变量不要干扰循环里面的 CF</p>
+<p>ADC 带进位加</p>
+<p>较长的二进制数加法用循环和 ADC 指令实现</p>
+<p>在开始前需要用 clc 清除进位 flag</p>
+<p><a class="glightbox" href="../assets/note/image-20241026103111555.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241026103111555" src="../assets/note/image-20241026103111555.png" /></a></p>
+<p>细节: <strong>这里使用了 lea，lea 属于内存移动指令，不影响 flags，同理 dec 也不影响 Carry Flag</strong></p>
+<p>而 ADD 指令会影响 Carry</p>
+<p>变种带进位加法指令: adcx, adox</p>
+<p><a class="glightbox" href="../assets/note/image-20241026103613635.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241026103613635" src="../assets/note/image-20241026103613635.png" /></a></p>
+<p>相当于 Ripple 加法器到超前进位加法器的变化</p>
+<p>原来只能有一条 Carry Chain, 不能冲突，</p>
+<p>后面英特尔引入了 adcx 和 adox，允许两条 Carry Chain，分别使用 CF 和 OF，提高了并行性 （2012）</p>
+<p><a class="glightbox" href="../assets/note/image-20241026103715415.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241026103715415" src="../assets/note/image-20241026103715415.png" /></a></p>
+<p>adcx 使用 Carry Flag，不会修改 Overflow Flag</p>
+<p>adox 使用 Overflow Flag, 不会修改 Carry Flag</p>
+<p>上面的代码有一点小问题，因为 dec 不会破坏 CF，而会破坏 OF，但是 dec 在正常循环中不产生 OF</p>
+<p>Karatsuba 算法: Intel 还设计了 mulx 指令</p>
+<p>xadd (&gt; 80486)</p>
+<p>先进行源和目标数据交换，并把源加到目的操作数里 des = src + des</p>
+<p>很少的改变 src 的指令</p>
+<p>xadd 其中一个操作数可以是内存，因此可以用来做锁</p>
+<p>乐观锁与悲观锁:</p>
+<p>spin lock 是悲观锁: 认为很大概率冲突，在进行事情前上锁，结束后解锁</p>
+<p>乐观锁：有并发，但冲突可能性较小，先做动作，再检查是否冲突</p>
+<p><a class="glightbox" href="../assets/note/image-20241026110222860.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241026110222860" src="../assets/note/image-20241026110222860.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241026110520404.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241026110520404" src="../assets/note/image-20241026110520404.png" /></a></p>
+<p>减法: sub, dec, sbb 带借位减法（全减）</p>
+<p>Compare and Exchange</p>
+<p>先做 compare 再做 exchange</p>
+<p>CMPXCHG des, src (隐藏操作数累加器: AL/AX/EAX)</p>
+<ul>
+<li>if des == accu, then des = src, ZF=1</li>
+<li>if des != accu, then accu = des, ZF=0</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241026112038864.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241026112038864" src="../assets/note/image-20241026112038864.png" /></a></p>
+<p>div, idiv, mul, imul 区分有无符号，最主要的区别是进行扩展时高位如何填充</p>
+<p>而 add 和 sub 不需要管，因为补码算出来就是对的</p>
+<p>符号扩展指令:</p>
+<p>CBW, CWDE, CDQE： A 系列寄存器有符号扩展</p>
+<p>CWD,CDQ,CQO：AX -&gt; DX:AX 扩展</p>
+<p>MOVSX, MOVSD：移动+扩展</p>
+<p>MOVZX: 零扩展</p>
+<p>历史遗留指令，BCD 与 ASCII 指令:</p>
+<ul>
+<li>DAA, DAS 对 BCD 码进行运算</li>
+</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="no">H</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="no">H</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nf">daa</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="no">h</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nf">add</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="no">h</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nf">daa</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># al: 00, CF: 1</span>
+</span></code></pre></div>
+<ul>
+<li>AAA,  AAS, AAM, AAD 对 ASCII 码进行运算:  ASCII: <code>30h-39h</code></li>
+</ul>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">aaa</span><span class="w"> </span><span class="c1">; if AL[3:0]&gt;9 or AF=1, then AL+=6, AH=1, clear AL[7:4],CF=1, AF=1; else CF=0, AF=0</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">3</span><span class="err">&#39;</span><span class="w"> </span><span class="c1">; 33h</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nf">add</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">4</span><span class="err">&#39;</span><span class="w"> </span><span class="c1">; 34h, al = 67h</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nf">aaa</span><span class="w">         </span><span class="c1">; AH=0, AL=7h, CF=0, AF=0</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1</span><span class="err">&#39;</span><span class="w"> </span><span class="c1">; 31h</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">9</span><span class="err">&#39;</span><span class="w"> </span><span class="c1">; 39h, al=6Ah</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nf">aaa</span><span class="w">         </span><span class="c1">; AH=1, AL=0h, CF=1, AF=1s</span>
+</span></code></pre></div>
+<p>test 做与操作，不影响结果，只影响 flags</p>
+<p>位操作指令</p>
+<p>bt, btc, btr, bts</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bt: 测试该位
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>btc: 测试，取反
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>btr: 测试，设置为 0
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>bts: 测试，设置为 1
+</span></code></pre></div>
+<p>not 取非</p>
+<p>neg 取补，影响 flag</p>
+<p><a class="glightbox" href="../assets/note/image-20241101105916446.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101105916446" src="../assets/note/image-20241101105916446.png" /></a></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>int signum (int x) 
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>{ 
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    if (x &gt; 0)  
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        return 1; 
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    else if (x &lt; 0)  
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        return -1; 
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    else  
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        return 0; 
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>}
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>signum-icx:
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    mov     ecx, edi
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    sar     ecx, 31
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    test    edi, edi
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    mov     eax, 1
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    cmovle  eax, ecx
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    ret
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>signum-minimum:
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    cwd
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    neg ax
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    adc dx, dx
+</span></code></pre></div>
+<p><a class="glightbox" href="../assets/note/image-20241101110547754.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101110547754" src="../assets/note/image-20241101110547754.png" /></a></p>
+<p>sar， sal 算数移位，补充符号位</p>
+<p>idiv 和 sar 有时会不一样,idiv的策略是 round toward zero，而算数右移 rount toward negative infinity</p>
+<p><a class="glightbox" href="../assets/note/image-20241101111847140.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101111847140" src="../assets/note/image-20241101111847140.png" /></a></p>
+<p>修补: 在除之前，对被除数添加 (1&lt;&lt;k-1) 也就是加上低 k 位为 1 的数，如果被除数低 k 位存在一位为 1，那么就会进位上去，后面移位回去时，被除数这一位还保留，那么就实现了 round toward zero 的舍入模型</p>
+<p><a class="glightbox" href="../assets/note/image-20241101112635523.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101112635523" src="../assets/note/image-20241101112635523.png" /></a></p>
+<p>shldm shrd: 双精度移位，两个寄存器串在一起移位</p>
+<p><a class="glightbox" href="../assets/note/image-20241101112951103.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101112951103" src="../assets/note/image-20241101112951103.png" /></a></p>
+<p>ROL, ROR 不带 CF 循环移位</p>
+<p>RCL, RCR 带 CF 循环移位</p>
+<p>字符串比较指令 movs, lods, stos, ins, outs</p>
+<p>以及两条影响 flag 的指令: scas (string scan), cmps (string compare)</p>
+<p><a class="glightbox" href="../assets/note/image-20241101115830205.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101115830205" src="../assets/note/image-20241101115830205.png" /></a></p>
+<p>di 回退一个位置才能找到 00</p>
+<p>Chapter 6 控制指令</p>
+<ol>
+<li>跳转指令</li>
+</ol>
+<p>无条件跳转</p>
+<p>jmp short, jmp near, jmp far</p>
+<p><a class="glightbox" href="../assets/note/image-20241101120336621.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101120336621" src="../assets/note/image-20241101120336621.png" /></a></p>
+<p>jmp with register operand，寄存器直接拷贝到 ip，绝对跳转</p>
+<p>jmp table[si] 跳表</p>
+<p>条件跳转:</p>
+<p><a class="glightbox" href="../assets/note/image-20241101122014496.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241101122014496" src="../assets/note/image-20241101122014496.png" /></a></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">test</span><span class="w"> </span><span class="no">word</span><span class="w"> </span><span class="no">ptr</span><span class="p">[</span><span class="no">esi</span><span class="p">],</span><span class="w"> </span><span class="mi">8000</span><span class="no">h</span><span class="w"> </span><span class="c1">; 与符号位做 test</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">pushf</span><span class="w"> </span><span class="c1">; 保护 flags</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nf">add</span><span class="w"> </span><span class="no">esi</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nf">popf</span>
+</span></code></pre></div>
+<p>跨权限控制流转换</p>
+<ul>
+<li>conforming code segmentv设置为一致性代码段，可以允许低权限的代码来调用，用于共享库</li>
+<li>门描述符</li>
+<li>快速系统调用</li>
+</ul>
+<p>中断和异常:</p>
+<ul>
+<li>中断: 外部中断: 异步，软中断: 同步。 特点: <strong>主动</strong>请求 os 服务</li>
+<li>异常: cpu 运行时发现异常让 os 处理</li>
+</ul>
+<p>异常的来源:</p>
+<ul>
+<li>Program-Error Exception: 比如除以零</li>
+<li>Software-Generated Exceptions: into (overflow), int1, int3 (software break-point)</li>
+<li>Machine-Check Exceptions: 机器自检异常，比如跑着跑着拔掉内存</li>
+</ul>
+<p>异常的种类:</p>
+<ul>
+<li>精确异常: </li>
+<li>发生异常的位置定位是准确的，所以系统处理完可以继续在断点执行下去的 (can be restarted)</li>
+<li>比如 Page Fault 之后，页面载入内存，可以从断点继续执行</li>
+<li>非精确异常: </li>
+<li>异常的位置是不准确的</li>
+<li>not restartable</li>
+</ul>
+<p>另一种分类:</p>
+<p><a class="glightbox" href="../assets/note/image-20241115101320311.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115101320311" src="../assets/note/image-20241115101320311.png" /></a></p>
+<p>中断入口:</p>
+<ul>
+<li>实模式: 中断向量表，向量号:</li>
+<li>向量号为 2 的是不可屏蔽中断</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241115101658545.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115101658545" src="../assets/note/image-20241115101658545.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241115101706834.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115101706834" src="../assets/note/image-20241115101706834.png" /></a></p>
+<p>用户只能自定义中断，且向量号在 32-25</p>
+<ul>
+<li>Double Fault Exception: 在处理异常的过程中又出现了异常</li>
+<li>比如处理 Page Fault 的时候，如果没写缺页异常的处理代码，就会再报出一个异常</li>
+<li>并不是所有的嵌套异常都是 Double Fault Exception<ul>
+<li>必须满足某种组合</li>
+<li><a class="glightbox" href="../assets/note/image-20241115102408447.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115102408447" src="../assets/note/image-20241115102408447.png" /></a></li>
+</ul>
+</li>
+<li>
+<p>双故障异常必须要特别小心地处理，不能再出现异常</p>
+<ul>
+<li>如果触发三故障异常，系统就会立刻重启</li>
+</ul>
+</li>
+<li>
+<p>保护模式: IDT</p>
+</li>
+</ul>
+<p>异常的错误码: 选择值类，以及 Page Fault 错误码</p>
+<p><a class="glightbox" href="../assets/note/image-20241115102906575.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115102906575" src="../assets/note/image-20241115102906575.png" /></a></p>
+<ul>
+<li>Page Fault 有两种: 真的缺页，还有访问权限不够</li>
+<li>cr2 存储发生 Page Fault 的虚拟地址</li>
+</ul>
+<p>中断/异常的优先级分级，优先级高的可以打断其他低优先级中断的处理过程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241115103318941.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115103318941" src="../assets/note/image-20241115103318941.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241115103325169.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115103325169" src="../assets/note/image-20241115103325169.png" /></a></p>
+<ul>
+<li>相同优先级的异常来的时候，是嵌套还是排队，取决于机器的实现</li>
+</ul>
+<p>实模式的中断向量表查询：</p>
+<p><a class="glightbox" href="../assets/note/image-20241115103913774.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115103913774" src="../assets/note/image-20241115103913774.png" /></a></p>
+<p>实模式进入中断服务函数前向栈压入 flags, cs, ip:</p>
+<p><a class="glightbox" href="../assets/note/image-20241115104149625.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115104149625" src="../assets/note/image-20241115104149625.png" /></a></p>
+<p>回去的时候要 iret，32位模式要 iretd</p>
+<p>控制指令: </p>
+<p>carry flag stc, clc, cmc (complement carry flag)</p>
+<p>HLT: 停机指令，系统处于热等待状态，需要下面的条件来激活:</p>
+<ul>
+<li>NMI, SMI 不可屏蔽中断，系统中断</li>
+<li>debug exception</li>
+<li>hardware reset，BINIT#, INIT#, RESET#</li>
+</ul>
+<p>多字节 NOP: 最多可以十五字节</p>
+<p><a class="glightbox" href="../assets/note/image-20241115111115523.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115111115523" src="../assets/note/image-20241115111115523.png" /></a></p>
+<p>多字节 nop 的意义: 希望代码对齐，用来做填充指令</p>
+<p>一条十五字节 nop 和一条单字节 nop 差不多，但远比 15 个单字节 nop 好</p>
+<p>Lock: </p>
+<p><a class="glightbox" href="../assets/note/image-20241115111946863.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241115111946863" src="../assets/note/image-20241115111946863.png" /></a></p>
+<ul>
+<li>用于“读, 修改, 写回”的指令变成原子指令</li>
+</ul>
+<p>bound 检测是否在两个范围之间</p>
+<p>接口部分</p>
+<p>Min Mode 和 Max Mode</p>
+<p><a class="glightbox" href="../assets/note/image-20241122100246153.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122100246153" src="../assets/note/image-20241122100246153.png" /></a></p>
+<p>minimum mode: 直接发送控制信号，有完全的管理权限</p>
+<p><a class="glightbox" href="../assets/note/image-20241122100401536.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122100401536" src="../assets/note/image-20241122100401536.png" /></a></p>
+<p>maximum mode: 发送请求，等待总线芯片 （8288） 仲裁</p>
+<p><a class="glightbox" href="../assets/note/image-20241122100423970.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122100423970" src="../assets/note/image-20241122100423970.png" /></a></p>
+<p>BHE: Bus High Enable 指示总线高八位数据有效</p>
+<p>DRAM:</p>
+<p><a class="glightbox" href="../assets/note/image-20241122101329867.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122101329867" src="../assets/note/image-20241122101329867.png" /></a></p>
+<p>Channel -&gt; DIMM -&gt; Rank -&gt; Chip -&gt; Bank -&gt; Row / Column 到达单 bit</p>
+<p>8086 的 bank 以 1 字节为宽度来组织内存</p>
+<p><a class="glightbox" href="../assets/note/image-20241122101610894.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122101610894" src="../assets/note/image-20241122101610894.png" /></a></p>
+<p>单字节 &amp; 偶地址: <span class="arithmatex">\(D_7-D_0\)</span></p>
+<p>单字节 &amp; 奇地址 <span class="arithmatex">\(D_{15}-D_8\)</span> </p>
+<p>双字节: <span class="arithmatex">\(D_{15}-D_0\)</span></p>
+<p>三种状态，需要两位信号来控制，就是: <span class="arithmatex">\(A_0\)</span> (BLE) 和 BHE 信号</p>
+<p><a class="glightbox" href="../assets/note/image-20241122102225493.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122102225493" src="../assets/note/image-20241122102225493.png" /></a></p>
+<p>未对齐地址的访存需要拆成两个周期</p>
+<p><a class="glightbox" href="../assets/note/image-20241122103048712.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122103048712" src="../assets/note/image-20241122103048712.png" /></a></p>
+<p>硬件接口需要解决的 6 个问题:</p>
+<p><a class="glightbox" href="../assets/note/image-20241122103608918.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122103608918" src="../assets/note/image-20241122103608918.png" /></a></p>
+<ol>
+<li>高低电平的逻辑匹配</li>
+<li>增强信号（电流）</li>
+<li>匹配速度: 缓冲 / 锁存</li>
+<li>匹配时序</li>
+<li>总线隔离</li>
+<li>
+<p>匹配格式</p>
+</li>
+<li>
+<p>输入/输出: 输入输出都以 CPU 的视角来看，输入设备连接输入接口，...</p>
+</li>
+<li>
+<p>信号类型: 数字信号、模拟信号</p>
+</li>
+<li>传输类型: 串行传输、并行传输</li>
+<li>并行传输不一定比串行快，并行信号有串扰，频率不能太高</li>
+</ol>
+<p>典型的 I/O 接口（粉色）由四部分构成:</p>
+<ul>
+<li>读写控制逻辑</li>
+<li>端口寄存器</li>
+<li>总线 buffer</li>
+<li>控制和状态寄存器</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241122104021532.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122104021532" src="../assets/note/image-20241122104021532.png" /></a></p>
+<p>接口需要进行缓存</p>
+<p>与设备的同步:</p>
+<ul>
+<li>Always-on Devices: 无条件传输，不需要沟通，比如开灯，直接传输就好</li>
+<li>Strobing 选通信号，只有单向发送的信号，没有回应信号</li>
+<li>双向的:</li>
+<li>Handshaking, Polling</li>
+<li>Interrupt-driven I/O</li>
+<li>Channel-based I/O (DMA)</li>
+</ul>
+<p>I/O 地址编码有两种:</p>
+<ul>
+<li>独立 I/O 编码: 用额外的指令处理 I/O 访问: x86 的 in 和 out</li>
+<li>内存映射: 读写外部设备和读写内存的方式一样</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241122110312732.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122110312732" src="../assets/note/image-20241122110312732.png" /></a></p>
+<p>000-3FF 由系统定义</p>
+<p>400-FFFF 可由用户自定义</p>
+<p>逻辑芯片的分类: TTL &amp; CMOS</p>
+<p><a class="glightbox" href="../assets/note/image-20241122110556978.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122110556978" src="../assets/note/image-20241122110556978.png" /></a></p>
+<ul>
+<li>TTL 逻辑: 三极管</li>
+<li>(曾经) 速度快，驱动电流大</li>
+<li>消耗能量高</li>
+<li>CMOS 逻辑: 场效应管</li>
+</ul>
+<p>TTL</p>
+<p>最主要工作电压 5V</p>
+<p>输入输出的标准非对称：宽进严出</p>
+<p><a class="glightbox" href="../assets/note/image-20241122110800216.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122110800216" src="../assets/note/image-20241122110800216.png" /></a></p>
+<p>CMOS</p>
+<p>工作电压有很多种:5V, 3.3V, 1.8V</p>
+<p><a class="glightbox" href="../assets/note/image-20241122110950982.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122110950982" src="../assets/note/image-20241122110950982.png" /></a></p>
+<p>要考虑两个器件输出和输入的要求（0 和 1 传过去仍然应该认为是 0 和 1），电压要匹配</p>
+<p><a class="glightbox" href="../assets/note/image-20241122111204396.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122111204396" src="../assets/note/image-20241122111204396.png" /></a></p>
+<p>第一种类型需要上拉电阻</p>
+<p>机械开关触点接触不稳定，存在“抖动”问题:</p>
+<p><a class="glightbox" href="../assets/note/image-20241122112203607.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122112203607" src="../assets/note/image-20241122112203607.png" /></a></p>
+<p>去抖动的方式:</p>
+<ul>
+<li>软件: 多次采样，稳定后才认为变化</li>
+<li>硬件:</li>
+<li>解决方法1: 问题在于之前是双触发，需要做成单触发，一接触到就直接变，不会抖动</li>
+<li><a class="glightbox" href="../assets/note/image-20241122112411252.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122112411252" src="../assets/note/image-20241122112411252.png" /></a></li>
+<li>解决方法 2:<a class="glightbox" href="../assets/note/image-20241122112752631.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122112752631" src="../assets/note/image-20241122112752631.png" /></a></li>
+<li>解决方法 3：多次采样，匹配</li>
+<li><a class="glightbox" href="../assets/note/image-20241122112829086.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122112829086" src="../assets/note/image-20241122112829086.png" /></a></li>
+</ul>
+<p>输出电流的匹配: 加驱动电路</p>
+<p>驱动 LED: 10 mA</p>
+<p>用晶体管可以放大电流，要计算电阻大小确保匹配</p>
+<p>LED 有压降（-2V）</p>
+<p><a class="glightbox" href="../assets/note/image-20241122113352694.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122113352694" src="../assets/note/image-20241122113352694.png" /></a></p>
+<p>驱动更大的设备: 1A 的直流电机</p>
+<p>Darlington-pair: 晶体管串联级联放大</p>
+<p><a class="glightbox" href="../assets/note/image-20241122114329311.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122114329311" src="../assets/note/image-20241122114329311.png" /></a></p>
+<p>电动机是电感，关闭的时候会产生反向电动势，需要加一个放电回路（稳压二极管），否则立刻把达灵顿击穿了</p>
+<p>8位开关:</p>
+<p><a class="glightbox" href="../assets/note/image-20241122115552904.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122115552904" src="../assets/note/image-20241122115552904.png" /></a></p>
+<p>8个 LED 输出: 共阳极，对应位变 0 就点亮</p>
+<p><a class="glightbox" href="../assets/note/image-20241122115714310.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122115714310" src="../assets/note/image-20241122115714310.png" /></a></p>
+<p>Strobing 选通时序</p>
+<ol>
+<li>源主动选通，数据先放到总线上，发送选通信号，发送之后再延续一段时间，给目的单元读取的时间</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241122120147289-1732248138526-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122120147289" src="../assets/note/image-20241122120147289-1732248138526-1.png" /></a></p>
+<ol>
+<li>目的主动选通:</li>
+</ol>
+<p>目的拉高选通信号，源把数据放到信号上，目的关闭选通信号，源把信号从总线拿走</p>
+<p><a class="glightbox" href="../assets/note/image-20241122120213312.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122120213312" src="../assets/note/image-20241122120213312.png" /></a></p>
+<p>Handshaking 握手时序</p>
+<ol>
+<li>Source-initiated</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241122120601107.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122120601107" src="../assets/note/image-20241122120601107.png" /></a></p>
+<ol>
+<li>Destination-initiated</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241122120645806.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122120645806" src="../assets/note/image-20241122120645806.png" /></a></p>
+<p>I/O 端口地址译码</p>
+<p><a class="glightbox" href="../assets/note/image-20241122121341299.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241122121341299" src="../assets/note/image-20241122121341299.png" /></a></p>
+<p>对地址进行译码，高 5 位负责选中某个 decoder （比如图上的decoder只有在高地址 10000 才使能），低 3 位地址使能 3-8 decoder</p>
+<p>IO/M 信号指示当前的地址是 I/O 还是内存地址</p>
+<p>再举一个例子，对于 F0h-F7h:</p>
+<p><a class="glightbox" href="../assets/note/image-20241129100856221.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129100856221" src="../assets/note/image-20241129100856221.png" /></a></p>
+<p>16 位端口地址 EFF8h-EFFFh，用一个可编程逻辑器件 (PLD) 来译码</p>
+<p><a class="glightbox" href="../assets/note/image-20241129101100232.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129101100232" src="../assets/note/image-20241129101100232.png" /></a></p>
+<p>输出 8 位: 偶地址，奇地址 —— 要控制 BHE 和 BLE</p>
+<p><a class="glightbox" href="../assets/note/image-20241129102011672.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129102011672" src="../assets/note/image-20241129102011672.png" /></a></p>
+<p>如果输出也是 16 位，译码就相对简单，因为此时内存地址必须双字节对齐</p>
+<p><a class="glightbox" href="../assets/note/image-20241129102622710.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129102622710" src="../assets/note/image-20241129102622710.png" /></a></p>
+<p>数据宽度32 位时:</p>
+<p><a class="glightbox" href="../assets/note/image-20241129102919607.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129102919607" src="../assets/note/image-20241129102919607.png" /></a></p>
+<p><strong>接口芯片</strong></p>
+<ol>
+<li>82C55：可编程并行接口 （8255 + C 代表低功耗的 CMOS）</li>
+</ol>
+<p>端口地址与数据宽度均是八位的</p>
+<p><a class="glightbox" href="../assets/note/image-20241129103525981.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129103525981" src="../assets/note/image-20241129103525981.png" /></a></p>
+<p>A[7:0] 与 C[7:4] 构成了 A 控制组，B[7:0] 与 C[3:0] 构成 B 控制组</p>
+<p>C 被分成两部分用来配合信号线 A 和 B 做握手信号</p>
+<p><a class="glightbox" href="../assets/note/image-20241129103650639.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129103650639" src="../assets/note/image-20241129103650639.png" /></a></p>
+<ul>
+<li>
+<p>A0, A1 选择对哪个端口进行操作</p>
+</li>
+<li>
+<p>CS： Chip Select 低使能这个芯片</p>
+</li>
+</ul>
+<p>控制信号与数据流向</p>
+<p><a class="glightbox" href="../assets/note/image-20241129104202828.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129104202828" src="../assets/note/image-20241129104202828.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241129104129700.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129104129700" src="../assets/note/image-20241129104129700.png" /></a></p>
+<p>A和B端口中，A更强大:</p>
+<p>A有独占的输入 latch，输出 latch/buffer</p>
+<p>B 只有输入 buffer 和共享的输入输出 latch/buffer</p>
+<p><a class="glightbox" href="../assets/note/image-20241129105157789.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129105157789" src="../assets/note/image-20241129105157789.png" /></a></p>
+<p>Mode 0: 无握手信号，基本的输入输出</p>
+<p>Mode 1: 选通式握手</p>
+<p>Mode 2: 双向总线操作，可在不同时间做输入输出（而前面的输入输出是确定的），仅适用于控制组 A</p>
+<p><a class="glightbox" href="../assets/note/image-20241129110048988.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129110048988" src="../assets/note/image-20241129110048988.png" /></a></p>
+<p>Mode 0 适合 Always On 没有时序逻辑的设备，比如 LED 灯</p>
+<p>Mode 1 适合选通</p>
+<p>Mode 2 此时 C 端口有五条线可以配合 Mode 2 的 A 端口，双向各两条，再来一条中断线</p>
+<p>82C55 接到 80386SX 上时:</p>
+<p><a class="glightbox" href="../assets/note/image-20241129110525643.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129110525643" src="../assets/note/image-20241129110525643.png" /></a></p>
+<p>为什么使用 C0, C2, C4, C6 而不是 C0, C1, C2, C3: 为了让端口都在偶地址上，避免在译码的时候还需要引入类似 BHE 的信号</p>
+<p><a class="glightbox" href="../assets/note/image-20241129111438919.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129111438919" src="../assets/note/image-20241129111438919.png" /></a></p>
+<p>1 = I = Input, 0 = O = Output</p>
+<p><a class="glightbox" href="../assets/note/image-20241129111503609.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129111503609" src="../assets/note/image-20241129111503609.png" /></a></p>
+<p>Mode 0 的操作:</p>
+<p>时序图:</p>
+<p>上升沿触发，输入后 tRD 之后的才是有效数据</p>
+<p><a class="glightbox" href="../assets/note/image-20241129111940445.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129111940445" src="../assets/note/image-20241129111940445.png" /></a></p>
+<ul>
+<li>输入</li>
+<li>首先给出片选 CS 和端口地址 A1, A0</li>
+<li>其后输入数据需要给出</li>
+<li>然后 CPU 发出 RD 信号</li>
+<li>随后端口锁存住的外部输入就可以读到 CPU 的输入总线上来 D7-D0</li>
+<li>输出</li>
+<li>CS, A1, A0</li>
+<li>CPU 将写的数据放到数据总线上</li>
+<li>CPU 发出写信号</li>
+</ul>
+<p>步进电机</p>
+<p>激励方式: 全步 full-step，半步 half-step，微步 micro-step</p>
+<p>一相充电和两相充电: 90°</p>
+<p><a class="glightbox" href="../assets/note/image-20241129115910184.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129115910184" src="../assets/note/image-20241129115910184.png" /></a></p>
+<p>半步: 单相和两相搭配 45°</p>
+<p><a class="glightbox" href="../assets/note/image-20241129120049614.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129120049614" src="../assets/note/image-20241129120049614.png" /></a></p>
+<p>代码:</p>
+<p><a class="glightbox" href="../assets/note/image-20241129120455530.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129120455530" src="../assets/note/image-20241129120455530.png" /></a></p>
+<p>最高位是 ready bit, 系统自动设置</p>
+<p>micro-step: 精细控制每个线圈的电流</p>
+<p><a class="glightbox" href="../assets/note/image-20241129120208767.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129120208767" src="../assets/note/image-20241129120208767.png" /></a></p>
+<p>用到串联的达灵顿管和二极管</p>
+<p><a class="glightbox" href="../assets/note/image-20241129120902198.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129120902198" src="../assets/note/image-20241129120902198.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241129121026561.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129121026561" src="../assets/note/image-20241129121026561.png" /></a></p>
+<p>微步: CX 最高位代表方向，后面 15 位表示多少步</p>
+<p><a class="glightbox" href="../assets/note/image-20241129121819150.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241129121819150" src="../assets/note/image-20241129121819150.png" /></a></p>
+<p>Mode 1:</p>
+<p>输入:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206021138178-1733422298525-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206021138178" src="../assets/note/image-20241206021138178-1733422298525-1.png" /></a></p>
+<p>IBF: Input buffer full</p>
+<p>终端使能 INTE： PC4 (Group A)， PC4(Group B)</p>
+<p>模式1的工作模式可以从端口C读取:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206022244479.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206022244479" src="../assets/note/image-20241206022244479.png" /></a></p>
+<p>可以一个字节整个读进来</p>
+<p>模式1 输入例子: 键盘</p>
+<p>输出:</p>
+<p>CPU 给 82C55 输出数据，由 82C55 锁存</p>
+<p>当缓冲区慢时，OBF 变成低电平通知设备来读</p>
+<p>设备发送 ACK，随后 82C55 向 CPU 发送中断信号，</p>
+<p>让 CPU 继续来写</p>
+<p><a class="glightbox" href="../assets/note/image-20241206023438792.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206023438792" src="../assets/note/image-20241206023438792.png" /></a></p>
+<p>模式1输出例子: 打印机</p>
+<p>串口打印机</p>
+<p><a class="glightbox" href="../assets/note/image-20241206024214264.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206024214264" src="../assets/note/image-20241206024214264.png" /></a></p>
+<p>故意不用 PC1 而是用 PC4 产生 OBF 信号，是为了展示 Command Word B 的用法</p>
+<p>模式2：双向操作方式，只能组A</p>
+<p><a class="glightbox" href="../assets/note/image-20241206030327373.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206030327373" src="../assets/note/image-20241206030327373.png" /></a></p>
+<p>中断线复用，再占 OBF, ACK, STB, IBF, 一共占 5 条线</p>
+<p>此时组 B 最多在模式 1，把所有线用满</p>
+<p>时序图:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206030811496.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206030811496" src="../assets/note/image-20241206030811496.png" /></a></p>
+<p>总线是竞争的:</p>
+<p>虽然 CPU 先设置的 WR 信号且 82C55 已经 OBF 了</p>
+<p>但是此时外部设备已经把给 CPU 的数据放到总线上了，所以 CPU 只能先读走</p>
+<p>因此 CPU 的写数据只能在其后面再放到总线上</p>
+<p>中断请求也是竞争的:</p>
+<p>CPU 接收到中断时，如何知道是让它写还是读?</p>
+<p>CPU 只需要读取 C 口的 OBF 和 IBF 的状态即可</p>
+<p>若 OBF 和 IBF 同时有效，那既要读又要写</p>
+<p>如果只要有一个，那就响应那个就可以了</p>
+<p>模式2的编程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206032337359.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206032337359" src="../assets/note/image-20241206032337359.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241206031954999.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206031954999" src="../assets/note/image-20241206031954999.png" /></a></p>
+<p>组A模式2和组B模式1同时用，达到满载:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206032431235.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206032431235" src="../assets/note/image-20241206032431235.png" /></a></p>
+<p><strong>8254 可编程定时器</strong></p>
+<p>控制设备，发送控制信号</p>
+<p>3 个独立的 16 位时钟计数器，既可以二进制，也可以 BCD</p>
+<p><a class="glightbox" href="../assets/note/image-20241206033236172.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206033236172" src="../assets/note/image-20241206033236172.png" /></a></p>
+<p>Timer 0: 给 CPU 发送时钟中断，接到 8259 中断控制器</p>
+<p>Timer 1: DRAM 内存的 refresh 时钟</p>
+<p>Timer 2: 驱动喇叭</p>
+<p><a class="glightbox" href="../assets/note/image-20241206034625320.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206034625320" src="../assets/note/image-20241206034625320.png" /></a></p>
+<p>CS: 片选信号</p>
+<p>A0, A1 指定某个计时器</p>
+<p>一个 counter 的内部结构:</p>
+<p>控制字三个计时器复用</p>
+<p>CR_M, CR_L: 两个 8 位计数初值</p>
+<p>CE: 16 位倒计时计数</p>
+<p>OL_M, OL_L: 两个 8 位输出</p>
+<p>8254 的命令字:</p>
+<p>SC1/SC0: 11 表示回读，获得计数器的状态</p>
+<p>RW1/RW0: 读低位计数初值，读高位计数初值，还有两个都读（低位 LSB 先写）</p>
+<p>M2/M1/M0: 计数器工作模式</p>
+<p>命令字需要向命令端口写，地址为 A1,A0 = 11</p>
+<p><a class="glightbox" href="../assets/note/image-20241213100440872.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213100440872" src="../assets/note/image-20241213100440872.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241206115413460.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206115413460" src="../assets/note/image-20241206115413460.png" /></a></p>
+<p>读取 8254 的时序图:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206115111714.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206115111714" src="../assets/note/image-20241206115111714.png" /></a></p>
+<p>写入 8254 的时序图:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206115126242.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241206115126242" src="../assets/note/image-20241206115126242.png" /></a></p>
+<p>8254 每个计时器都要设置一个命令字</p>
+<p>写入计数初值之后，只要门控信号有效，就开始计数</p>
+<p>初始化: 先低字节，再高字节</p>
+<p>16位:</p>
+<ul>
+<li>二进制 0~FFFF</li>
+<li>BCD: 0~9999</li>
+<li>计时器是先减再判断，因此初值设置为 0 可达最大计数次数</li>
+</ul>
+<p>Mode 0</p>
+<p>Mode 1</p>
+<p><a class="glightbox" href="../assets/note/image-20241220100905121.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220100905121" src="../assets/note/image-20241220100905121.png" /></a></p>
+<p>高电平门控信号被采样到，再重新载入初始值</p>
+<p>期末必考 2024.12.20 开头</p>
+<p>Mode 2 - Rate Generator</p>
+<p>OUT 绝大周期高电平，计数到 1 的时候才变成 0</p>
+<p>门控信号影响输出:</p>
+<p>门控信号 Gate = 0 (无效) 立刻将 OUT 变成高电平</p>
+<p>直到下一次门控信号有效时，重新装入初始值，再开始计数</p>
+<p><a class="glightbox" href="../assets/note/image-20241213110537926.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213110537926" src="../assets/note/image-20241213110537926.png" /></a></p>
+<p>采样到 GATE=0, 下降沿停止计数</p>
+<p>当 GATE=1 恢复时候，重新读入初始值 03</p>
+<p>Mode 3 - Square Wave Generator 方波发生器: 占空比 50%</p>
+<p>如果输入时偶数: 比如 6, 那么 3 拍高，3 拍低, 占空比 50%</p>
+<p>如果输入为奇数: 高的周期必低的周期多一个，占空比 <span class="arithmatex">\(\frac{n+1}{2n}\)</span></p>
+<p><a class="glightbox" href="../assets/note/image-20241213110853833.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213110853833" src="../assets/note/image-20241213110853833.png" /></a></p>
+<p>Mode 4 - 软件触发选通，可以类比模式 0</p>
+<p>到达 0 的时候，只产生 1 个节拍的低电平</p>
+<p><a class="glightbox" href="../assets/note/image-20241213110949111.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213110949111" src="../assets/note/image-20241213110949111.png" /></a></p>
+<p>下降沿装入 03</p>
+<p>Mode 5 - 硬件触发选通</p>
+<p>只要门控信号产生上升沿就触发计数，即使没有被时钟信号采样到</p>
+<p><a class="glightbox" href="../assets/note/image-20241213111238760.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213111238760" src="../assets/note/image-20241213111238760.png" /></a></p>
+<p>8254 芯片的使用</p>
+<p>例子 1: 接到 80386 计算机，用第一个计时器产生 100K 方波，用第二个计时器产生 200K 连续波</p>
+<p>如果变化的两位放到最低两位的话，会需要用总线高信号来做片选比较麻烦</p>
+<p>时钟节拍为 8 Mhz，门控持续使能，接到上拉电阻</p>
+<p><a class="glightbox" href="../assets/note/image-20241213111510180.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213111510180" src="../assets/note/image-20241213111510180.png" /></a></p>
+<p>计数初值计算:</p>
+<p>模式 2 和 3 都是 N 分频，也就是频率变成 <span class="arithmatex">\(1/n\)</span>.</p>
+<p><a class="glightbox" href="../assets/note/image-20241213111857562.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213111857562" src="../assets/note/image-20241213111857562.png" /></a></p>
+<p>如果要 100 Hz 方波怎么办？ 8 Mhz / 100 Hz = 80000，而最多只能计数 65536 怎么办</p>
+<p>串联分频，把第一级的 out 接到第二级的 clk</p>
+<p>代码:</p>
+<ul>
+<li>100K 方波，需要工作在模式 3</li>
+</ul>
+<p>先写命令字，再写计数初值，先低字节再高字节（为了展示两字节的写法，所以 RW1,RW0 设置成了 11）</p>
+<p>考试要求记忆地址</p>
+<p><a class="glightbox" href="../assets/note/image-20241213112123861.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213112123861" src="../assets/note/image-20241213112123861.png" /></a></p>
+<ul>
+<li>200K continuous pulse，需要模式 2</li>
+</ul>
+<p>读取计数器的值</p>
+<p><a class="glightbox" href="../assets/note/image-20241213113132315.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213113132315" src="../assets/note/image-20241213113132315.png" /></a></p>
+<p>Simple Read:</p>
+<p>推荐设置门控信号让计数停止一下再读，但直接硬读也不是不行，就是会不太稳定</p>
+<p>Counter Latch Command: 计时器锁存命令</p>
+<p>D5,D4=00 指定计数器锁存指令，SC1, SC0 表示锁存哪个计数器的值</p>
+<p><a class="glightbox" href="../assets/note/image-20241213113304717.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213113304717" src="../assets/note/image-20241213113304717.png" /></a></p>
+<p>注意读取的顺序和当时设置这个寄存器的时候，低字节、高字节的设置是一致的，比如一开始是 11，那么读的时候也是先读低字节再读高字节</p>
+<p><a class="glightbox" href="../assets/note/image-20241213113340060.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213113340060" src="../assets/note/image-20241213113340060.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241213114422238.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213114422238" src="../assets/note/image-20241213114422238.png" /></a></p>
+<p>回读命令的格式:</p>
+<p>可以读 count 也可以读编程模式，输出的引脚是高电平还是低电平，Null Count Flag: 是否被初始化过</p>
+<p><a class="glightbox" href="../assets/note/image-20241213114750870.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213114750870" src="../assets/note/image-20241213114750870.png" /></a></p>
+<p>Count 是 0 代表像读计数值</p>
+<p>Status 是 0 代表读取状态: 编程模式，OUT， Null Count Flag</p>
+<p><a class="glightbox" href="../assets/note/image-20241213115235485.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213115235485" src="../assets/note/image-20241213115235485.png" /></a></p>
+<p>最高两位必须是 11， 最低必须是 0</p>
+<p>PWM 驱动电机</p>
+<p>H-桥</p>
+<p><a class="glightbox" href="../assets/note/image-20241213120047736.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213120047736" src="../assets/note/image-20241213120047736.png" /></a></p>
+<p>不仅可以控制速度，还可以控制方向</p>
+<p><a class="glightbox" href="../assets/note/image-20241213120426469.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213120426469" src="../assets/note/image-20241213120426469.png" /></a></p>
+<p>50% 占空比是停止，变低和变高都会开始转，方向相反</p>
+<p><a class="glightbox" href="../assets/note/image-20241213121208792.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241213121208792" src="../assets/note/image-20241213121208792.png" /></a></p>
+<p>Mode 2,3 比较特殊，既可以电平触发，也可以边沿触发</p>
+<p>边沿触发的作用是重置计数，而电平触发是开启或关闭</p>
+<p><a class="glightbox" href="../assets/note/image-20241220100603297.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220100603297" src="../assets/note/image-20241220100603297.png" /></a></p>
+<p>16550 串行通信芯片</p>
+<p>单工，半双工，全双工:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220101224973.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220101224973" src="../assets/note/image-20241220101224973.png" /></a></p>
+<p>串行通信: 只能一位一位传输</p>
+<p><a class="glightbox" href="../assets/note/image-20241220101242259.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220101242259" src="../assets/note/image-20241220101242259.png" /></a></p>
+<p>第三步需要使用信道上面的编码（类似计网），让 0 和 1 更易区分，抗干扰
+在数据编码中还要提供同步信号，并且每个数据包都要添加同步信号，避免错误累计</p>
+<p>有效载荷 Payload 封装好后，在发送时钟的驱动下，用移位寄存器一位一位发送出去</p>
+<p>接收端在接收到起始位时同步自己的时钟，最后还要利用校验位进行检验</p>
+<p>如果没有问题，就串转并传输给 CPU</p>
+<p><strong>Clocks and Timing</strong>:</p>
+<p>时钟需要考虑采样信号能量最大的点: 中心点采样</p>
+<p>时钟有两种可能</p>
+<ul>
+<li>
+<p>同步数据传输 (同步的情况无需 start bit 和 stop bit)</p>
+</li>
+<li>
+<p>时钟同源: 发送和接受端使用相同的时钟源</p>
+</li>
+<li>
+<p>时钟异地: PLL 锁相环: 负反馈计数，作差能够锁定和数据相同频率的时钟</p>
+</li>
+<li>
+<p>异步数据传输</p>
+</li>
+<li>
+<p>需要有相同的数据传输速率: baud rate</p>
+</li>
+<li>需要起停位来进行时钟的同步</li>
+</ul>
+<p>同步与异步数据传输的不同:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220102254829.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220102254829" src="../assets/note/image-20241220102254829.png" /></a></p>
+<p>串行通信: UART / USART</p>
+<p>UART: Universal Asynchronous Receiver Transmitter 通用异步传输</p>
+<p>USART: 同时支持异步和同步</p>
+<p><a class="glightbox" href="../assets/note/image-20241220102420604.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220102420604" src="../assets/note/image-20241220102420604.png" /></a></p>
+<p>在编码中体现时钟的跳变，在持续传输相同位的时候，依然能体现时钟信息:</p>
+<p>NRZ: 0就是低，1就是高，在 stop bit 的时候，持续高电平，就无法同步时钟了</p>
+<p>NRZI: 0 就是保持，1 就是反相，在截止位持续高电平的时候很有帮助</p>
+<p><a class="glightbox" href="../assets/note/image-20241220102744405.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220102744405" src="../assets/note/image-20241220102744405.png" /></a></p>
+<p>USB 使用 NRZI</p>
+<p>异步数据传输协议:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220102854413.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220102854413" src="../assets/note/image-20241220102854413.png" /></a></p>
+<p>有效载荷，校验位，停止位的长度可变，体现出可编程的特性</p>
+<p>以 UART 为例，需要接收端和发送端约定波特率 baud rate</p>
+<p>这里并不是有效数据传输的 bit rate，而是编码之后的信号的 baud rate</p>
+<p>baud rate: 9600 bps,  1 bit 需要 1/9600 = 104.2 us 的时间</p>
+<p>进行采样的时钟: 波特率时钟: BCLK</p>
+<p>波特率时钟的频率需要是波特率的数倍 (8, 16, 32...)</p>
+<p>BCLK = baud rate x baud rate divisor (波特率因子)</p>
+<p><a class="glightbox" href="../assets/note/image-20241220103432120.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220103432120" src="../assets/note/image-20241220103432120.png" /></a></p>
+<p>使用了过采样的方法，乘了波特率因子的时钟频率</p>
+<p>晶振产生时钟频率 - 分频 (divisor) - BCLK (带有过采样因子 baud rate divisor)</p>
+<p>因此分频系数 divisor: input clock / (baud rate x baud rate divisor)</p>
+<p><a class="glightbox" href="../assets/note/image-20241220103606669.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220103606669" src="../assets/note/image-20241220103606669.png" /></a></p>
+<p>计数到波特率因子一半个周期的时候，发现还是 0 就认为这是起始位</p>
+<p>随后每 波特率因子 个周期采样，便可以采样到通信过程中信号最稳定的时候的电平</p>
+<p>16550 通信芯片: 美国 National Semiconductor Corp</p>
+<p>注意字节序: <strong>least significant bit</strong> 低有效位优先传输</p>
+<p><a class="glightbox" href="../assets/note/image-20241220104314162.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220104314162" src="../assets/note/image-20241220104314162.png" /></a></p>
+<p>16550 baud rate 最高可以达到 1.5M</p>
+<p>需要编程 (计算 / 查表获得分频系数 divisor) 产生波特率时钟，波特率因子固定为 16</p>
+<p>提供一个 16 byte 的 FIFO 缓冲，以防止 CPU 没有及时读到</p>
+<p>功能列表</p>
+<ul>
+<li>可编程的载荷 / 校验 / 停止位长度, 1.5-bit 是指该位的时长是一个半</li>
+<li>调制解调器功能: 把数字信号做调制变成模拟信号，加载到电话线上，电话网络普遍存在，且线的质量好 (拨号上网)</li>
+<li>全双工: 有独立的发送和接收器</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241220105141878.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220105141878" src="../assets/note/image-20241220105141878.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241220105514586.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220105514586" src="../assets/note/image-20241220105514586.png" /></a></p>
+<p>引脚规定:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220105531214.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220105531214" src="../assets/note/image-20241220105531214.png" /></a></p>
+<p>地址线 0-2 三根，但是后面利用复用的方法，提供了 12 个端口</p>
+<p>CS 片选有三根，为了兼容性，实际上只用一个就行，其他的必须 disable （或门）</p>
+<p>读和写都有两个，也是为了兼容性，另一个必须 enable （与门）</p>
+<p>ADS: 地址锁存信号: 并不是所有的芯片都能保证读写信号有效的情况下，地址仍然有效（比如摩托罗拉的 CPU）, Intel 的芯片没有这个问题，也不需要. 只要给 ADS 接低就行了</p>
+<p>XIN, XOUT</p>
+<p>TXRDY, RXRDY: 用于 DMA</p>
+<p>INTR: 中断</p>
+<p>SIN, SOUT: 串行数据的进出，全双工</p>
+<p>BAUDOUT, RCLK: 两个时钟，一个是发送时钟，一个是接收时钟. 前者是内部产生的，后者可以从外部接过来</p>
+<p>后面的是用来接调制解调器的</p>
+<p>地址线 A0, A1, A2 可以索引八个寄存器</p>
+<p><a class="glightbox" href="../assets/note/image-20241220110348104.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220110348104" src="../assets/note/image-20241220110348104.png" /></a></p>
+<p>一个地址两个端口 （读和写对应的是两个端口）: 端口复用，最终有 12 个</p>
+<p><a class="glightbox" href="../assets/note/image-20241220110520586.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220110520586" src="../assets/note/image-20241220110520586.png" /></a></p>
+<p>scratch 寄存器是一个通用寄存器</p>
+<p>DLAB 为 1 的时候，000 和 001 可以设置分频系数（分别是低有效字节和高有效字节）</p>
+<p>16550 11 个常用的寄存器（另一个是 scratch)</p>
+<p><a class="glightbox" href="../assets/note/image-20241220111642990.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220111642990" src="../assets/note/image-20241220111642990.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241220112223787.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220112223787" src="../assets/note/image-20241220112223787.png" /></a></p>
+<p>有两个 FIFO 缓冲，由 FIFO Control Register 控制: 使能与清空</p>
+<p>16550 的编程</p>
+<ol>
+<li>初始化：计算时钟分频因子，设置数据帧的格式</li>
+<li>清理 FIFO, 开始通信</li>
+</ol>
+<p>线路控制寄存器的格式:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220112513151.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220112513151" src="../assets/note/image-20241220112513151.png" /></a></p>
+<p>最高位是 DLAB 位</p>
+<p>stick 打开时，校验位固定: 如果是奇校验为 1，如果是偶校验为 0，与有效载荷无关</p>
+<p><a class="glightbox" href="../assets/note/image-20241220113111872.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220113111872" src="../assets/note/image-20241220113111872.png" /></a></p>
+<p>波特率计算:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220113406643.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220113406643" src="../assets/note/image-20241220113406643.png" /></a></p>
+<p>这个计算每次算太麻烦，而且不一定整除，所以习惯是使用查表:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220113451492.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220113451492" src="../assets/note/image-20241220113451492.png" /></a></p>
+<p>清理 FIFO</p>
+<p>初始化的完整流程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220114226202.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220114226202" src="../assets/note/image-20241220114226202.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241220114508544.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220114508544" src="../assets/note/image-20241220114508544.png" /></a></p>
+<p>波特率时钟直接接给接收端</p>
+<p><a class="glightbox" href="../assets/note/image-20241220114657868.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220114657868" src="../assets/note/image-20241220114657868.png" /></a></p>
+<p>状态寄存器:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220115453033.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220115453033" src="../assets/note/image-20241220115453033.png" /></a></p>
+<p>OE: Overrun Error: FIFO 溢出了</p>
+<p>PE: 奇偶校验出错</p>
+<p>FE: Framing Error: 比如检测结束位长度不对，起始位长度不对</p>
+<p>TH: 能否发送，需要轮询这一位</p>
+<p>发送代码:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220115654153.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220115654153" src="../assets/note/image-20241220115654153.png" /></a></p>
+<p>接收代码: (接收和发送时同一个端口号，靠读写作分离)</p>
+<p><a class="glightbox" href="../assets/note/image-20241220115838439.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220115838439" src="../assets/note/image-20241220115838439.png" /></a></p>
+<p>如果出错就返回 '?'</p>
+<p>AD 转换 数字信号与模拟信号的转换
+<a class="glightbox" href="../assets/note/image-20241220120104410.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220120104410" src="../assets/note/image-20241220120104410.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241220120112670.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220120112670" src="../assets/note/image-20241220120112670.png" /></a></p>
+<p>数字信号转换到模拟信号</p>
+<p>OA: 运算放大器</p>
+<p>有三种手段:</p>
+<ul>
+<li>PWM: 脉冲宽度调制</li>
+<li>二进制带权值的电阻网络 Binary weighted resistor</li>
+<li>R-2R ladder</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241220120307846.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220120307846" src="../assets/note/image-20241220120307846.png" /></a></p>
+<p>一般的数模转换芯片都是零阶保持，并不是连续的电压值，所以看起来会像下图中间这样:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220120532046.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220120532046" src="../assets/note/image-20241220120532046.png" /></a></p>
+<p>使用的时候需要用低通滤波，避免谐波成分影响</p>
+<p>二进制权值电阻网络:
+<a class="glightbox" href="../assets/note/image-20241220120740031.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220120740031" src="../assets/note/image-20241220120740031.png" /></a></p>
+<p>运算放大器 - 运放 中的反馈电阻 Rf 做成 R/2，就能约掉电阻网络中的电阻项 R, 消掉之后就有:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220121335724.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220121335724" src="../assets/note/image-20241220121335724.png" /></a></p>
+<p>R-2R 梯形电路</p>
+<p>刚才那个方法，因为电阻值两倍两倍找不到通用的，因此比较难实现</p>
+<p>R-2R 只要求两个阻值的电阻 R 和 2R 就能实现</p>
+<p><a class="glightbox" href="../assets/note/image-20241220121646671.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220121646671" src="../assets/note/image-20241220121646671.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241220122025385.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241220122025385" src="../assets/note/image-20241220122025385.png" /></a></p>
+<p>两个容易混淆的概念: 参考电压 V_ref 和满量程输出电压 V_fs (Full Scale)</p>
+<p>满量程输出电压达不到 V_ref, V_out 最大比 V_ref 差 1/2^n，差一个最低有效位的数值</p>
+<p>数模转换芯片的主要参数:</p>
+<ul>
+<li>Resolution 转换精度: n = 3 位数字量，有 2^n=8 个间隔</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241227021044388.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227021044388" src="../assets/note/image-20241227021044388.png" /></a></p>
+<p><strong>Resolution = V_ref / 2^n = V_fs / (2^n - 1)</strong></p>
+<ul>
+<li>Linearity</li>
+<li>Settling Time</li>
+</ul>
+<p>Linearity 线性度</p>
+<ul>
+<li>实际进行转换输出时，会由于种种原因会偏离理想的直线</li>
+<li>电阻发生了变化</li>
+<li>运放零点发生了偏移</li>
+<li>V_ref 发生了变化</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241227021402398.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227021402398" src="../assets/note/image-20241227021402398.png" /></a></p>
+<p>Settling Time 建立时间: 衡量性能</p>
+<p><a class="glightbox" href="../assets/note/image-20241227021641751.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227021641751" src="../assets/note/image-20241227021641751.png" /></a></p>
+<p>稳定到 理想电压 +- 1/2 的最小数字量电压 需要的时间，通过四舍五入可以归到这个值</p>
+<p>计算例题: <strong>有例题都是要点</strong></p>
+<p><a class="glightbox" href="../assets/note/image-20241227022437170.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227022437170" src="../assets/note/image-20241227022437170.png" /></a></p>
+<p>P1: 先算一个间隔是多少: 最高 15V/(2^4-1) = 1V, 0110 (6) 有 6 个间隔，所以是 6V</p>
+<p>P2: Step size 就是 resolution</p>
+<p>DAC0830 数模转换器</p>
+<p><a class="glightbox" href="../assets/note/image-20241227022711620.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227022711620" src="../assets/note/image-20241227022711620.png" /></a></p>
+<p>工作方式: 直通，一级缓冲，二级缓冲</p>
+<p>引脚:</p>
+<p><a class="glightbox" href="../assets/note/image-20241227022756999.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227022756999" src="../assets/note/image-20241227022756999.png" /></a></p>
+<p>D0-D7: 数字量输入</p>
+<p>IOUT1, IOUT2: 输出是电流，需要通过反馈电阻转换成电压，接到外接运放上</p>
+<p>AGND, DGND 分别是模拟和数字信号的接地信号，避免干扰，数字量谐波成分大，会冲击模拟量</p>
+<p>CS: 一级缓冲的使能</p>
+<p>WR1, WR2: 两路缓冲，每路缓冲都有写信号</p>
+<p>ILE: 输入缓冲使能信号</p>
+<p>XFER: 传输控制信号，DA 转换控制器的控制信号</p>
+<p>RFB: 反馈电阻，随着芯片已经配好了，但是是外接的</p>
+<p>计算电压的时候，R_fb 应该能被约掉</p>
+<p><a class="glightbox" href="../assets/note/image-20241227023624335.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227023624335" src="../assets/note/image-20241227023624335.png" /></a></p>
+<p>IOUT1+IOUT2 是定值</p>
+<p>R_fb 的接法:</p>
+<p><a class="glightbox" href="../assets/note/image-20241227024034922.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227024034922" src="../assets/note/image-20241227024034922.png" /></a></p>
+<p>两级缓冲:</p>
+<p>latch: 没有时钟信号，输出跟着输入走</p>
+<p>transparent latch: 有一个控制信号，控制信号为 1 时透明，输出跟着输入走，控制信号为 0 时锁存，不透明</p>
+<p><a class="glightbox" href="../assets/note/image-20241227024355836.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227024355836" src="../assets/note/image-20241227024355836.png" /></a></p>
+<p>第一路: 输入寄存器</p>
+<ul>
+<li>CS, WR1, ILE 来控制，同时使能时，直通（透明），否则数据被锁存（不透明）</li>
+</ul>
+<p>第二路: DA 转换寄存器</p>
+<ul>
+<li>WR2, XFER 控制，都使能（低电平）时，直通</li>
+</ul>
+<p>三种工作模式: 全部通-直通，通一个-单缓冲，两个都不通-双缓冲</p>
+<p><a class="glightbox" href="../assets/note/image-20241227025757425.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227025757425" src="../assets/note/image-20241227025757425.png" /></a></p>
+<p>最终接到 DA 转换</p>
+<p>芯片使用时接法:</p>
+<p><a class="glightbox" href="../assets/note/image-20241227025601767.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227025601767" src="../assets/note/image-20241227025601767.png" /></a></p>
+<p>单缓冲模式例子</p>
+<p><a class="glightbox" href="../assets/note/image-20241227025917430.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227025917430" src="../assets/note/image-20241227025917430.png" /></a></p>
+<p>CS, WR1, WR2 全部使能，只有 XFER 受控 —— 一级缓冲直通，第二级受控</p>
+<p>控制电机运转:</p>
+<p>稳定运转: 第二级锁存</p>
+<p>调速: 第二级直通，让输入的数字量进来，然后再锁存</p>
+<p>双缓冲的意义:</p>
+<p><a class="glightbox" href="../assets/note/image-20241227030217973.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227030217973" src="../assets/note/image-20241227030217973.png" /></a></p>
+<p>接入多个 DAC 的时候，希望两个电机转速是同时变换的，而不能有时间差</p>
+<p>分两阶段来控制，第一阶段分别把转速写入到两个 DAC 的第一级</p>
+<p>第二阶段同时打开 DAC 的第二级，于是他们转速同时转变</p>
+<p><a class="glightbox" href="../assets/note/image-20241227030250314.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227030250314" src="../assets/note/image-20241227030250314.png" /></a></p>
+<p>分时写入，同时打开</p>
+<p><a class="glightbox" href="../assets/note/image-20241227030642358.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241227030642358" src="../assets/note/image-20241227030642358.png" /></a></p>
+<p>期末复习:</p>
+<p>填空题，单选题，计算，代码填空，简答</p>
+<p>代码填空 考接口部分</p>
+<p>IEEE 754 会考，负数，特殊情况</p>
+<p>实模式，保护模式，64位内存寻址模式，都有考察</p>
+<p>101012, 29912</p>
+<p>寻址</p>
+<p>伪指令</p>
+<p>指令前缀 REX</p>
+<ul>
+<li>64位模式操作数是64位</li>
+<li>寄存器出现引用后面八个寄存器的 r8-r15</li>
+</ul>
+<p>enter 指令</p>
+<p>前面的芯片与编程相关，最后DAC0830考概念</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月2日 21:06:50</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月2日 16:04:14</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chapter-9-11/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 接口">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                接口
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../final/" class="md-footer__link md-footer__link--next" aria-label="Next: 期末历年卷">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                期末历年卷
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      YooLc
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.alicdn.com/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

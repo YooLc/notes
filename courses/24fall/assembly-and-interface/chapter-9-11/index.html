@@ -1,0 +1,2899 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="YooLc 的笔记本">
+      
+      
+        <meta name="author" content="YooLc">
+      
+      
+        <link rel="canonical" href="https://yoolc.github.io/notes/courses/24fall/assembly-and-interface/chapter-9-11/">
+      
+      
+        <link rel="prev" href="../chapter-4-6/">
+      
+      
+        <link rel="next" href="../note/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>接口 - 笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../fonts/fonts.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/auto_counter.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/mkdocs-plugins-v1.1.0.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#接口" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="笔记" class="md-header__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              接口
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YooLc/notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="笔记" class="md-nav__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YooLc/notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    大三
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            大三
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    汇编与接口
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            汇编与接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    微处理器及其结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    寻址方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-4-6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x86 汇编指令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    接口
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    接口
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#8086-微处理器" class="md-nav__link">
+    <span class="md-ellipsis">
+      8086 微处理器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8086 微处理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#引脚描述" class="md-nav__link">
+    <span class="md-ellipsis">
+      引脚描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工作模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#内存组织方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      内存组织方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82c55-可编程并行接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      82C55 可编程并行接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="82C55 可编程并行接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#器件构成" class="md-nav__link">
+    <span class="md-ellipsis">
+      器件构成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#控制字设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字设置
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="控制字设置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制字-a---模式设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字 A - 模式设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#控制字-b---port-c-设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字 B - Port C 设置
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#运行方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运行方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模式-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8254-可编程定时器" class="md-nav__link">
+    <span class="md-ellipsis">
+      8254 可编程定时器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8254 可编程定时器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#器件构成_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      器件构成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#编程方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      编程方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="编程方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制字格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两阶段初始化" class="md-nav__link">
+    <span class="md-ellipsis">
+      两阶段初始化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#读计数器方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      读计数器方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#运行模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运行模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模式-0-interrupt-on-terminal-count-计数定时中断" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 0: Interrupt on Terminal Count 计数定时中断
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-1-hardware-retriggerable-one-shot-硬件可重触发单脉冲" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 1: Hardware Retriggerable One-shot 硬件可重触发单脉冲
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-2-rate-generator-时钟分频" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 2: Rate Generator: 时钟分频
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-3-square-wave-mode-方波" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 3: Square Wave Mode: 方波
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-4-software-triggered-strobe-软件触发选通" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 4: Software Triggered Strobe: 软件触发选通
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-5-hardware-triggered-strobe-retriggerable-硬件触发选通" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 5: Hardware Triggered Strobe (Retriggerable): 硬件触发选通
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例程" class="md-nav__link">
+    <span class="md-ellipsis">
+      例程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16550-串行通信接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      16550 串行通信接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16550 串行通信接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#器件构成_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      器件构成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两阶段编程" class="md-nav__link">
+    <span class="md-ellipsis">
+      两阶段编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="两阶段编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#初始化" class="md-nav__link">
+    <span class="md-ellipsis">
+      初始化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#收发使能" class="md-nav__link">
+    <span class="md-ellipsis">
+      收发使能
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#通信状态检测" class="md-nav__link">
+    <span class="md-ellipsis">
+      通信状态检测
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dac0830-数模转换芯片" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAC0830 数模转换芯片
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DAC0830 数模转换芯片">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#da-转换" class="md-nav__link">
+    <span class="md-ellipsis">
+      D/A 转换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dac-技术指标" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAC 技术指标
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末历年卷
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-architecture/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机体系结构
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机体系结构
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I - 计算机设计基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    II - 流水线
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    III - 内存层次结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IV - 指令并行 (ILP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V - 线程并行 (TLP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applied-operations-research/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    应用运筹学基础
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            应用运筹学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-network/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../operating-system/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    操作系统
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../principles-of-programming-languages/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    编程语言原理
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../principles-of-programming-languages/practice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课件例题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../theory-of-computation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算理论
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_7" id="__nav_2_1_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory-of-computation/undecidability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    判定训练
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#8086-微处理器" class="md-nav__link">
+    <span class="md-ellipsis">
+      8086 微处理器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8086 微处理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#引脚描述" class="md-nav__link">
+    <span class="md-ellipsis">
+      引脚描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工作模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#内存组织方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      内存组织方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82c55-可编程并行接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      82C55 可编程并行接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="82C55 可编程并行接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#器件构成" class="md-nav__link">
+    <span class="md-ellipsis">
+      器件构成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#控制字设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字设置
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="控制字设置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制字-a---模式设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字 A - 模式设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#控制字-b---port-c-设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字 B - Port C 设置
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#运行方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运行方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模式-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8254-可编程定时器" class="md-nav__link">
+    <span class="md-ellipsis">
+      8254 可编程定时器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8254 可编程定时器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#器件构成_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      器件构成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#编程方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      编程方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="编程方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#控制字格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制字格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两阶段初始化" class="md-nav__link">
+    <span class="md-ellipsis">
+      两阶段初始化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#读计数器方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      读计数器方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#运行模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="运行模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模式-0-interrupt-on-terminal-count-计数定时中断" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 0: Interrupt on Terminal Count 计数定时中断
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-1-hardware-retriggerable-one-shot-硬件可重触发单脉冲" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 1: Hardware Retriggerable One-shot 硬件可重触发单脉冲
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-2-rate-generator-时钟分频" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 2: Rate Generator: 时钟分频
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-3-square-wave-mode-方波" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 3: Square Wave Mode: 方波
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-4-software-triggered-strobe-软件触发选通" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 4: Software Triggered Strobe: 软件触发选通
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#模式-5-hardware-triggered-strobe-retriggerable-硬件触发选通" class="md-nav__link">
+    <span class="md-ellipsis">
+      模式 5: Hardware Triggered Strobe (Retriggerable): 硬件触发选通
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#例程" class="md-nav__link">
+    <span class="md-ellipsis">
+      例程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16550-串行通信接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      16550 串行通信接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16550 串行通信接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#器件构成_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      器件构成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两阶段编程" class="md-nav__link">
+    <span class="md-ellipsis">
+      两阶段编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="两阶段编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#初始化" class="md-nav__link">
+    <span class="md-ellipsis">
+      初始化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#收发使能" class="md-nav__link">
+    <span class="md-ellipsis">
+      收发使能
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#通信状态检测" class="md-nav__link">
+    <span class="md-ellipsis">
+      通信状态检测
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dac0830-数模转换芯片" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAC0830 数模转换芯片
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DAC0830 数模转换芯片">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#da-转换" class="md-nav__link">
+    <span class="md-ellipsis">
+      D/A 转换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dac-技术指标" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAC 技术指标
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/YooLc/notes/-/tree/main/docs/courses/24fall/assembly-and-interface/chapter-9-11.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="接口">接口<a class="headerlink" href="#接口" title="Permanent link">&para;</a></h1>
+<div class="admonition tips">
+<p class="admonition-title">考试范围</p>
+<p>本部分会考察简单的接口编程方法，因此需要对各接口芯片的端口及其功能有一定的了解。最后一颗数模转换芯片不考察编程，只需了解一些技术指标的计算。</p>
+<p>这一部分最理想的学习方式是读手册，所以我会给每个接口附上其对应的手册。</p>
+</div>
+<h2 id="8086-微处理器">8086 微处理器<a class="headerlink" href="#8086-微处理器" title="Permanent link">&para;</a></h2>
+<p>手册: <a href="https://edge.edx.org/c4x/BITSPilani/EEE231/asset/8086_family_Users_Manual_1_.pdf">Intel 8086/8088 微处理器手册</a>, 一个简化的 <a href="https://jishanshaikh4.github.io/8086-cheatsheet/main.pdf">Cheat Sheet</a>.</p>
+<h3 id="引脚描述">引脚描述<a class="headerlink" href="#引脚描述" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../assets/note/image-20241122100246153.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="pin-configuration-8086" src="../assets/note/image-20241122100246153.png" /></a></p>
+<p>8086 的数据总线为 16 位，地址总线为 20 位，对应引脚如下:</p>
+<ul>
+<li>AD0 - AD15: 地址与数据总线 (共用部分)</li>
+<li>A16 - A19: 地址总线剩余的部分</li>
+</ul>
+<p>其他引脚功能:</p>
+<ul>
+<li>CLK: 时钟信号</li>
+<li>INTR: 中断请求线</li>
+<li><span class="arithmatex">\(\overline{\text{BHE}}\)</span>: 总线高字节使能 (Bus High Enable), 指示总线高八位数据有效</li>
+</ul>
+<h3 id="工作模式">工作模式<a class="headerlink" href="#工作模式" title="Permanent link">&para;</a></h3>
+<p>Maximum Mode 最大模式: 最大模式适用于系统存在多个微处理器的情况，8086 作为主处理器，而其他处理器作为协助处理器，比如 8087 浮点数协处理器可以为 8086 提供浮点运算功能。此时，8086 的通信都是请求式的，需要等待 8288 总线芯片的仲裁信号，控制信号由总线控制器 8288 产生。</p>
+<p>Minimum Mode 最小模式: 最小模式适用于系统中只有 8086 一个微处理器的情况，此时 8086 可以直接发送控制信号，并对内存和外部设备有完全的管理权限。</p>
+<h3 id="内存组织方式">内存组织方式<a class="headerlink" href="#内存组织方式" title="Permanent link">&para;</a></h3>
+<p>8086 和 8088 的 bank 以 1 Byte 为宽度来组织内存。8088 的数据总线是 8 位，因此只需要一个 bank 来管理，无需 <span class="arithmatex">\(\overline{\text{BHE}}\)</span> 信号。然而，8086 的数据总线是 16 位，内存需要分为奇偶两个 bank，并通过 <span class="arithmatex">\(\overline{\text{BHE}}\)</span> 信号来指示高 8 位 (奇 bank) 是否有效。</p>
+<p><a class="glightbox" href="../assets/note/image-20241122101610894.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="bank-of-8086-memory" src="../assets/note/image-20241122101610894.png" /></a></p>
+<p>使用数据线的不同情况:</p>
+<ul>
+<li>
+<p>单字节 &amp; 偶地址: <span class="arithmatex">\(D_7-D_0\)</span></p>
+</li>
+<li>
+<p>单字节 &amp; 奇地址 <span class="arithmatex">\(D_{15}-D_8\)</span> </p>
+</li>
+<li>
+<p>双字节 &amp; 偶地址: <span class="arithmatex">\(D_{15}-D_0\)</span></p>
+</li>
+<li>
+<p>双字节 &amp; 奇地址: 此时内存未对齐，访问需要多一个周期。先读 <span class="arithmatex">\(D_{15}-D_8\)</span>，再读 <span class="arithmatex">\(D_7-D_0\)</span></p>
+</li>
+</ul>
+<h2 id="82c55-可编程并行接口">82C55 可编程并行接口<a class="headerlink" href="#82c55-可编程并行接口" title="Permanent link">&para;</a></h2>
+<p>Intersil 提供的 <a href="https://www.renesas.com/en/document/dst/82c55a-datasheet?srsltid=AfmBOoq6LvEYsaDWUQyikJ0R95ZRy_F4KISrj8jmVVgUL2wjkqgImil9">82C55A 手册</a></p>
+<h3 id="器件构成">器件构成<a class="headerlink" href="#器件构成" title="Permanent link">&para;</a></h3>
+<p>82C55 是一个 24 引脚的可编程并行接口，包含 3 个 8 位 I/O 端口，分别为 A, B, C。</p>
+<p>这三个端口分为两组:</p>
+<ul>
+<li>Group A 由 A 端口和 C 的高 4 位 (<span class="arithmatex">\(\text{PC}_7-\text{PC}_4\)</span>) 构成，可以工作在模式 0, 1, 2</li>
+<li>Group B 由 B 端口和 C 的低 4 位 (<span class="arithmatex">\(\text{PC}_3-\text{PC}_0\)</span>) 构成，可以工作在模式 0, 1</li>
+</ul>
+<p>82C55 的引脚描述如下:</p>
+<p><a class="glightbox" href="../assets/note/image-20241129103650639.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="82C55-pin-configuration" src="../assets/note/image-20241129103650639.png" /></a></p>
+<ul>
+<li><span class="arithmatex">\(\overline{\text{CS}}\)</span>: 芯片选择信号，低电平有效</li>
+<li><span class="arithmatex">\(\overline{\text{RD}}\)</span>: 读信号，低电平有效，表示读取数据或工作状态</li>
+<li><span class="arithmatex">\(\overline{\text{WR}}\)</span>: 写信号，低电平有效，表示写入数据或控制字</li>
+<li><span class="arithmatex">\(\text{A}_1-\text{A}_0\)</span>: 端口地址线，用于选择 Port A, Port B, Port C</li>
+<li><span class="arithmatex">\(\text{D}_7-\text{D}_0\)</span>: 数据总线</li>
+<li><span class="arithmatex">\(\text{PA}_7-\text{PA}_0\)</span>: Group A 的 8 位端口</li>
+<li><span class="arithmatex">\(\text{PB}_7-\text{PB}_0\)</span>: Group B 的 8 位端口</li>
+<li><span class="arithmatex">\(\text{PC}_7-\text{PC}_0\)</span>: Group C 的 8 位端口</li>
+</ul>
+<p>端口 A 比端口 B 功能多的原因在于，在 82C55 内部，端口 A 由独占的输入 latch 和输出 latch / buffer, 而端口 B 只有输入 buffer 和共享的输入输出 latch / buffer.</p>
+<h3 id="控制字设置">控制字设置<a class="headerlink" href="#控制字设置" title="Permanent link">&para;</a></h3>
+<p>82C55 的控制字为 8 位，但是可以控制两个功能，一是设置每个 Group 的工作模式，二是控制 Port C 每个引脚的输入输出方向，这两个控制功能通过最高位 <span class="arithmatex">\(D_7\)</span> 来区分.</p>
+<h4 id="控制字-a---模式设置">控制字 A - 模式设置<a class="headerlink" href="#控制字-a---模式设置" title="Permanent link">&para;</a></h4>
+<p>当 <span class="arithmatex">\(D_7\)</span> 为 1 时，设置的是 Group A 和 Group B 的工作模式和输入输出方向. 注意只有 Group A 可以工作在模式 2, 因此 Group A 的工作模式需要有 2 位来表示.</p>
+<p><a class="glightbox" href="../assets/image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="82C55-mode-definition-format" src="../assets/image-4.png" /></a></p>
+<h4 id="控制字-b---port-c-设置">控制字 B - Port C 设置<a class="headerlink" href="#控制字-b---port-c-设置" title="Permanent link">&para;</a></h4>
+<p>当 <span class="arithmatex">\(D_7\)</span> 为 0 时，设置的是 Port C 的输出电平. <span class="arithmatex">\(D_0\)</span> 表示的是设置 / 重置 (set / reset), 而 <span class="arithmatex">\(D_3-D_1\)</span> 表示的是设置的引脚. 注意此时 <span class="arithmatex">\(D_6-D_4\)</span>为 don't care.</p>
+<p><a class="glightbox" href="../assets/image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="82C55-Port-C-set-reset" src="../assets/image-5.png" /></a></p>
+<h3 id="运行方式">运行方式<a class="headerlink" href="#运行方式" title="Permanent link">&para;</a></h3>
+<h4 id="模式-0">模式 0<a class="headerlink" href="#模式-0" title="Permanent link">&para;</a></h4>
+<p>模式 0 无握手信号，只有基本的输入输出，适用于简单的 <em>Always On</em> 的 I/O 操作。比如点亮 LED 灯，只 CPU 需要输出亮灯状态即可。模式 0 时接口功能如下:</p>
+<ul>
+<li>两个 8 位端口 Port A, Port B 以及两个 4 位端口: Port C 的高 4 位和低 4 位</li>
+<li>每个端口均可以独立设置输入和输出</li>
+<li>输出有 latch 锁存输出状态，输入没有</li>
+</ul>
+<details class="note" open="open">
+<summary>例子: 控制步进电机</summary>
+<p>half-step 半步控制:
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">.stack</span><span class="w"> </span><span class="mi">64</span><span class="no">h</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">.data</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">datacw</span><span class="w">  </span><span class="no">db</span><span class="w"> </span><span class="mi">0000</span><span class="no">_0110b</span><span class="w"> </span><span class="c1">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nf">db</span><span class="w"> </span><span class="mi">0000</span><span class="no">_0100b</span><span class="w"> </span><span class="c1">; half-step</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nf">db</span><span class="w"> </span><span class="mi">0000</span><span class="no">_0011b</span><span class="w"> </span><span class="c1">; 顺时针旋转位置</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nf">db</span><span class="w"> </span><span class="mi">0000</span><span class="no">_0010b</span><span class="w"> </span><span class="c1">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="na">.code</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="err">@</span><span class="no">data</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ds</span><span class="p">,</span><span class="w"> </span><span class="no">ax</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">bx</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="w"> </span><span class="no">datacw</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">si</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">         </span><span class="c1">; 步进位置</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">cx</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w">        </span><span class="c1">; 步进次数</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nl">next_step:</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="no">bx</span><span class="p">][</span><span class="no">si</span><span class="p">]</span><span class="w">  </span><span class="c1">; 加载当前状态步进电机控制状态</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">         </span><span class="c1">; 输出到端口</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nf">inc</span><span class="w"> </span><span class="no">si</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nf">cmp</span><span class="w"> </span><span class="no">si</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nf">jb</span><span class="w"> </span><span class="no">next_step</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">si</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">         </span><span class="c1">; 重置步进位置</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nf">loop</span><span class="w"> </span><span class="no">next_step</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nf">hlt</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="na">.exit</span>
+</span></code></pre></div></p>
+<p>micro-step 微步控制: 用 cx 的最高位表示方向，后面 15 位表示步进多少步</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nf">PORT</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">40</span><span class="no">h</span><span class="w"> </span><span class="c1">; 端口 A 地址</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">STEP</span><span class="w"> </span><span class="no">PROC</span><span class="w"> </span><span class="no">NEAR</span><span class="w"> </span><span class="no">USES</span><span class="w"> </span><span class="no">cx</span><span class="w"> </span><span class="no">ax</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">pos</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nf">or</span><span class="w">  </span><span class="no">cx</span><span class="p">,</span><span class="w"> </span><span class="no">cx</span><span class="w">                   </span><span class="c1">; 判断当前转子位置</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="na">.IF</span><span class="w"> </span><span class="p">!</span><span class="no">ZERO</span><span class="err">?</span><span class="w">                   </span><span class="c1">; 如果转子位置不为 0</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="na">.IF</span><span class="w"> </span><span class="p">!</span><span class="no">SIGN</span><span class="err">?</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="na">.REPEAT</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">                </span><span class="nf">rol</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1">; 向左旋转</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">                </span><span class="nf">out</span><span class="w"> </span><span class="no">port</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">                </span><span class="nf">call</span><span class="w"> </span><span class="no">delay</span><span class="w">       </span><span class="c1">; 等待 1 ms</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="na">.UNTILCXZ</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="na">.ELSE</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="nf">and</span><span class="w"> </span><span class="no">cx</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="no">FFFh</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="na">.REPEAT</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                </span><span class="nf">ror</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1">; 向右旋转</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                </span><span class="nf">out</span><span class="w"> </span><span class="no">port</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">                </span><span class="nf">call</span><span class="w"> </span><span class="no">delay</span><span class="w">       </span><span class="c1">; 等待 1 ms</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">            </span><span class="na">.UNTILCXZ</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="na">.ENDIF</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="na">.ENDIF</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">pos</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="nf">ret</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="nf">STEP</span><span class="w"> </span><span class="no">ENDP</span>
+</span></code></pre></div>
+</details>
+<h4 id="模式-1">模式 1<a class="headerlink" href="#模式-1" title="Permanent link">&para;</a></h4>
+<p>模式 1 采用选通式握手信号，适用于需要 CPU 和外设之间的数据传输。比如键盘输入，CPU 需要读取键盘的输入。</p>
+<p>模式 1 输入的工作时序:</p>
+<ol>
+<li>设备通过 <span class="arithmatex">\(\overline{\text{STB}}\)</span> 信号通知 82C55 数据准备好</li>
+<li>82C55 通过 IBF 信号告知设备当前输入缓冲已满，不要再传数据</li>
+<li>83C55 通过 INTR 给 CPU 发送中断，请求 CPU 读取数据</li>
+<li>CPU 通过 <span class="arithmatex">\(\overline{\text{RD}}\)</span> 信号读取数据</li>
+</ol>
+<p>模式 1 输出的工作时序:</p>
+<ol>
+<li>CPU 通过 <span class="arithmatex">\(\overline{\text{WR}}\)</span> 信号写入数据</li>
+<li>82C55 通过 <span class="arithmatex">\(\overline{\text{OBF}_\text{B}}\)</span> 低电平告知设备输入缓冲已满，通知设备读取</li>
+<li>设备通过 <span class="arithmatex">\(\overline{\text{ACK}}\)</span> 通知 82C55 已经读走数据</li>
+<li>82C55 向 CPU 发送中断，告知 CPU 可以继续写入数据</li>
+</ol>
+<details class="note" open="open">
+<summary>例子: 控制并口打印机</summary>
+<p>串口打印机每次接受 1 Byte ASCII 码，存储在 ah 寄存器中。</p>
+<p>使用端口 B 进行并行输出，同时控制端口 C 的 <span class="arithmatex">\(\text{PC}_2\)</span> 作为 <span class="arithmatex">\(\overline{\text{ACK}}\)</span> 输入引脚，端口 C 的 <span class="arithmatex">\(\text{PC}_4\)</span> 作为 <span class="arithmatex">\(\overline{\text{DS}}\)</span> 输出引脚，代表数据选通信号:</p>
+<p><a class="glightbox" href="../assets/image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="85C55-example-parallel-printer" src="../assets/image-6.png" /></a></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">BIT1</span><span class="w">  </span><span class="no">EQU</span><span class="w"> </span><span class="mi">2</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nf">PORTC</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">62</span><span class="no">H</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nf">PORTB</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">61</span><span class="no">H</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nf">CMD</span><span class="w">   </span><span class="no">EQU</span><span class="w"> </span><span class="mi">63</span><span class="no">H</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nf">PRINT</span><span class="w"> </span><span class="no">PROC</span><span class="w"> </span><span class="no">NEAR</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="na">.REPEAT</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">portc</span><span class="w"> </span><span class="c1">; 读取 82C55 状态字</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="nf">test</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">BIT1</span><span class="w">  </span><span class="c1">; 检测 OBF 标志位</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="na">.UNTIL</span><span class="w"> </span><span class="p">!</span><span class="no">ZERO</span><span class="err">?</span><span class="w">      </span><span class="c1">; 等待直到 OBF = 1，即输出缓冲区满</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">ah</span><span class="w">         </span><span class="c1">; 待打印字符位于 ah</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">PORTB</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">      </span><span class="c1">; 发送数据</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="w">          </span><span class="c1">; 0000_1000, bit reset, 选择 (100)_2 = 4</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">CMD</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">        </span><span class="c1">; 重置 PC4 为 0: 选通信号置 0</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="w">          </span><span class="c1">; 0000_1001, bit set,   选择 (100)_2 = 4</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">CMD</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">        </span><span class="c1">; 设置 PC4 为 1: 选通信号置 1</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="nf">RET</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nf">PRINT</span><span class="w"> </span><span class="no">ENDP</span>
+</span></code></pre></div>
+<p>TODO: 这里使用 PC4 的原因</p>
+</details>
+<h4 id="模式-2">模式 2<a class="headerlink" href="#模式-2" title="Permanent link">&para;</a></h4>
+<p>模式 2 则包含了双向总线操作，可以在不同时间做输入和输出，而模式 0 和 1 的输入输出方向是固定的。</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">BIT5</span><span class="w">  </span><span class="no">EQU</span><span class="w"> </span><span class="mi">20</span><span class="no">h</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nf">PORTA</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">62</span><span class="no">h</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nf">PORTC</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">60</span><span class="no">h</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nf">READ</span><span class="w"> </span><span class="no">PROC</span><span class="w"> </span><span class="no">NEAR</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="na">.REPEAT</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">PORTC</span><span class="w">  </span><span class="c1">; 读入状态</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="nf">test</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">BIT5</span><span class="w">   </span><span class="c1">; 检查 IBF 标志位</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="na">.UNTIL</span><span class="w"> </span><span class="p">!</span><span class="no">ZERO</span><span class="err">?</span><span class="w">       </span><span class="c1">; 一直等待，直到 IBF = 1，即输入缓冲区满</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nf">in</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">PORTA</span><span class="w">        </span><span class="c1">; 从数据端口读取</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nf">ret</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nf">READ</span><span class="w"> </span><span class="no">ENDP</span>
+</span></code></pre></div>
+<h2 id="8254-可编程定时器">8254 可编程定时器<a class="headerlink" href="#8254-可编程定时器" title="Permanent link">&para;</a></h2>
+<p>手册: <a href="https://www.scs.stanford.edu/23wi-cs212/pintos/specs/8254.pdf">8254 可编程定时器手册</a></p>
+<h3 id="器件构成_1">器件构成<a class="headerlink" href="#器件构成_1" title="Permanent link">&para;</a></h3>
+<p>8254 是一个可编程定时器，其内部含有 3 个独立的计数器，每个计数器都是 16 位的，可以工作在不同的工作模式下。不过，8254 的数据总线只有 8 位，因此需要两次读写操作才能完成对 16 位计数器的操作。8254 芯片的内部结构与引脚描述如下:</p>
+<p><a class="glightbox" href="../assets/note/image-20241206034625320.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-pin-and-diagram" src="../assets/note/image-20241206034625320.png" /></a></p>
+<ul>
+<li><span class="arithmatex">\(\overline{\text{CS}}\)</span>: 芯片选择信号, 低电平有效</li>
+<li><span class="arithmatex">\(\text{A}_1-\text{A}_0\)</span>: 端口选择，指定要操作的计数器<ul>
+<li>当 <span class="arithmatex">\(\text{A}_1-\text{A}_0 = 11\)</span> 时，表示读写控制字</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(\overline{\text{RD}}\)</span>: 读信号, 低电平有效</li>
+<li><span class="arithmatex">\(\overline{\text{WR}}\)</span>: 写信号, 低电平有效</li>
+<li><span class="arithmatex">\(\text{D}_7-\text{D}_0\)</span>: 数据总线</li>
+<li><span class="arithmatex">\(\text{CLK}\)</span>, <span class="arithmatex">\(\text{GATE}\)</span>, <span class="arithmatex">\(\text{OUT}\)</span>: 时钟输入, 门控输入, 输出信号</li>
+</ul>
+<h3 id="编程方式">编程方式<a class="headerlink" href="#编程方式" title="Permanent link">&para;</a></h3>
+<p>8254 单个计数器的内部结构如下 (控制字寄存器是共用的):</p>
+<p><a class="glightbox" href="../assets/note/image-20241206115413460.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-counter-structure" src="../assets/note/image-20241206115413460.png" /></a></p>
+<p>计数器寄存器是 16 位的 CE，其输入是两个 8 位的寄存器初值寄存器 <span class="arithmatex">\(\text{CR}_\text{M}\)</span> 和 <span class="arithmatex">\(\text{CR}_\text{L}\)</span>，其输出又接入了两个 8 位的输出锁存器 <span class="arithmatex">\(\text{OL}_\text{M}\)</span> 和 <span class="arithmatex">\(\text{OL}_\text{L}\)</span>. 这样一来，读计数器的值和写入计数初值的操作都不影响计数器的工作 (不过仍然建议使用门控信号暂停计数再操作).</p>
+<h4 id="控制字格式">控制字格式<a class="headerlink" href="#控制字格式" title="Permanent link">&para;</a></h4>
+<p>8254 控制字的格式如下:</p>
+<p><a class="glightbox" href="../assets/note/image-20241213100440872.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-control-word" src="../assets/note/image-20241213100440872.png" /></a></p>
+<ul>
+<li><span class="arithmatex">\(\text{SC}_1-\text{SC}_0\)</span>: 选择计数器 (Select Counter)<ul>
+<li>当 <span class="arithmatex">\(\text{SC}_1-\text{SC}_0 = 11\)</span> 时, 表示回读计数器状态</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(\text{RW}_1-\text{RW}_0\)</span>: 读写计数器的方式, 00 表示计数器锁存</li>
+<li><span class="arithmatex">\(\text{M}_2-\text{M}_0\)</span>: 工作模式，模式 0-5<ul>
+<li>000: 模式 0</li>
+<li>001: 模式 1</li>
+<li>X10: 模式 2</li>
+<li>X11: 模式 3</li>
+<li>100: 模式 4</li>
+<li>101: 模式 5</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(\text{BCD}\)</span>: 二进制或 BCD 计数方式, 二进制计数范围 0 - 0xFFFF (65535), BCD 计数范围 0 - 9999</li>
+</ul>
+<h4 id="两阶段初始化">两阶段初始化<a class="headerlink" href="#两阶段初始化" title="Permanent link">&para;</a></h4>
+<h4 id="读计数器方式">读计数器方式<a class="headerlink" href="#读计数器方式" title="Permanent link">&para;</a></h4>
+<p><strong>读取计数器的值</strong>: 使用计数器锁存指令</p>
+<p><a class="glightbox" href="../assets/image-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-counter-latch-command" src="../assets/image-17.png" /></a></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="nf">mov</span><span class="w">  </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">10000000</span><span class="no">b</span><span class="w"> </span><span class="c1">; 10_00_0000: 计数器 2 锁存</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nf">out</span><span class="w">  </span><span class="mi">43</span><span class="no">h</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="no">h</span><span class="w">       </span><span class="c1">; 读取 LSB</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nf">mov</span><span class="w">  </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="no">h</span><span class="w">       </span><span class="c1">; 读取 MSB</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nf">xchg</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">        </span><span class="c1">; 交换 ax 的高低字节</span>
+</span></code></pre></div>
+<p><strong>读取计数器状态</strong>: 使用控制字回读指令，当 <span class="arithmatex">\(\text{D}_7-\text{D}_6 = 11\)</span> 时，表示回读计数器状态，此时其他位有不同的含义:</p>
+<p><a class="glightbox" href="../assets/image-18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-read-back-command" src="../assets/image-18.png" /></a></p>
+<p>一些回读指令的例子:</p>
+<p><a class="glightbox" href="../assets/image-20.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-read-back-command-examples" src="../assets/image-20.png" /></a></p>
+<p>注意，如果已经锁存了 计数 / 状态，如果没有读走，再次发送锁存指令不会更新锁存的值. 如果计数和状态都锁存了，那么一定先读取状态，再读取计数 (因为计数值可能单字节，也可能双字节，读取与写入设置相同).</p>
+<p>状态字含义: (<span class="arithmatex">\(\text{D}_5-\text{D}_0\)</span> 与控制字格式相同)</p>
+<p><a class="glightbox" href="../assets/image-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-status-byte" src="../assets/image-19.png" /></a></p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="nf">mov</span><span class="w">  </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">11000010</span><span class="no">b</span><span class="w"> </span><span class="c1">; 11_00_001_0: 回读指令, 锁存计数和状态, 计数器 0</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nf">out</span><span class="w">  </span><span class="mi">43</span><span class="no">h</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="no">h</span><span class="w">       </span><span class="c1">; 读取计数器 0 状态字</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nf">mov</span><span class="w">  </span><span class="no">bl</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">        </span><span class="c1">; 状态字保存至 bl</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="no">h</span><span class="w">       </span><span class="c1">; 读取计数器 LSB (假设计数器 0 读写双字节)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nf">mov</span><span class="w">  </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="no">h</span><span class="w">       </span><span class="c1">; 读取计数器 MSB</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nf">xchg</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">        </span><span class="c1">; 交换 ax 的高低字节</span>
+</span></code></pre></div>
+<h3 id="运行模式">运行模式<a class="headerlink" href="#运行模式" title="Permanent link">&para;</a></h3>
+<p>下面用到的一些术语:</p>
+<ul>
+<li>CLK Pulse (CLK 脉冲): 时钟信号 CLK 的一个上升沿 + 一个下降沿，直到下降沿才算一个脉冲.</li>
+<li>Trigger (门控触发): 门控信号 GATE 的上升沿.</li>
+</ul>
+<h4 id="模式-0-interrupt-on-terminal-count-计数定时中断">模式 0: Interrupt on Terminal Count 计数定时中断<a class="headerlink" href="#模式-0-interrupt-on-terminal-count-计数定时中断" title="Permanent link">&para;</a></h4>
+<p>模式 0 适合将 <span class="arithmatex">\(\text{OUT}\)</span> 与中断控制器相连，用于产生定时中断.</p>
+<p>写入控制字后，门控有效开始计时，<span class="arithmatex">\(\text{OUT}\)</span> 始终为低电平，直到计数器变为 0，<span class="arithmatex">\(\text{OUT}\)</span> 变为高电平并维持.</p>
+<p>特点: 计数初值在 CLK 脉冲<strong>下降沿</strong>加载，直到初值完全加载后才开始计数. 无论是单字节还是双字节初值 N，都只在完全加载后才开始计数. 单字节 N+1 个 CLK 脉冲，双字节 N+2 个 CLK 脉冲.</p>
+<details class="note">
+<summary>时序图</summary>
+<p>Case 1: 正常工作情况. 计数初值在 CLK 脉冲下降沿加载，计数器变为 0 时, OUT 拉高并保持. 计数到 0 继续减 1 会变成 0xFFFF.</p>
+<p><a class="glightbox" href="../assets/image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-0-timing-1" src="../assets/image-7.png" /></a></p>
+<p>Case 2: 门控信号 GATE 拉低，计时暂停.</p>
+<p><a class="glightbox" href="../assets/image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-0-timing-2" src="../assets/image-8.png" /></a></p>
+<p>Case 3: 重新载入计数初值情况.</p>
+<p><a class="glightbox" href="../assets/image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-0-timing-3" src="../assets/image-9.png" /></a></p>
+</details>
+<h4 id="模式-1-hardware-retriggerable-one-shot-硬件可重触发单脉冲">模式 1: Hardware Retriggerable One-shot 硬件可重触发单脉冲<a class="headerlink" href="#模式-1-hardware-retriggerable-one-shot-硬件可重触发单脉冲" title="Permanent link">&para;</a></h4>
+<p><span class="arithmatex">\(\text{OUT}\)</span> 最开始是高电平，当检测到一个 CLK 脉冲和门控触发时，<span class="arithmatex">\(\text{OUT}\)</span> 变为低电平，直到计数器变为 0 后，拉高并仅维持. 直到下一次门控触发跟一个 CLK 脉冲，重新开始计数.</p>
+<p>计数初值加载 (armed) 后，门控触发 (trigger) 会在下一个 CLK 脉冲下降沿立刻加载计数器，将 <span class="arithmatex">\(\text{OUT}\)</span> 拉低，开始单脉冲计数. 在计数期间写入计数初值不影响当前计数，除非又来了一次触发信号.</p>
+<details class="note">
+<summary>时序图</summary>
+<p>Case 1: 正常工作情况. 时钟在门控触发 + CLK 脉冲的下降沿载入，每次 CLK 脉冲计数一次.</p>
+<p><a class="glightbox" href="../assets/image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-1-timing-1" src="../assets/image-10.png" /></a></p>
+<p>Case 2: 多次触发情况. 可以看到计数器在门控触发 + CLK 脉冲的下降沿重新加载.</p>
+<p><a class="glightbox" href="../assets/image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-1-timing-2" src="../assets/image-11.png" /></a></p>
+<p>Case 3: 重新写入初值情况. 重新写入初值不会影响当前计数，直到下一次触发.</p>
+<p><a class="glightbox" href="../assets/image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-1-timing-3" src="../assets/image-12.png" /></a></p>
+</details>
+<h4 id="模式-2-rate-generator-时钟分频">模式 2: Rate Generator: 时钟分频<a class="headerlink" href="#模式-2-rate-generator-时钟分频" title="Permanent link">&para;</a></h4>
+<p>模式 2 适用于时钟分频，当计数初值为 N 时，输出频率被分频为 <span class="arithmatex">\(\frac{1}{N}\)</span>.</p>
+<p><span class="arithmatex">\(\text{OUT}\)</span> 绝大多数情况为高电平，直到当计数器减小到 1 时，变为低电平，且只维持一个 CLK 脉冲. 随后计数器重新加载初值，继续计数，循环下去. </p>
+<p>门控信号会影响模式 2 的输出. 当门控信号 = 0 (无效) 时，<span class="arithmatex">\(\text{OUT}\)</span> 立刻拉高，直到下一次门控有效，重新装入初始值并开始计数.</p>
+<details class="note">
+<summary>时序图</summary>
+<p>Case 1: 正常工作情况. 可以看到 <span class="arithmatex">\(\text{OUT}\)</span> 每 N = 3 个周期拉低一次.</p>
+<p><a class="glightbox" href="../assets/image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-2-timing-1" src="../assets/image-13.png" /></a></p>
+<p>Case 2: 门控信号影响情况. 当门控信号 = 0 (无效) 时，<span class="arithmatex">\(\text{OUT}\)</span> 立刻拉高，直到下一次门控有效，重新装入初始值并开始计数.</p>
+<p><a class="glightbox" href="../assets/image-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-2-timing-2" src="../assets/image-14.png" /></a></p>
+<p>Case 3: 重新载入计数初值情况. 重新写入初值不会影响当前计数，直到下一次计数.</p>
+<p><a class="glightbox" href="../assets/image-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-2-timing-3" src="../assets/image-15.png" /></a></p>
+</details>
+<h4 id="模式-3-square-wave-mode-方波">模式 3: Square Wave Mode: 方波<a class="headerlink" href="#模式-3-square-wave-mode-方波" title="Permanent link">&para;</a></h4>
+<p>模式 3 适用于产生方波信号，<span class="arithmatex">\(\text{OUT}\)</span> 会在计数器的一半时拉高，另一半时拉低.</p>
+<p>如果输入 N 为偶数，那么占空比为 50%, 如果 N 为奇数，高电平周期比低电平周期多一个，占空比为 <span class="arithmatex">\(\frac{N+1}{2N}\)</span>.</p>
+<p><a class="glightbox" href="../assets/image-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8254-mode-3-example" src="../assets/image-16.png" /></a></p>
+<h4 id="模式-4-software-triggered-strobe-软件触发选通">模式 4: Software Triggered Strobe: 软件触发选通<a class="headerlink" href="#模式-4-software-triggered-strobe-软件触发选通" title="Permanent link">&para;</a></h4>
+<p>类比模式 0, 不过模式 4 在计数器到达 0 时只产生 1 拍低电平.</p>
+<h4 id="模式-5-hardware-triggered-strobe-retriggerable-硬件触发选通">模式 5: Hardware Triggered Strobe (Retriggerable): 硬件触发选通<a class="headerlink" href="#模式-5-hardware-triggered-strobe-retriggerable-硬件触发选通" title="Permanent link">&para;</a></h4>
+<p>与模式 4 类似，但是只要门控信号上升沿就触发计数，即使没有被时钟信号上升沿采样到 (因为硬件产生的信号时异步的).</p>
+<h4 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h4>
+<p>门控信号 <span class="arithmatex">\(\text{GATE}\)</span> 对不同模式的影响:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>模式</strong></th>
+<th style="text-align: center;"><strong>低电平 / 下降沿</strong></th>
+<th style="text-align: center;"><strong>上升沿</strong></th>
+<th style="text-align: center;"><strong>高电平</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;">暂停计数</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">启动计数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1) 载入计数初值 <br>2) 在下一次 CLK 时重置输出</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">1) 暂停计数<br>2) 立刻拉高输出</td>
+<td style="text-align: center;">载入计数初值</td>
+<td style="text-align: center;">启动计数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;">1) 暂停计数<br>2) 立刻拉高输出</td>
+<td style="text-align: center;">载入计数初值</td>
+<td style="text-align: center;">启动计数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;">暂停计数</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">启动计数</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">载入计数初值</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>最小和最大计数次数的计数初值设置:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>模式</strong></th>
+<th style="text-align: center;"><strong>最小次数</strong></th>
+<th style="text-align: center;"><strong>最大次数</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">例题: 计数初值计算</p>
+<ol>
+<li>
+<p>输入时钟频率为 8 MHz, 需要一个 100 KHz 的方波和 200 KHz 的持续脉冲，该如何设置 8254 的计数初值?</p>
+<ul>
+<li>计数器 0: 模式 3, 计数初值为 80 (8 Mhz / 100 Khz = 80)</li>
+<li>计数器 1: 模式 2, 计数初值为 40 (8 Mhz / 200 Khz = 40)</li>
+</ul>
+</li>
+<li>
+<p>如果要产生 100 Hz 的方波，该如何设置 8254 的计数初值?</p>
+<ul>
+<li>8 Mhz / 100 Hz = 80000 &gt; 65535 超过计数初值上限</li>
+<li>需要串联分频: 比如先降到 10 KHz 再降到 100 Hz<ul>
+<li>计数器 0: 模式 2, 计数初值为 800 (8 Mhz / 10 Khz = 800)，输出连接到计数器 1 的 CLK 信号</li>
+<li>计数器 1: 模式 3, 计数初值为 100 (10 Khz / 100 Hz = 100)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<h4 id="例程">例程<a class="headerlink" href="#例程" title="Permanent link">&para;</a></h4>
+<p><strong>例程 1</strong>: 8 MHz 时钟，输出 100 KHz 方波与 200 KHz 持续脉冲</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">TIME</span><span class="w"> </span><span class="no">PROC</span><span class="w"> </span><span class="no">NEAR</span><span class="w"> </span><span class="no">USES</span><span class="w"> </span><span class="no">ax</span><span class="w"> </span><span class="no">dx</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="mi">706</span><span class="no">h</span><span class="w">       </span><span class="c1">; 计数器控制字端口</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">00110110</span><span class="no">b</span><span class="w">  </span><span class="c1">; 00_11_011_0: 计数器 0 写入双字节, 工作在模式 3</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">01110100</span><span class="no">b</span><span class="w">  </span><span class="c1">; 01_11_010_0: 计数器 1 写入双字节, 工作在模式 2</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="mi">700</span><span class="no">h</span><span class="w">       </span><span class="c1">; 计数器 0 端口</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="w">         </span><span class="c1">; LSB = 80 (分频系数)</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">          </span><span class="c1">; MSB = 0</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="mi">702</span><span class="no">h</span><span class="w">       </span><span class="c1">; 计数器 1 端口</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="w">         </span><span class="c1">; LSB = 40 (分频系数)</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">          </span><span class="c1">; MSB = 0</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="nf">ret</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="nf">TIME</span><span class="w"> </span><span class="no">ENDP</span>
+</span></code></pre></div>
+<h2 id="16550-串行通信接口">16550 串行通信接口<a class="headerlink" href="#16550-串行通信接口" title="Permanent link">&para;</a></h2>
+<h3 id="器件构成_2">器件构成<a class="headerlink" href="#器件构成_2" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../assets/note/image-20241220105531214.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="16550-pin-configuration" src="../assets/note/image-20241220105531214.png" /></a></p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\text{A}_2-\text{A}_0\)</span>: 三根地址线，不过后面利用读写复用，提供了 12 个端口</p>
+</li>
+<li>
+<p>CS: 三根片选信号，为了兼容性，实际上只用一个就行，其他的必须 disable (或门)</p>
+</li>
+<li>
+<p>RD, WR: 读和写都有两个，也是为了兼容性，另一个必须 enable (与门)</p>
+</li>
+<li>
+<p>ADS: 地址锁存信号: 并不是所有的芯片都能保证读写信号有效的情况下，地址仍然有效（比如摩托罗拉的 CPU）, Intel 的芯片没有这个问题，也不需要. 只要给 ADS 接低就可以</p>
+</li>
+<li>
+<p>XIN, XOUT: 外部时钟输入</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\overline{\text{TXRDY}}\)</span>, <span class="arithmatex">\(\overline{\text{RXRDY}}\)</span>: 用于 DMA</p>
+</li>
+<li>
+<p>INTR: 中断</p>
+</li>
+<li>
+<p>SIN, SOUT: 串行数据的进出，全双工</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\overline{\text{BAUDOUT}}\)</span>, RCLK: 两个时钟，一个是发送时钟，一个是接收时钟. 前者是内部产生的，后者可以从外部接过来，也可以接 <span class="arithmatex">\(\overline{\text{BAUDOUT}}\)</span></p>
+</li>
+<li>
+<p>后面的引脚都是用来接调制解调器的</p>
+</li>
+</ul>
+<p>端口读写复用:</p>
+<p><a class="glightbox" href="../assets/note/image-20241220110520586.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="16550-port-multiplexing" src="../assets/note/image-20241220110520586.png" /></a></p>
+<h3 id="两阶段编程">两阶段编程<a class="headerlink" href="#两阶段编程" title="Permanent link">&para;</a></h3>
+<h4 id="初始化">初始化<a class="headerlink" href="#初始化" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">LINE</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F3H</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">LSB</span><span class="w">  </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F0H</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nf">MSB</span><span class="w">  </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F1H</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nf">FIFO</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F2H</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nf">INIT</span><span class="w"> </span><span class="no">PROC</span><span class="w"> </span><span class="no">NEAR</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">10001010</span><span class="no">b</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">LINE</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="w">         </span><span class="c1">; 9600 波特率的分频系数 (查表)</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">LSB</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">MSB</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">00001010</span><span class="no">b</span><span class="w">   </span><span class="c1">; 7 数据位, 1 停止位, 奇校验</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">LINE</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">00000111</span><span class="no">b</span><span class="w">   </span><span class="c1">; 启用发送和接受</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">FIFO</span><span class="p">,</span><span class="w"> </span><span class="no">al</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="nf">ret</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="nf">INIT</span><span class="w"> </span><span class="no">ENDP</span>
+</span></code></pre></div>
+<h4 id="收发使能">收发使能<a class="headerlink" href="#收发使能" title="Permanent link">&para;</a></h4>
+<p>发送数据:</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">LSTAT</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F5H</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">DATA</span><span class="w">  </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F0H</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nf">SEND</span><span class="w"> </span><span class="no">PROC</span><span class="w"> </span><span class="no">NEAR</span><span class="w"> </span><span class="no">USES</span><span class="w"> </span><span class="no">AX</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="na">.REPEAT</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">LSTAT</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="nf">test</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="no">h</span><span class="w">    </span><span class="c1">; 检测 TH 标志位 (Transmitter holding)</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="na">.UNTILL</span><span class="w"> </span><span class="p">!</span><span class="no">ZERO</span><span class="err">?</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">ah</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="nf">out</span><span class="w"> </span><span class="no">DATA</span><span class="p">,</span><span class="w"> </span><span class="no">al</span><span class="w">        </span><span class="c1">; 发送数据</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="nf">ret</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="nf">SEND</span><span class="w"> </span><span class="no">ENDP</span>
+</span></code></pre></div>
+<p>接收数据</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">LSTAT</span><span class="w"> </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F5H</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">DATA</span><span class="w">  </span><span class="no">EQU</span><span class="w"> </span><span class="mi">0</span><span class="no">F0H</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nf">REVC</span><span class="w"> </span><span class="no">PROC</span><span class="w"> </span><span class="no">NEAR</span><span class="w"> </span><span class="no">USES</span><span class="w"> </span><span class="no">AX</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="na">.REPEAT</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nf">in</span><span class="w">   </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">LSTAT</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nf">test</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="c1">; 检测 DR 标志位 (Data Ready)</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="na">.UNTILL</span><span class="w"> </span><span class="p">!</span><span class="no">ZERO</span><span class="err">?</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="nf">test</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="no">Eh</span><span class="w">        </span><span class="c1">; 检测是否发生错误 (FE, PE, OE 非 0)</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="na">.IF</span><span class="w"> </span><span class="no">ZERO</span><span class="err">?</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="nf">in</span><span class="w">  </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">DATA</span><span class="w">    </span><span class="c1">; 读取数据</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="na">.ELSE</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;?&#39;</span><span class="w">     </span><span class="c1">; 用 &#39;?&#39; 代表接受错误</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="na">.ENDIF</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="nf">ret</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="nf">REVC</span><span class="w"> </span><span class="no">ENDP</span>
+</span></code></pre></div>
+<h3 id="通信状态检测">通信状态检测<a class="headerlink" href="#通信状态检测" title="Permanent link">&para;</a></h3>
+<h2 id="dac0830-数模转换芯片">DAC0830 数模转换芯片<a class="headerlink" href="#dac0830-数模转换芯片" title="Permanent link">&para;</a></h2>
+<h3 id="da-转换">D/A 转换<a class="headerlink" href="#da-转换" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../assets/note/image-20241220120112670.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="DAC" src="../assets/note/image-20241220120112670.png" /></a></p>
+<h3 id="dac-技术指标">DAC 技术指标<a class="headerlink" href="#dac-技术指标" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Resolution / Step size 分辨率: 最小数字量电压变化的值, 对于 <span class="arithmatex">\(n\)</span> 位的 DAC, 分辨率计算方法为:</li>
+</ul>
+<div class="arithmatex">\[
+\text{Resolution} = \dfrac{V_{\text{REF}}}{2^n} = \dfrac{V_{\text{FS}}}{2^n-1}    
+\]</div>
+<p>其中 <span class="arithmatex">\(V_{\text{REF}}\)</span> 为参考电压, <span class="arithmatex">\(V_{\text{FS}}\)</span> 为满量程输出电压.</p>
+<ul>
+<li>
+<p>Linearity 线性度</p>
+</li>
+<li>
+<p>Settling Time 建立时间: 输出电压稳定到理想电压 <span class="arithmatex">\(\pm \frac{1}{2}\)</span> 最小数字量电压所需要的时间.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">例题</p>
+<ol>
+<li>
+<p>一个 4 位 DAC 的<strong>满量程输出电压</strong>为 15V, 求输入为 <span class="arithmatex">\((0110)_2\)</span> 时其输出电压:</p>
+<ul>
+<li>分辨率: <span class="arithmatex">\(\dfrac{15}{2^4-1} =\)</span> 1V / LSB</li>
+<li>输出电压: <span class="arithmatex">\(6 \times 1 =\)</span> 6 V</li>
+</ul>
+</li>
+<li>
+<p>一个 4 位 DAC 的<strong>参考电压</strong>为 15V, 求输入为 <span class="arithmatex">\((0110)_2\)</span> 时其输出电压:</p>
+<ul>
+<li>分辨率: <span class="arithmatex">\(\dfrac{15}{2^4} =\)</span> <span class="arithmatex">\(\dfrac{15}{16}\)</span> V / LSB</li>
+<li>输出电压: <span class="arithmatex">\(6 \times \dfrac{15}{16} =\)</span> 5.625 V</li>
+</ul>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月2日 16:04:14</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月2日 16:04:14</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chapter-4-6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: x86 汇编指令">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                x86 汇编指令
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../note/" class="md-footer__link md-footer__link--next" aria-label="Next: 笔记">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                笔记
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      YooLc
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.alicdn.com/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
