@@ -3,12 +3,7 @@
   src: url("JetBrainsMono-Regular.woff2") format('woff2');
 }
 
-@font-face {
-  font-family: "LXGW Neo XiHei Screen";
-  src: url("LXGWNeoXiHeiScreen.woff2") format('woff2');
-}
-
 :root {
-  --md-text-font: "LXGW Neo XiHei Screen", "Hiragino Sans", "Microsoft YaHei";
-  --md-code-font: "JetBrains Mono", "LXGW Neo XiHei Screen";
+  --md-text-font: "LXGW Wenkai Screen", "Hiragino Sans", "Microsoft YaHei";
+  --md-code-font: "JetBrains Mono", "LXGW WenKai Screen";
 }

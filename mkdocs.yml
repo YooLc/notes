@@ -1,10 +1,10 @@
 # 项目设置
 site_name: 笔记
-site_url: http://localhost:8000
-repo_name: 笔记
-repo_url: http://localhost:8000
+site_url: https://yoolc.github.io/note-mkdoc
+repo_name: YooLc/note-mkdoc
+repo_url: https://github.com/YooLc/note-mkdoc
 edit_uri: -/tree/main/docs/
-site_description: 笔记本
+site_description: YooLc 的笔记本
 site_author: YooLc
 copyright: YooLc
 
@@ -15,11 +15,11 @@ nav:
     - 大三:
       - 汇编与接口:
         - courses/24fall/assembly-and-interface/index.md
-        - courses/24fall/assembly-and-interface/section-1.md
-        - courses/24fall/assembly-and-interface/section-2.md
-        - courses/24fall/assembly-and-interface/section-3.md
-        - courses/24fall/assembly-and-interface/section-4.md
-        - courses/24fall/assembly-and-interface/section-7.md
+        - courses/24fall/assembly-and-interface/chapter-1.md
+        - courses/24fall/assembly-and-interface/chapter-2.md
+        - courses/24fall/assembly-and-interface/chapter-3.md
+        - courses/24fall/assembly-and-interface/chapter-4-6.md
+        - courses/24fall/assembly-and-interface/chapter-9-11.md
         - courses/24fall/assembly-and-interface/note.md
         - courses/24fall/assembly-and-interface/final.md
       - 计算机体系结构:
@@ -47,7 +47,7 @@ theme:
   # logo:
   # favicon:
   icon:
-    repo: fontawesome/brands/gitlab
+    repo: fontawesome/brands/github
   # 自适应主题
   palette:
     - media: "(prefers-color-scheme: light)" 
@@ -60,6 +60,9 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to light mode
+  font:
+    text: LXGW WenKai Screen
+    code: JetBrains Mono
   features:
     # 代码块操作
     - content.code.copy
@@ -155,6 +158,7 @@ extra_css:
   - stylesheets/auto_counter.css
   - stylesheets/theme.css
   - stylesheets/mkdocs-plugins-v1.1.0.css
+  - https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css
 
 plugins:
   - git-revision-date-localized:
