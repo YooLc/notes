@@ -821,6 +821,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#2022-2023-秋冬学期" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022-2023 秋冬学期
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2022-2023 秋冬学期">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#不定项选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      不定项选择
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#代码填空_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码填空
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1460,6 +1493,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#2022-2023-秋冬学期" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022-2023 秋冬学期
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2022-2023 秋冬学期">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#不定项选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      不定项选择
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#代码填空_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码填空
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1565,11 +1631,11 @@
 <summary>答案</summary>
 <ol>
 <li>汇编器</li>
-<li>略</li>
+<li>略, 注意 CF 是无符号溢出, OF 是有符号溢出</li>
 <li>SVE: 可选向量长度，只需要保持是 128 的倍数</li>
 <li>D 都不改变: xchg AL, AL 不改变 AL 的值，cmp AL, 0 会改变 ZF, test AL, AL 会改变 ZF</li>
-<li>A, 因为 esp 不能... TODO</li>
-<li>TODO</li>
+<li>A, 因为 esp 不能在 (base, scale, index, disp) 中作为 index 寄存器</li>
+<li><code>inc</code> 和 <code>dec</code> 不改变 CF</li>
 <li>B, lea 用于计算有效地址，而地址恰好是 edx + 4*ebx + 8</li>
 </ol>
 </details>
@@ -1655,6 +1721,41 @@
 </ol>
 </li>
 </ol>
+<h2 id="2022-2023-秋冬学期">2022-2023 秋冬学期<a class="headerlink" href="#2022-2023-秋冬学期" title="Permanent link">&para;</a></h2>
+<p>来源: <a href="https://www.cc98.org/topic/5510882">22-23秋冬 汇编与接口 回忆卷 &amp; 笔记</a></p>
+<h3 id="不定项选择">不定项选择<a class="headerlink" href="#不定项选择" title="Permanent link">&para;</a></h3>
+<p>中断向量18H的中断向量表地址是多少？
+AX是0x1000, ADD AX, AX后，CF和OF标志位各是多少？
+long mode中，默认的地址的长度和默认的Operand size都是多少？（64位，32位）
+哪个寻址指令是错的？（ESP的问题）
+哪一条指令能分配嵌套的栈？（ENTER）
+MOV [53H], AL 指令，此时的BHE和BLE信号
+TEST AX, AX相当于？（相当于CMP AX, 0）
+什么指令能把结构冒险转换为数据冒险？（条件移动指令cmove）
+一个vector能容纳的最大元素的个数称作？（vectorization factor）
+哪一个指令集支持可变长vector？（AVX）
+82C55的端口地址分别是XXX，XXX...，那么应该使用哪两根数据线？（端口地址相隔4位，用A2和A3）
+8254的largest initial counts，相当于BCD码的多少（应该是0和10000）
+哪个不是16550支持的error？（支持的有Overrun, Parity, Framing）
+哪些是x86架构支持的模式（选项：Long mode, virtual 8086 mode, real mode, protected mode）
+不同粒度（G, granularity bit）下的segment size计算
+How to access the SIMD units? (Four choices)
+哪条指令是原子操作？（选项好像是INC, XCHG, XADD, CMPXCHG）
+哪些属于指令前缀？（REP，LOCK，Operand-size Override）
+检测数据依赖的方法有哪些？（GCD, Delta, Banerjee）
+CPU 和设备通信的方式有哪些？（Isolated I/O, Memory mapped I/O）</p>
+<h3 id="代码填空_1">代码填空<a class="headerlink" href="#代码填空_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>82C55</p>
+</li>
+<li>
+<p>8254</p>
+</li>
+<li>
+<p>16550</p>
+</li>
+</ol>
 
 
 
@@ -1677,7 +1778,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月2日 16:04:14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月3日 12:38:36</span>
   </span>
 
     
