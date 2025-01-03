@@ -1,9 +1,11 @@
 # 接口
 
-!!! tips "考试范围"
-    本部分会考察简单的接口编程方法，因此需要对各接口芯片的端口及其功能有一定的了解。最后一颗数模转换芯片不考察编程，只需了解一些技术指标的计算。
+!!! danger "考试范围"
+    本部分会考察简单的接口编程方法，因此需要对各接口芯片的端口及其功能有一定的了解
+    
+    最后一颗数模转换芯片不考察编程，只需了解一些技术指标的计算
 
-    这一部分最理想的学习方式是读手册，所以我会给每个接口附上其对应的手册。
+    这一部分最理想的学习方式是读手册，我会在每个接口的章节开头附上其对应的手册
 
 ## 8086 微处理器
 
@@ -48,7 +50,7 @@ Minimum Mode 最小模式: 最小模式适用于系统中只有 8086 一个微�
 
 ## 82C55 可编程并行接口
 
-Intersil 提供的 [82C55A 手册](https://www.renesas.com/en/document/dst/82c55a-datasheet?srsltid=AfmBOoq6LvEYsaDWUQyikJ0R95ZRy_F4KISrj8jmVVgUL2wjkqgImil9)
+手册: Intersil 提供的 [82C55A 手册](https://www.renesas.com/en/document/dst/82c55a-datasheet?srsltid=AfmBOoq6LvEYsaDWUQyikJ0R95ZRy_F4KISrj8jmVVgUL2wjkqgImil9)
 
 ### 器件构成
 
@@ -472,6 +474,8 @@ TIME ENDP
 
 ## 16550 串行通信接口
 
+手册: [16550 UART](https://www.ti.com/lit/ug/sprugp1/sprugp1.pdf)
+
 ### 器件构成
 
 ![16550-pin-configuration](assets/note/image-20241220105531214.png)
@@ -500,9 +504,30 @@ TIME ENDP
 
 ![16550-port-multiplexing](assets/note/image-20241220110520586.png)
 
+### 控制字格式
+
+![16550-control-word](assets/note/image-20241220112513151.png)
+
+- PE: 奇偶校验使能
+- P: 奇偶校验类型, 0 为奇校验, 1 为偶校验
+- ST: 粘滞位 (Sticky) 打开时, 校验位与有效载荷无关，固定为 0 (偶校验) / 1 (奇校验) $= \overline{\text{P}}$
+- DL: DLAB 位, 发送为 1 的控制字后, 先后写入分频系数的 LSB 和 MSB
+
+![16550-control-word-detail](assets/note/image-20241220113111872.png)
+
+### 状态字格式
+
+![16550-status-word](assets/note/image-20241220115453033.png)
+
+- DE: Data Ready, 1 表示有数据可读
+- TH: Transmitter Holding, 1 表示发送缓冲区为空, 可以发送
+
+
 ### 两阶段编程
 
 #### 初始化
+
+使用 16550 芯片时, 首先需要计算时钟分频因子, 以及数据帧的格式, 然后清理 FIFO, 完成初始化:
 
 ```asm
 LINE EQU 0F3H
@@ -529,6 +554,16 @@ INIT PROC NEAR
     ret
 INIT ENDP
 ```
+
+**计算分频系数的方法**:
+
+![divisor-calc](assets/note/image-20241220113406643.png)
+
+注: 上式中的 16 为过采样倍数.
+
+当然查表才是正解:
+
+![divisor-table](assets/note/image-20241220113451492.png)
 
 #### 收发使能
 
@@ -572,8 +607,6 @@ REVC PROC NEAR USES AX
 REVC ENDP
 ```
 
-###通信状态检测
-
 ## DAC0830 数模转换芯片
 
 ### D/A 转换
@@ -591,10 +624,19 @@ REVC ENDP
 其中 $V_{\text{REF}}$ 为参考电压, $V_{\text{FS}}$ 为满量程输出电压.
 
 - Linearity 线性度
+    - 实际进行转换输出时，会由于种种原因会偏离理想的直线, 比如:
+
+        - 电阻发生了变化
+        - 运放零点发生了偏移
+        - $V_\text{ref}$ 发生了变化
+
+![DAC-linearity](assets/note/image-20241227021402398.png)
 
 - Settling Time 建立时间: 输出电压稳定到理想电压 $\pm \frac{1}{2}$ 最小数字量电压所需要的时间.
 
-!!! note "例题"
+![DAC-settling-time](assets/note/image-20241227021641751.png)
+
+!!! question "例题"
 
     1. 一个 4 位 DAC 的**满量程输出电压**为 15V, 求输入为 $(0110)_2$ 时其输出电压:
 

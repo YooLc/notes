@@ -139,7 +139,7 @@ mov eax, ebx      ; eax <- ebx
 
 2. sar, shr
 
-
+3. inc. dec: 递增 / 递减, 不改变 CF 值, 设计时希望循环变量不干扰循环里面的 CF, 不过会破坏 OF
 
 ### 逻辑指令
 

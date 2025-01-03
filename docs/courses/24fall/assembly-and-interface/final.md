@@ -79,11 +79,11 @@
 ???+ note "答案"
 
     1. 汇编器
-    2. 略
+    2. 略, 注意 CF 是无符号溢出, OF 是有符号溢出
     3. SVE: 可选向量长度，只需要保持是 128 的倍数
     4. D 都不改变: xchg AL, AL 不改变 AL 的值，cmp AL, 0 会改变 ZF, test AL, AL 会改变 ZF
-    5. A, 因为 esp 不能... TODO
-    6. TODO
+    5. A, 因为 esp 不能在 (base, scale, index, disp) 中作为 index 寄存器
+    6. `inc` 和 `dec` 不改变 CF
     7. B, lea 用于计算有效地址，而地址恰好是 edx + 4*ebx + 8
 
 ### 大题
@@ -151,3 +151,38 @@ L1:
     1. 求 divisor 和 baud rate
     2. 多少个 start bit，data bits，多少个 parity bit（如果有，是 even/odd），多少个 stop bit
     3. 给了一段波形，问接收到的数据位是多少。
+
+## 2022-2023 秋冬学期
+
+来源: [22-23秋冬 汇编与接口 回忆卷 & 笔记](https://www.cc98.org/topic/5510882)
+
+### 不定项选择
+
+中断向量18H的中断向量表地址是多少？
+AX是0x1000, ADD AX, AX后，CF和OF标志位各是多少？
+long mode中，默认的地址的长度和默认的Operand size都是多少？（64位，32位）
+哪个寻址指令是错的？（ESP的问题）
+哪一条指令能分配嵌套的栈？（ENTER）
+MOV [53H], AL 指令，此时的BHE和BLE信号
+TEST AX, AX相当于？（相当于CMP AX, 0）
+什么指令能把结构冒险转换为数据冒险？（条件移动指令cmove）
+一个vector能容纳的最大元素的个数称作？（vectorization factor）
+哪一个指令集支持可变长vector？（AVX）
+82C55的端口地址分别是XXX，XXX...，那么应该使用哪两根数据线？（端口地址相隔4位，用A2和A3）
+8254的largest initial counts，相当于BCD码的多少（应该是0和10000）
+哪个不是16550支持的error？（支持的有Overrun, Parity, Framing）
+哪些是x86架构支持的模式（选项：Long mode, virtual 8086 mode, real mode, protected mode）
+不同粒度（G, granularity bit）下的segment size计算
+How to access the SIMD units? (Four choices)
+哪条指令是原子操作？（选项好像是INC, XCHG, XADD, CMPXCHG）
+哪些属于指令前缀？（REP，LOCK，Operand-size Override）
+检测数据依赖的方法有哪些？（GCD, Delta, Banerjee）
+CPU 和设备通信的方式有哪些？（Isolated I/O, Memory mapped I/O）
+
+### 代码填空
+
+1. 82C55
+
+2. 8254
+
+3. 16550
