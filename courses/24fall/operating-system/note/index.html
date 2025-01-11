@@ -1,0 +1,3245 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="YooLc 的笔记本">
+      
+      
+        <meta name="author" content="YooLc">
+      
+      
+        <link rel="canonical" href="https://yoolc.github.io/notes/courses/24fall/operating-system/note/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../principles-of-programming-languages/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>笔记 - 笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../fonts/fonts.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/auto_counter.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/mkdocs-plugins-v1.1.0.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#笔记" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="笔记" class="md-header__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YooLc/notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../assembly-and-interface/" class="md-tabs__link">
+          
+  
+    
+  
+  笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="笔记" class="md-nav__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YooLc/notes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    大三
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            大三
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../assembly-and-interface/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    汇编与接口
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            汇编与接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly-and-interface/chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly-and-interface/chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    微处理器及其结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly-and-interface/chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    寻址方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly-and-interface/chapter-4-6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x86 汇编指令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly-and-interface/chapter-9-11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    接口
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly-and-interface/note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assembly-and-interface/final/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末历年卷
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-architecture/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机体系结构
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机体系结构
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I - 计算机设计基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    II - 流水线
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    III - 内存层次结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IV - 指令并行 (ILP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer-architecture/chapter-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V - 线程并行 (TLP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applied-operations-research/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    应用运筹学基础
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            应用运筹学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../computer-network/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    操作系统
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma---direct-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA - Direct Memory Access
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../principles-of-programming-languages/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    编程语言原理
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_6" id="__nav_2_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../principles-of-programming-languages/practice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课件例题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../theory-of-computation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算理论
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_7" id="__nav_2_1_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory-of-computation/undecidability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma---direct-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      DMA - Direct Memory Access
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/YooLc/notes/-/tree/main/docs/courses/24fall/operating-system/note.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="笔记">笔记<a class="headerlink" href="#笔记" title="Permanent link">&para;</a></h1>
+<p>10 (出勤) + 40 (Lab) + 50</p>
+<p>期末:</p>
+<p>单选: 40 x 1.5=60</p>
+<p>填空 10x1</p>
+<p>大题 30: 内存必考（比较难），Synchronization 必考，Scheduling 必考</p>
+<h2 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h2>
+<ol>
+<li>存储 0-1 bit 的地方, 8 bit 构成 1 byte, a byte's meaning depends on how you interpret it.</li>
+<li>每个 Byte 有自己的地址</li>
+</ol>
+<h2 id="cpu">CPU<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h2>
+<p>Register, ALU, Control Unit...</p>
+<h2 id="dma---direct-memory-access">DMA - Direct Memory Access<a class="headerlink" href="#dma---direct-memory-access" title="Permanent link">&para;</a></h2>
+<h1 id="what-is-an-os">What is an OS<a class="headerlink" href="#what-is-an-os" title="Permanent link">&para;</a></h1>
+<p>OS:</p>
+<ul>
+<li>old school definition: resource abstractor and resource allocator.</li>
+</ul>
+<p>Boot process:</p>
+<ul>
+<li>Boot loader</li>
+<li>init process</li>
+<li>wait for an event</li>
+</ul>
+<p>Multi-programming:</p>
+<ul>
+<li>Single program</li>
+<li>Batch </li>
+<li><strong>time-sharing</strong></li>
+</ul>
+<p>Kernel size:
+lean &amp; mean: nothing more &amp; single-minded</p>
+<p>Syscall Instruction</p>
+<ul>
+<li>x86: int 80h</li>
+<li>x86-64: syscall</li>
+<li>ARM 64: svc</li>
+<li>RISC-V 64: ecall</li>
+</ul>
+<p>Syscall Number: syscall table's index</p>
+<p>Linkers and Loaders:</p>
+<ul>
+<li>ELF 的结构</li>
+</ul>
+<p>Static Link: 可移植性强，二进制大</p>
+<p>Dynamic Link: 可移植性差，二进制小</p>
+<p>interpreter: ld-linux.so</p>
+<p>Who setups ELF mapping: execve</p>
+<p>start_kernel_thread_common: 静态链接将 entry point address 也就是 PC 赋值给 pt_regs 里的 PC，动态链接用的就是 ld.so 的</p>
+<p><a class="glightbox" href="../assets/note/image-20241030171841975.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241030171841975" src="../assets/note/image-20241030171841975.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241030171852066.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241030171852066" src="../assets/note/image-20241030171852066.png" /></a></p>
+<p>Monolithic: UNIX</p>
+<p>Microkernel: Mach</p>
+<h1 id="process">Process<a class="headerlink" href="#process" title="Permanent link">&para;</a></h1>
+<h2 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h2>
+<p>Process: A unit of resource allocation and protection.</p>
+<p>进程：资源的组织和保护的单元，线程：执行的单元</p>
+<p>program becomes a process when it's loaded into memory</p>
+<p>Process:
+code + data section (from ELF)
++ program counter + content of registers + stack + heap</p>
+<p>Runtime Stack:
+Stack Frame 栈帧
+随函数调用不断变化</p>
+<p>Invented by Dijkstra</p>
+<p>ARM
+<code>stp x29, x30, [sp, #-64]!</code>
+x29: frame pointer, x30: link register / return address,
+sp = sp - 64
+<code>mov x29, sp</code>
+update frame pointer</p>
+<p>Stack 和 Heap 中间的空间有限
+比如无限递归导致 stack overflow</p>
+<h2 id="control-block-pcb">Control Block (PCB)<a class="headerlink" href="#control-block-pcb" title="Permanent link">&para;</a></h2>
+<p>PCB: Process metadata 存储进程的元数据</p>
+<p>process state, process number, process counter, memory limits, list of open files...</p>
+<p>Linux 中用 <code>task_struct</code> 存储</p>
+<p>pid: Process Identifier</p>
+<p>State: 示意图必考
+ - New: 进程被创建
+    - Setup from scratch: 第一个进程
+    - Fork: 父进程 -&gt; 子进程，完整地抄过来，仅有 pid 不同
+    <code>ps xao pid,ppid,comm</code>
+    构成树形结构 Process Tree
+    子进程挂掉可以由父进程重启，systemd 挂了，整个用户态就没了，内核会物理重启</p>
+<div class="language-text highlight"><pre><span></span><code>idle(0) - start_kernel(), systemd/init(1), kthreadd(2)
+kernel thread daemon 起内核态进程
+systemd 起用户态进程
+
+idle 原本的进程在 start_kernel 之后 fork 到每个 cpu 核心上，起 systemd 之后，退化为 idle
+CPU 没有任何任务可以运行时就会去运行 idle. idle 可以把 cpu 核心 shutdown 省电
+</code></pre></div>
+<p><code>fork()</code> System Call
+  不接受参数，完整拷贝父进程，然后给父进程返回子进程的 pid，给子进程返回 0, 失败返回 -1
+  <code>fork()</code> 是 syscall, 返回之后 PC 指向下一行汇编，于是父进程和子进程都从这里继续运行</p>
+<div class="language-text highlight"><pre><span></span><code>```c
+pid1 = fork();
+printf(&quot;hello\n&quot;); // 2 次
+pid2 = fork();
+printf(&quot;hello\n&quot;); // + 4 次 = 6 次
+```
+</code></pre></div>
+<p><code>exec()</code> System Call
+  loadelf, 把原本程序后面的代码全都抹掉了，所以不 fork 直接 exec，后面的代码都不会执行
+  如果 fork 之后父进程 exec 变成别的程序了，子进程结束后不会被回收，变成 orphan</p>
+<p>fork 的安全性问题，如果不分 systemd 和 kthreadd, 用户态进程可以根据自己的 memory layout 推测内核的内存映射</p>
+<ul>
+<li>Terminate: 子进程 <code>exit()</code>, 父进程可以用 <code>wait()</code> <code>waitpid()</code> 等待子进程完成
+    子进程结束会发送 SIGCHLD 信号
+   强行结束，可以通过发送 Signal 完成
+   Ctrl+C: SIGINT, 还可以发送 SIGBUS (segmentation fault 时), SIGKILL
+   signal 可以自定义 handler, 除了 SIGKILL</li>
+</ul>
+<p>zombie: 不占用 CPU 但还占用内存的进程. Remain undead</p>
+<p>orphan: 父进程挂掉，子进程变成 orphan. Adopt by systemd / init on Linux, 原来是 pid=1，现在变成小号了
+    orphan will never becomes zombie, systemd can handle it properly
+    因此可以实现永远不会变成 zombie 的进程, fork 两次, kill 儿子，孙子就会被领养
+    task_struct, mm_struct 等等都可以把 list_head 作为一个成员，从而成为双向链表</p>
+<ul>
+<li>Ready, Running, Waiting:</li>
+</ul>
+<p>waiting queue 的数量 = waiting target 的数量</p>
+<p>Context: 寄存器
+  Context Switch: 因为 CPU 的寄存器只有一份，要不然原来的进程回来的时候都不知道自己跑到哪了
+  context switch 的时间是 pure overhead, 越短越好</p>
+<p>kernel space context switch</p>
+<p>user space context switch
+   P0 User - 时钟中断 - P0 Kernel | context switch | P1 Kernel - P1 User
+   kernel_entry 的时候，将 P0 的寄存器存在了内核的栈上，具体的位置叫 pt_regs (per thread regs)
+   kernel_exit 的时候，将 P1 的寄存器恢复</p>
+<p>fork() 的返回值在哪里写的
+  - 对于父进程，kernel_entry 进入内核后，pt_regs-&gt;regs[0] = pid
+  - 对于子进程，copy_thread 的时候，childregs(也就是 pt_regs)-&gt;regs[0] = 0
+    为什么 fork() 能返回两个值，因为 fork 之后有两个 user context, 可以修改</p>
+<p>fork syscall: kernel_clone() -&gt; copy_process() -&gt; copy_mm(), copy_thread 各种 copy</p>
+<h2 id="process-schedule">Process Schedule<a class="headerlink" href="#process-schedule" title="Permanent link">&para;</a></h2>
+<p>Scheduling: determine which process should run and for how long</p>
+<p>决定了系统的吞吐量和反应速度</p>
+<p>Pre'emptive Scheduling: 抢占式调度</p>
+<p>Non-preemptive Scheduling: 非抢占式调度
+跑到不想跑为止，不会出现 Running 到 Ready 的情况</p>
+<p>Criteria and Objectives:</p>
+<ul>
+<li>Max CPU Utilization</li>
+<li>Max Throughput</li>
+<li>Min Turnaround Time</li>
+<li>Min Waiting Time</li>
+<li>Min Response Time</li>
+</ul>
+<p>这些目标是互相矛盾的，需要权衡</p>
+<p>Dispatch Latency: 两个任务切换之间的时间，Pure overhead 越小越好</p>
+<p>Algorithms:</p>
+<h3 id="first-come-first-serve-fcfs">First Come First Serve (FCFS)<a class="headerlink" href="#first-come-first-serve-fcfs" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code>先到先得
+</code></pre></div>
+<p>会出现 Convoy Effect, 前面的太慢拖慢了整体的速度</p>
+<h3 id="shortest-job-first">Shortest Job First<a class="headerlink" href="#shortest-job-first" title="Permanent link">&para;</a></h3>
+<p>Optimal, 但是不能在线</p>
+<h3 id="round-robin-rr">Round Robin (RR)<a class="headerlink" href="#round-robin-rr" title="Permanent link">&para;</a></h3>
+<p>轮询</p>
+<h3 id="prority">Prority<a class="headerlink" href="#prority" title="Permanent link">&para;</a></h3>
+<p>Starvation: 优先级太低的进程永远得不到 CPU</p>
+<p>解决方法 Priority Aging: 随着等待时间增加，优先级增加</p>
+<h3 id="multi-level-queue-scheduling">Multi-level Queue Scheduling<a class="headerlink" href="#multi-level-queue-scheduling" title="Permanent link">&para;</a></h3>
+<p>队列内部调度+队列之间调度</p>
+<p>Real-time process, System process, Interactive process, Batch process</p>
+<h3 id="multi-level-feedback-queue-scheduling">Multi-level Feedback Queue Scheduling<a class="headerlink" href="#multi-level-feedback-queue-scheduling" title="Permanent link">&para;</a></h3>
+<p>进程可以在不同的队列里移动 (promote / demote)</p>
+<p>比较短的任务优先级一直在比较高的队列，如果一直占用 CPU，会慢慢移动到优先级低的队列里</p>
+<p>Multi-thread, Multi-core Scheduling</p>
+<p>SMP</p>
+<p>HART: Hardware Thread</p>
+<p>Load Balancing: 任务在不同的 CPU 之间分配: push migration, pull migration</p>
+<p>Soft affinity, hard affinity 确保进程在某个 cpu 上运行</p>
+<p>Windows: 越高优先级越高
+Linux: nice 越低优先级越高</p>
+<p>Linux 0.11: Round Robin + Priority</p>
+<p>priority</p>
+<p>Linux 2.6: O(1) scheduler, active, expired, active queue, expired queue</p>
+<p>bitmap 对应 141 个优先级 (32 * 5 = 160 &gt; 141),
+然后用 bsfl 找到最高位的 1, 也就是最高优先级的进程</p>
+<p>prio_array.head_queue[bsfl(bitmap)].task_struct</p>
+<p>现在的 Linux: Completely Fair Scheduler (CFS)</p>
+<p>期末必考: Gantt 图，计算 Waiting Time, Turnaround Time</p>
+<p>do_timer()</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="o">--</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">counter</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cpl</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">schedule</span><span class="p">();</span>
+</span></code></pre></div>
+<p>nice [-20, 19]</p>
+<p>Nice 越大，coutner 越小，时间片越短</p>
+<p>https://elixir.bootlin.com/linux/2.4.31/source/kernel/sched.c#L622</p>
+<p><a class="glightbox" href="../assets/note/image-20241016162854431.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241016162854431" src="../assets/note/image-20241016162854431.png" /></a></p>
+<p>Nice 越大，weight 越小，调度越靠后</p>
+<p>https://elixir.bootlin.com/linux/2.4.31/source/kernel/sched.c#L182</p>
+<p><a class="glightbox" href="../assets/note/image-20241016162920788.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241016162920788" src="../assets/note/image-20241016162920788.png" /></a></p>
+<h1 id="ipc-inter-process-communication">IPC Inter-Process Communication<a class="headerlink" href="#ipc-inter-process-communication" title="Permanent link">&para;</a></h1>
+<p>进程之间的交流</p>
+<p>进程内部 Intra-Process Communication</p>
+<p><a class="glightbox" href="../assets/note/image-20241016163251224.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241016163251224" src="../assets/note/image-20241016163251224.png" /></a></p>
+<p>浏览器 v8引擎的进程使用了 seccomp 限制只能用 4 个 syscall: read, close, sigret，称之为沙箱</p>
+<p>进程间通信模型:</p>
+<ul>
+<li>Message Passing - 适合小规模通信</li>
+<li>每次都需要内核介入，会有 syscall 的 overhead (来自 context switch)</li>
+<li>Shared Memory - 适合大量通信，overhead 较小</li>
+<li>建立 Shared Memmory Segment</li>
+<li>其他进程可以 attach</li>
+<li>无需内核介入</li>
+<li>Pipe</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241016163926589.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241016163926589" src="../assets/note/image-20241016163926589.png" /></a></p>
+<p>POSIX 的共享内存标准:</p>
+<p>shmget, shmat (attach), shmdt (detach), shmctl....</p>
+<p><code>ipcs -a</code> 可以看到 shared memory id</p>
+<p>拿到这个 id 谁都可以访问，不是很安全</p>
+<p>现在一般用线程来干这个事情了</p>
+<p>Message Passing: send(), recv()</p>
+<p>链路 (Communucation Link)</p>
+<ul>
+<li>Physical: Shared memory. Hardware bus, Network</li>
+<li>Logical: Direct / Indirect, Synchronous (Blocking, 不交到手里不走)/ Asynchronous (Non-blocking 放门口就走), Automatic / Explicit buffering</li>
+</ul>
+<p>Direct: 问题是连接太多</p>
+<p>Indirect: Share a common mailbox</p>
+<p>Pipe: pipe syscall, 一般是单向的</p>
+<p>fd[0] 读, fd[1] 写</p>
+<p><a class="glightbox" href="../assets/note/image-20241016170617690.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241016170617690" src="../assets/note/image-20241016170617690.png" /></a></p>
+<ul>
+<li>Ordinary Pipe: 普通管道 / 匿名管道，一般是单向的</li>
+<li>Named Pipe: 有名字，无关系的进程都可以进行管道通信，双向的</li>
+</ul>
+<p>UNIX Pipes: Mono Directional 单向的</p>
+<p>Client-Server Communication:</p>
+<ul>
+<li>Sockets, RPC (Remote Procedure Call), Java RMI (Remote Method ..)</li>
+</ul>
+<p>Thread 线程</p>
+<p>A thread is a basic unit of execution within a process</p>
+<p>一个进程内的多个执行单元</p>
+<p>Thread has its own:</p>
+<ul>
+<li>Thread ID, PC, Register set, Stack</li>
+</ul>
+<p>Thread shares:</p>
+<ul>
+<li>Code section, data section, heap, open files and signals</li>
+</ul>
+<p>Conccurency: Can do multiple things at a time.</p>
+<p><a class="glightbox" href="../assets/note/image-20241016172611869.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241016172611869" src="../assets/note/image-20241016172611869.png" /></a></p>
+<p>一个进程至少包含一个线程</p>
+<p>使用线程的好处:</p>
+<ul>
+<li>Economy: Cheap, Context switch is cheap </li>
+<li>switch_mm(), cpu_switch_to() 切换进程需要切换内存空间，切换进程不需要</li>
+<li>Resource Sharing: Naturally Share Memory (Heap, code, data segments)，不需要 ipc</li>
+<li>Responsiveness</li>
+<li>Scalability</li>
+</ul>
+<p>坏处: 隔离性变差了</p>
+<ul>
+<li>一个线程挂了 (比如 segfault)，整个进程都挂了，没有隔离</li>
+<li>内存空间共享，不安全</li>
+</ul>
+<p><code>ps -eLF</code>: PID, PPID, LWP (Lightweight Process)</p>
+<p>多线程的进程，PID 是 <strong>leading thread</strong> IP 最开始的线程 ID</p>
+<p>task_struct() 也是每个线程有一个，看到的是 leading thread 的 task_struct</p>
+<p>严格来讲 task_struct() 不算 PCB</p>
+<p>User threads vs. Kernel threads</p>
+<p>用户态的线程与内核态线程有对应关系</p>
+<ul>
+<li>Many-to-One: 一个线程调用了 syscall 进入内核态线程，其他线程如果想要 syscall 需要等待</li>
+<li>One-to-One: 每一个用户态线程都有一个内核态线程，解决了前面的问题，但是产生了较大 overhead</li>
+<li>Many-to-Many: 多对多</li>
+<li>Two-Level: 既有多对多也有一对一</li>
+</ul>
+<p>Linux 和 Windows 都是 One-to-One，因为内存和 CPU 算力变便宜了，随便造</p>
+<p>pthreads: POSIX threads</p>
+<p>Java green threads: many-to-one, now with native threads</p>
+<p>Linux 中线程语义下的 fork() 和 exec()</p>
+<ul>
+<li>那个 thread 调用了 fork 就 fork 谁</li>
+<li>exec 会抹掉所有的线程，替换 ELF 和 address space</li>
+</ul>
+<p>Linux 线程的信号</p>
+<ul>
+<li>开发者可以指定那些线程接收信号，提供了一系列 API</li>
+</ul>
+<p>结束线程 Thread Cancellation:</p>
+<ul>
+<li>Asynchronous: 立即结束 -- 容易造成非常难调的 bug</li>
+<li>Deferred: 线程在自己认为可以安全结束 (cancellation point) 的时候再结束</li>
+</ul>
+<p>Thread Scheduling</p>
+<ul>
+<li>process-contention scope 对应进程粒度调度</li>
+<li>system-contention scpoe 对应线程粒度调度，每个线程在整个系统内竞争时间</li>
+</ul>
+<p>Linux 和 macOS 都以线程为粒度调度</p>
+<p>Linux Threads (LWP, Lightweight Process):</p>
+<ul>
+<li>clone() 系统调用创建一个线程</li>
+<li>可以控制和 parent 共享哪些东西: <code>CLONE_FS</code>, <code>CLONE_VM</code> (共享地址空间), <code>CLONE_SIGHAND</code>, <code>CLONE_FILES</code></li>
+</ul>
+<p>Thread Control Block (TCB)</p>
+<p>Linux 中的 TCB 就是 task_struct，</p>
+<p>创建新的线程时，pid, stack, ... 重新分配，mm_struct, files, ... 直接拷贝</p>
+<p>task_struct 内部有 thread_group (list_head) 把所有线程串在一起</p>
+<p><a class="glightbox" href="../assets/note/image-20241022142757739.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241022142757739" src="../assets/note/image-20241022142757739.png" /></a></p>
+<p>stack 对齐到 0x4000 (16K 对齐), task_struct 的分配: slab, slub ...</p>
+<p>用户和内核态的线程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241022143955163.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241022143955163" src="../assets/note/image-20241022143955163.png" /></a></p>
+<p>Kernel Space 的栈固定大小 16 KiB (Linux)，且用户态无法访问</p>
+<p>User Space 栈的大小不固定</p>
+<p>进入内核态的时候，pt_regs 存在对应的内核线程的栈上</p>
+<p><strong>Synchronization</strong></p>
+<p>Race condition</p>
+<p>多个线程同时写一块内存，会造成数据不一致性，最终的结果依赖于指令执行的顺序</p>
+<p>单个核心也有可能出现 (补图)</p>
+<p>内核线程的 race condition 经常发生</p>
+<ul>
+<li>critical section: 多个线程共同执行的一段代码</li>
+<li>entry section: 线程进入 critical section 前会请求 permission 进入 critical section</li>
+<li>exit section: 线程退出之后释放掉 permission</li>
+</ul>
+<p>单核处理器: 关掉中断</p>
+<p>多核处理器: 解决 data race 需要满足下面三个条件 <strong>重要</strong></p>
+<ul>
+<li>Mutual Exclusion: 互斥访问</li>
+<li>Progress: 空闲让进: 如果没有线程在 critical section, 需要让一个线程能够进入 (make progress)</li>
+<li>Bounded waiting: 有限等待, 避免 starvation</li>
+</ul>
+<p>解决方案:</p>
+<ul>
+<li>Peterson's Solution: 只对 2 进程有用（假设访存是原子操作）</li>
+<li>flag[2] 该不该进入 critical section, turn 该谁了</li>
+<li>互斥访问: 枚举所有情况</li>
+<li>空闲让进</li>
+<li>有限等待: flag = FALSE 让某个线程不会一直进入</li>
+</ul>
+<p>Memory Barriers:</p>
+<ul>
+<li>Strongly Ordered: 一个内存修改需要被其他核心立刻看到 (需要同步的 overhead)</li>
+<li>Weakly Ordered: 内存修改过一会之后才会被其他核心看到</li>
+<li>Memory Barrier: 强制内存修改在核心间同步</li>
+</ul>
+<p>test-and-set instruction</p>
+<ul>
+<li>硬件提供一个原子操作</li>
+<li>满足 exclusion 和 progress</li>
+<li>不满足有限等待 （存在可能非常倒霉的线程）</li>
+</ul>
+<p>解决方法:
+lock 不断传给下一个在等待的线程</p>
+<p>compare-and-swap instruction</p>
+<ul>
+<li>同样要求原子操作，如 x86 的 lock cmpxchg，ARM 的 (ldxr) load-exclusive 和 (stxr) store-exclusive</li>
+<li>如果等于 expected, 就设置为 new_value, 同时返回 value 原值</li>
+</ul>
+<p>Mutex (Mutual Exclusive) Locks 互斥锁</p>
+<p>原子操作获得/释放互斥锁</p>
+<p>问题:</p>
+<ul>
+<li>T0 acquires lock -&gt; INTERRUPT-&gt;T1 runs, spin, spin spin... -&gt; INTERRUPT-&gt;T0 runs -&gt; INTERRUPT-&gt;T1 runs, spin, spin spin...INTERRUPT-&gt; T0 runs, release locks -&gt;INTERRUPT-&gt;T1 runs, enters CS</li>
+</ul>
+<p>只有 T0 有锁，其他的线程在时间片内都一直在做无意义的等待 (busy waiting)，浪费了 CPU 时间</p>
+<p>如果有 N 个线程，就浪费了 (N-1)/N 的 CPU 时间</p>
+<p>解决方法: Semaphore (Dijkstra)</p>
+<p>如果线程将要 busy waiting, 就进入 sleep queue，
+不会再被调度</p>
+<p>两种操作
+- block: 重新调度，随后线程进入 SLEEP
+- wakeup</p>
+<p>S-&gt;value 的初值可以设置为可以利用的资源的数量</p>
+<p>减少了 busy waiting time</p>
+<p>wait 和 signal 不能被打破，都需要是原子的</p>
+<p>Mutex 和 Semaphore 的适用场景: <strong>长与短要与 context switch 的时间比较</strong></p>
+<ul>
+<li>如果 Critical Section 很短，适合 Mutex / Spinlock</li>
+<li>否则 Semaphore 更适合，因为重新调度有上下文切换的开销</li>
+</ul>
+<p>Linux 内核里 critical section 一般都是取一个内存的值/修改，
+所以 spinlock 很常用</p>
+<p>编程时一定要避免持锁去 sleep</p>
+<p>Deadlock and Starvation</p>
+<p>P0 拿到 S -- P1 拿到 Q -- P1 等待 P0 的 S -- P0 等待 P1 的 Q</p>
+<p>有死锁一定会 starvation, starvation 不一定是死锁造成的</p>
+<p>Priority Inversion:</p>
+<p>低优先级的线程持锁，会让需要锁的高优先级的线程，反而不如不需要该锁的
+中优先级线程先跑，造成 P_H 实际的优先级和 P_L 一样了</p>
+<p>解决方法: 优先级继承,
+持有高优先级锁的低优先级线程，优先级会升级</p>
+<p>Linux 2.6 之前采用关中断的方式提供了 critical section 的防护 （因为只有单核）</p>
+<p>Linux 提供 mutex, semaphore</p>
+<p>POSIX 的实现
+pthread_mutex, semaphore, sem_wait...</p>
+<p>Condition Variable (Dijkstra)</p>
+<p>broadcast: 相当于 wakeup all</p>
+<p>Synchronization Examples 线程同步与实际问题</p>
+<ol>
+<li>Bounded-buffer problem</li>
+</ol>
+<p>Producer 向 buffer 写入，Comsumer 从 buffer 移出</p>
+<p>需要确保 Producer 不会在 buffer 满了的时候写入，确保 Consumer 不会试图在 buffer 为空的时候读出</p>
+<p>解决方法:</p>
+<ul>
+<li>Semaphore mutex, 用来保护 buffer 的修改</li>
+<li>Semaphore full-slots， 初值为 <span class="arithmatex">\(0\)</span></li>
+<li>Semaphore empty-slots，初值为 <span class="arithmatex">\(N\)</span></li>
+</ul>
+<div class="language-c++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">producer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="c1">// produce an item</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">empty</span><span class="o">-</span><span class="n">slots</span><span class="p">);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span><span class="w"> </span><span class="c1">// mutex 不能移到 empty slots 前面，带锁 sleep 以及死锁</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="c1">// add the item to buffer</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">full</span><span class="o">-</span><span class="n">slots</span><span class="p">);</span><span class="w"> </span><span class="c1">// 不能放到写入 buffer 前面</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w">             </span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kt">void</span><span class="w"> </span><span class="nf">consumer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">full</span><span class="o">-</span><span class="n">slots</span><span class="p">);</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="c1">// remove item from buffer</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">empty</span><span class="o">-</span><span class="n">slots</span><span class="p">);</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<ol>
+<li>
+<p>Readers-writers problem</p>
+</li>
+<li>
+<p>Semaphore mutex，用来保护 readcount</p>
+</li>
+<li>Semaphore write, 初值为 <span class="arithmatex">\(1\)</span></li>
+<li>int readcount = 0</li>
+</ol>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">write</span><span class="p">);</span><span class="w"> </span><span class="c1">// 写与所有操作都互斥</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="c1">// write</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">write</span><span class="p">);</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="kt">void</span><span class="w"> </span><span class="nf">reader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">readcount</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readcount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// 只有第一个 reader 需要屏蔽写，多个 reader 可同时读</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="n">wait</span><span class="p">(</span><span class="n">write</span><span class="p">);</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="c1">// reading data</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="n">readcount</span><span class="o">--</span><span class="p">;</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readcount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// 最后一个 reader 读完，就可以允许写入了</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">            </span><span class="n">signal</span><span class="p">(</span><span class="n">write</span><span class="p">);</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>假设有一个 writer 在写入，</p>
+<p>第一个 reader 会等待在 wait(write) 上，而后面来的 reader 都会等待在 wait(mutex) 上</p>
+<p>writer 写入完成，signal(write) 会唤醒第一个 reader，随后第一个 reader signal(mutex) 唤醒其他所有 reader.</p>
+<p>变种1: Reader first, 让 Reader 先读 （上面的例子是 reader first），但是有 writer starvation </p>
+<p>变种2: Writer first，如果 Writer 和 Reader 都在等，让 Writer 先写，有 reader starvation</p>
+<p>如果 mutex 换成 spinlock，会有 busy waiting 的问题</p>
+<ol>
+<li>Dining-philosophers problem (Dijkstra)</li>
+</ol>
+<p>Multi-resource synchronization 多个资源</p>
+<p>解决方法：</p>
+<ul>
+<li>semaphore[5] 都设置为 1</li>
+</ul>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">philosopher</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="n">chopsticl</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span><span class="p">]);</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="c1">// eat</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="n">signal</span><span class="p">(</span><span class="n">chopsticl</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span><span class="p">]);</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="c1">// think</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>上面的代码可能发生死锁，因为五个人如果都先拿左边的筷子，那再也拿不了下一根筷子了</p>
+<p>Dijkstra 给出了解决方法，奇数的人先拿左边，偶数的人先拿右边</p>
+<p>Deadlock 死锁</p>
+<p>现代 os 不预防或者解决死锁问题</p>
+<p>发生 deadlock 需要四个条件:</p>
+<ol>
+<li>Mutual Exclusion: 资源互斥</li>
+<li>Hold and wait: 拿着一部分资源去请求另一个资源</li>
+<li>No preemption: 资源不能被抢占</li>
+<li>Circular wait: Resource Allocation Graph 中形成了一个环，且环包括了所有的 process</li>
+</ol>
+<p>Deadlock Prevention: 打破死锁形成条件</p>
+<ol>
+<li>Mutual Exclusion: 如果是共享资源就不做成互斥的</li>
+<li>Hold and wait: 只能拿所有资源或者不拿，如果没有所有资源就放弃 - 有 starvation 问题</li>
+<li>No preemption: 线程可以抢占其他线程的资源</li>
+<li>Circular wait: 加一个请求资源的顺序</li>
+</ol>
+<p>Deadlock Avoidance: 计算是否处于 safe state，safe state guarantee no deadlock</p>
+<p><strong>Impractical!: require extra information about how resources are to be requested</strong></p>
+<p>单个种类的资源: resource-allocation graph</p>
+<p>多个种类的资源: Banker's Algorithm</p>
+<ul>
+<li>Resource-allocation Graph: claim edge, request edge, assignment edge</li>
+<li>Banker's Algorithm</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241030162323942.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241030162323942" src="../assets/note/image-20241030162323942.png" /></a></p>
+<p>计算向量 available 和矩阵 need</p>
+<p>执行之后 available += allocation</p>
+<p><a class="glightbox" href="../assets/note/image-20241030162639362.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241030162639362" src="../assets/note/image-20241030162639362.png" /></a></p>
+<p>Deadlock Detection: </p>
+<p>维护 wait-for graph，点只有线程，如果存在环路就死锁了</p>
+<p><a class="glightbox" href="../assets/note/image-20241030163230424.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241030163230424" src="../assets/note/image-20241030163230424.png" /></a></p>
+<p>检测环路的经典算法: 一个一次走一步，另一个一次走两步，如果快指针跟上了慢指针就存在环了</p>
+<p>Multiple InstanceL 类似 Banker's Algorithm</p>
+<p>Deadlock Recover:</p>
+<ul>
+<li>terminate process，每隔一段时间，一个一个 kill，检测是否还死锁</li>
+<li>选择 Kill 那个进程也可以有很多考量，但简单的话就随机选一个了</li>
+</ul>
+<p><strong>Main Memory</strong></p>
+<p>内存管理: Partition -&gt; Segmentation -&gt; Paging</p>
+<p>如果任务需要的内存比主存大:</p>
+<ul>
+<li>分治，一段一段加载进入内存 like compiler passes</li>
+</ul>
+<p>内存中要同时运行多个进程:</p>
+<ul>
+<li>
+<p>Partition: Protection, Fast execution, Fast Context switch</p>
+</li>
+<li>
+<p>此时加载一个程序:</p>
+</li>
+<li>进行内存地址的重定位</li>
+<li>缺点:</li>
+<li>程序加载进内存后，几乎不可能再移动（task struct 的 PC，全部的内存地址，数据中的指针... 都要更改）</li>
+<li>内存碎片化，又因为程序不能再移动，无法缓解</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241105143531950.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241105143531950" src="../assets/note/image-20241105143531950.png" /></a></p>
+<p>思路: 将程序内使用到的内存地址都是一个相较于程序开始位置的偏移量，这样就允许了移动</p>
+<p>解决方法: 引入逻辑地址，在运行时被转化为物理地址。逻辑地址为分区内部的偏移量</p>
+<ul>
+<li>0x14000 开始的程序，逻辑地址 0x00346 转换为物理地址 0x14346</li>
+<li>不考虑复杂情况，此时可以移动一个程序</li>
+</ul>
+<p>硬件实现:</p>
+<ul>
+<li>添加 base 和 limit 寄存器</li>
+<li>添加一个硬件逻辑地址和物理地址的转换（即检查 offset 与 limit，再 + base）</li>
+<li>修改 base 和 limit 寄存器的指令必须是特权指令</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241105144209153.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241105144209153" src="../assets/note/image-20241105144209153.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241105144214445.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241105144214445" src="../assets/note/image-20241105144214445.png" /></a></p>
+<p>必考: first-fit, best-fit, worst-fit </p>
+<p>Partition Strategies</p>
+<ol>
+<li>Fixed Partition: Partition 大小需要 trade off</li>
+<li>如果程序需要的内存大于一个 partition - 只能像之前一样分治，分别 load</li>
+<li>如果程序小于一个 partition: <strong>Internal Fragmentation</strong> 碎片化，浪费了内存</li>
+<li>但是没有 external framentation</li>
+<li>Variable Length Partition:</li>
+<li>Parition 大小根据程序需要自动变化，实现比较复杂</li>
+<li><strong>External Fragmentation</strong><ul>
+<li>First fit (找第一个), Best fit (找空闲 size 最接近的)，Worst Fit（找最大的空闲空间）<strong>选择题</strong></li>
+<li><a class="glightbox" href="../assets/note/image-20241105150504724.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241105150504724" src="../assets/note/image-20241105150504724.png" /></a></li>
+</ul>
+</li>
+</ol>
+<p>Segmentation</p>
+<p>ELF Section 与 Segmentation / Partition 之间的关系: 节省分段防止碎片化，一般多个权限相同的 section 会合并成一个 Segment</p>
+<p>这时候出现了多个 segment, 需要多组 base limit，而硬件不可能做那么多组寄存器</p>
+<p>用一页内存专门存储多组 base, limit (segmentation table)，根据 segment-number 查询</p>
+<p>此时逻辑地址变成了 <segment-number, offset></p>
+<p>Logic Address and Physical Address:</p>
+<ul>
+<li>Logic Address: 假想的地址空间，没有对应的存储空间，必须要映射到物理地址</li>
+<li>v1: offset within partition</li>
+<li>v2: segment-number and offset</li>
+<li>Physical Address</li>
+</ul>
+<p>Memory Management: separate logical address and physical address</p>
+<p>MMU: 硬件加速逻辑地址与物理地址的内存转换</p>
+<p><a class="glightbox" href="../assets/note/image-20241105152726597.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241105152726597" src="../assets/note/image-20241105152726597.png" /></a></p>
+<p>Segment 分段时, MMU 也需要包括查询 Segment Table 的过程</p>
+<p>segmentation register table 里标记了段的权限:</p>
+<p><a class="glightbox" href="../assets/note/image-20241106164351542.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241106164351542" src="../assets/note/image-20241106164351542.png" /></a></p>
+<p><strong>Paging</strong>: fix-sized partition 的改进</p>
+<ul>
+<li>Divide <strong>physical address</strong> to fixed-sized <strong>frames</strong>: 物理地址对应帧</li>
+<li>
+<p>Divide <strong>logical address</strong> to same sized <strong>pages</strong>: 逻辑地址对应页</p>
+</li>
+<li>
+<p>keep track of the mapping between pages and frames: Page 和 Frame 的映射</p>
+</li>
+<li>Page Table: Mapping to translate logical to physical address</li>
+</ul>
+<p>Paging 的碎片:</p>
+<ul>
+<li>No external fragmentation</li>
+<li>Has internal fragmentation，但是浪费的大小比 variable length partitioin 少，只会浪费最后一个 page 的空间</li>
+<li>worst case: 1 frame - 1 byte</li>
+<li>average: 1 / 2 frame size </li>
+</ul>
+<p>Page size / Frame size 大小的选择:</p>
+<p>4 KiB (Linux), 64 KiB, .... 随内存变便宜，有变大的趋势</p>
+<p>Page table:</p>
+<p><a class="glightbox" href="../assets/note/image-20241105154816719.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241105154816719" src="../assets/note/image-20241105154816719.png" /></a></p>
+<p>逻辑地址与物理地址转换过程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241105154855038.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241105154855038" src="../assets/note/image-20241105154855038.png" /></a></p>
+<p>页表里面只存了帧号，没存页号，因为 index 就是页号（syscall number, segment number, page number 都相同）</p>
+<p>此时逻辑地址变成了: <page number, page offset></p>
+<ul>
+<li>32 位地址，4 KiB 页: page offset: 12 位，page number: 20 位</li>
+</ul>
+<p>Page Table 如何存储:</p>
+<ul>
+<li>寄存器: 好处是快，但寄存器数量有限，不够存储，且 context switch 需要切换所有的</li>
+<li>内存: 用 PBTR (x86: cr3; aarch64: ttbr0, ttbr1; risc-v: satp) 指向内存中页表的开头</li>
+<li>加速: 页表独有的 cache: TLB (translation look-aside buffer)</li>
+<li>TLB 上下文切换:<ul>
+<li>Option 1: 上下文切换清空 TLB</li>
+<li>Option 2: 用 ASID 识别是哪个进程的</li>
+</ul>
+</li>
+<li>Page Table 需要物理连续，这是因为 MMU 只认识物理地址 (syscall table 只需要虚拟地址连续)</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241106163625651.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241106163625651" src="../assets/note/image-20241106163625651.png" /></a></p>
+<p>TLB Hit ratio 需要多少才能减少 overhead —— EAT (effective access time):</p>
+<p><a class="glightbox" href="../assets/note/image-20241106163905463.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241106163905463" src="../assets/note/image-20241106163905463.png" /></a></p>
+<p>在程序正常运行之后，TLB hit ratio 可以接近 100%</p>
+<p>内存的隔离与保护:</p>
+<p>将权限位保存到 PTE (Page Table Entry) 里面</p>
+<p><a class="glightbox" href="../assets/note/image-20241106164613896.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241106164613896" src="../assets/note/image-20241106164613896.png" /></a></p>
+<p>Valid 位: 没有映射的页，因为虚拟地址空间有很多地址都是没用上的</p>
+<p>Page Sharing: 运行两次程序，有哪些东西可以共享</p>
+<ul>
+<li>code 段，rodata 段，库（也是 ELF，可以共享 r--, r-x 的段）</li>
+<li>通过共享 page 节省了内存</li>
+</ul>
+<p>Segmentation: 1961, Paging: 1962；但是 TLB 硬件 (full-associative) 很难实现，所以 Paging 受制于硬件</p>
+<p>Hierarchical Page Table 层级 页表:</p>
+<ul>
+<li>一级页表: 32 位地址空间: 4 GiB / 4 KiB = 1 M 个 PTE, 1M*4Byte = 4M 需要 4M 物理连续的页表</li>
+<li>现实中程序的地址空间有很多用不到的地址 (hole)，有很多 PTE 是可以省略的</li>
+<li>一个页可以放 1024 个 PTE，把一级页表中的 1M 个 PTE 每 1024 个存到一页里，需要 1024 页</li>
+<li>如果没分配的话，那么第一级设置成 invalid，不需要第二级找一个页来存了，立省 1 页内存</li>
+<li>二级页表:<a class="glightbox" href="../assets/note/image-20241106171807403.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241106171807403" src="../assets/note/image-20241106171807403.png" /></a></li>
+<li>此时的寻址方式: 拆成 addr[31:22], addr[21:12], addr[11:0]<ul>
+<li>addr[31:22] 共 10 位用于在一级页表寻址 (PGD, Page Global Directory，如果在中间，叫 PMD: Page Middle Directory, PUD: Page Uppder Directory, P4D)</li>
+<li>addr[21:12] 共 10 位用于在二级页表寻址 (PTE, Page Table Entry)</li>
+<li>addr[11:0] 用于在页内寻址 (page offset)</li>
+</ul>
+</li>
+<li>需要多访问两次内存，TLB 越发重要</li>
+<li><strong>为什么省内存</strong>: 页表按需分配，设置 Invalid 位，后面就不用分配一个页表页</li>
+</ul>
+<p>4KiB, 64bit address, 3级页表 9+9+9+12 共 39 位，可以寻址 512 GiB，9+9+9+9+12 可寻址 256 TiB 内存，9+9+9+9+9+12 可寻址 128 PiB 内存，这就是现在的 39-bit, 48-bit, 57-bit 内存地址</p>
+<ul>
+<li>4 KiB 页，1级页表一项代表 4 KiB, 2级 2 MiB, 3 级 1 GiB, 4 级 512 GiB, 5 级 256 TiB</li>
+</ul>
+<p>64 KiB, 64bit address, 2级页表 13+13 (64 KiB / 8 Byte) +16 (64 KiB) 共 42 位</p>
+<p>Hashed Page Table:</p>
+<p><a class="glightbox" href="../assets/note/image-20241106174524215.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241106174524215" src="../assets/note/image-20241106174524215.png" /></a></p>
+<ul>
+<li>优点: 虚拟地址空间很大，但只用了很小一块内存，可以节省（存得稀疏时无需链表）</li>
+<li>缺点: 哈希比较慢，哈希函数选不好会造成多次访存（链表）</li>
+</ul>
+<p>Inverted Page Table:</p>
+<ul>
+<li>SV39：寻址 512 GB 内存</li>
+<li>但实际上（比如手机）远远没有这么多物理内存</li>
+<li>用很大的虚拟地址空间来寻址消耗很高</li>
+<li>于是有下面的设计:</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241106175007550.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241106175007550" src="../assets/note/image-20241106175007550.png" /></a></p>
+<ul>
+<li>每个页表项存储的是 pid 和 page number ，而其 index 是物理帧的编号（反过来了）</li>
+<li>每次查询要遍历 page table 找到对应的 pid 和 p，取 index 作为物理帧</li>
+<li>由于 index 做了物理帧编号，不能实现多进程共享物理帧（链表！？）</li>
+<li>TLB Miss 后由于需要遍历，性能很低</li>
+</ul>
+<p>Swapping: 用硬盘来扩展物理内存</p>
+<p><a class="glightbox" href="../assets/note/image-20241112144222749.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112144222749" src="../assets/note/image-20241112144222749.png" /></a></p>
+<ul>
+<li>如果在 swap 的背景下做 context-switch，线程数据 100 MiB，硬盘速率是 50 MiB/s</li>
+<li>需要 2s swap out 再 2s swap in，总共需要 4s</li>
+<li>如果有 Paging，就不需要把整个进程的数据 swap 到硬盘</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241112144440505.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112144440505" src="../assets/note/image-20241112144440505.png" /></a></p>
+<p>Intel 和 Arm 的分页</p>
+<ol>
+<li>
+<p>IA-32: 支持 Segmentation 和 Paging</p>
+</li>
+<li>
+<p>Segmentation: 最高 4 GiB</p>
+</li>
+<li>
+<p>支持每个进程 16 K 个 segment，远超需要（ELF 大概十几个）</p>
+</li>
+<li>
+<p>Segmentation 被分为两个 8K: LDT, GDT</p>
+</li>
+<li><a class="glightbox" href="../assets/note/image-20241112145315137.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112145315137" src="../assets/note/image-20241112145315137.png" /></a></li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241112145227261.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112145227261" src="../assets/note/image-20241112145227261.png" /></a></p>
+</li>
+<li>
+<p>Paging: 4 KiB / 4 MiB 大小</p>
+</li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241112145416819.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112145416819" src="../assets/note/image-20241112145416819.png" /></a></p>
+</li>
+<li><a class="glightbox" href="../assets/note/image-20241112145511426.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112145511426" src="../assets/note/image-20241112145511426.png" /></a></li>
+<li>4 KiB: 两层页表， 4 MiB: 一层页表</li>
+</ol>
+<p>32 bit 寻址大于 4 GiB 的内存: PAE (Physical Address Extensions)</p>
+<p><a class="glightbox" href="../assets/note/image-20241112145915151.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112145915151" src="../assets/note/image-20241112145915151.png" /></a></p>
+<p>把页表项从 32bit 换成了 64 bit，支持到了 64 GiB，此时一页只有 512 页表项，变成三级页表 2+9+9+12</p>
+<ul>
+<li>Intel-64</li>
+<li>Page size: 4 KiB, 2 MiB, 1 GiB</li>
+<li>
+<p>39, 48, 57 bits</p>
+</li>
+<li>
+<p>ARM: 直接上了 Paging</p>
+</li>
+</ul>
+<p><strong>Virtual Memory</strong></p>
+<ol>
+<li>
+<p>Demading Paging</p>
+</li>
+<li>
+<p>Unused code: error handling code, unusual routine, Unused data: large data structure</p>
+</li>
+<li>想法: run a partially loaded program 程序不全部加载进内存就执行</li>
+<li>
+<p>加载 ELF _start 的代码段，然后就可以开始跑了</p>
+</li>
+<li>
+<p>如果运行到某一地址，没有到物理地址的映射，产生 Page Fault</p>
+</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241113162827307.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113162827307" src="../assets/note/image-20241113162827307.png" /></a></p>
+<ul>
+<li>Demand 意味着访存</li>
+<li><code>malloc</code> 出来的内存，在读/写的时候才真正分配物理内存</li>
+<li>如果 index 超过了 malloc 的范围，触发 Segmentation Fault</li>
+<li>
+<p>如果在 malloc 的范围内，触发 Page Fault</p>
+</li>
+<li>
+<p>谁能够引起 Page Fault: 访存</p>
+</li>
+<li>那个硬件触发 Page Fault: MMU - TLB Miss &amp;&amp; Page Table Entry 对应 Invalid</li>
+<li><a class="glightbox" href="../assets/note/image-20241113163910434.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113163910434" src="../assets/note/image-20241113163910434.png" /></a></li>
+<li>谁处理 Page Fault: OS</li>
+</ul>
+<p><code>malloc</code> 并访存的的全过程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241113163444195.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113163444195" src="../assets/note/image-20241113163444195.png" /></a></p>
+<ol>
+<li>​    <code>malloc</code> 调用 <code>brk()</code> (break) 在堆中申请内存</li>
+<li><code>brk()</code> 将程序的 <code>Size</code> 提高，操作系统返回给程序申请成功，但并没有真正映射物理帧</li>
+<li>程序访问到新申请的内存，MMU 触发 Page Fault，进入 Kernel</li>
+<li>Kernel 发现确实申请过这块内存，所以分配一块物理帧，并维护页表</li>
+</ol>
+<p>Kernel 本身申请的内存:</p>
+<ul>
+<li><code>kmalloc</code>: 物理连续，虚拟连续</li>
+<li><code>vmalloc</code>: 物理不连续，虚拟连续</li>
+<li>kernel 申请的内存立即分配</li>
+</ul>
+<p>Kernel 对 Page Fault 的处理</p>
+<ul>
+<li><code>vm_area_struct</code> “账本”: 存储 vm_area 的开头、结尾和权限</li>
+<li>如果在范围内，且权限正确: 分配物理内存</li>
+<li>不在范围内或权限不正确: Segmentation Fault</li>
+<li>使用平衡树（红黑树）快速找到某个地址处于哪个 vm_area</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241113164348240.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113164348240" src="../assets/note/image-20241113164348240.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241113165310463.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113165310463" src="../assets/note/image-20241113165310463.png" /></a></p>
+<p>​   MMU 走页表发现 invalid，触发 Page Fault, kernel 分配并更新页表，回到原来的指令再执行一次，MMU 再一次发现 TLB Miss，走页表，找到物理地址，成功执行，把页表项拿到 TLB 里。</p>
+<p>​   过程: （读取 file-backed 的 data, text 段）</p>
+<p><a class="glightbox" href="../assets/note/image-20241113165448443.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113165448443" src="../assets/note/image-20241113165448443.png" /></a></p>
+<ul>
+<li>4 最费时间: 所以这个时候进程会被放到 disk 的 wait_queue 上，然后再调度</li>
+<li>disk 加载完触发 interrupt，操作系统会把进程从 wait 改成 ready</li>
+<li>恢复后跑的指令还是触发 page fault 的那条</li>
+<li>如果是其他非 file-backed 段，可以省略 3 , 4 两步</li>
+<li>有需要读磁盘操作的 Page Fault 叫做 Major Page Fault</li>
+<li>否则称作 Minor Page Fault</li>
+</ul>
+<p>Segment 的粒度太大了，不容易实现 Demand ”Segmentation“</p>
+<p>优点:</p>
+<div class="language-text highlight"><pre><span></span><code>1. 时间换空间
+1. 可以 Partially load 一个程序
+</code></pre></div>
+<ul>
+<li>Lazy swapper</li>
+<li>Pre-paging: 利用空间局部性，提前加载附近的内存 （空间换时间，减少了 Major Page Fault）</li>
+<li>如果一条指令能同时访问多个 Page: Multiple Page Faults</li>
+</ul>
+<p>Page Fault: 如何找到 Free Frame</p>
+<p>操作系统维护一个 free-frame list</p>
+<p>Worst Case 下的 Demand Paging 全过程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241113172221322.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113172221322" src="../assets/note/image-20241113172221322.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241113172226339.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113172226339" src="../assets/note/image-20241113172226339.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241113172514615.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113172514615" src="../assets/note/image-20241113172514615.png" /></a></p>
+<p>绿线: Thread 0；红线: Thread 1</p>
+<p>EAT 计算:</p>
+<p><a class="glightbox" href="../assets/note/image-20241113173410210.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113173410210" src="../assets/note/image-20241113173410210.png" /></a></p>
+<p>如果要 PF 的 overhead 小于 10%，要求 40 万次访存才能出一次 PF，真实系统中远小于 10%</p>
+<ul>
+<li>
+<p>有 Locality 和 Page Cache （文件提前缓存到内存里）两种机制</p>
+</li>
+<li>
+<p>Copy-on-write</p>
+</li>
+<li>
+<p>More efficient fork (copy-on-write)</p>
+</li>
+<li>vfork syscall</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241113174439380.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113174439380" src="../assets/note/image-20241113174439380.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241113174444884.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113174444884" src="../assets/note/image-20241113174444884.png" /></a></p>
+<p>Ditry CoW 提权漏洞</p>
+<p>Page Replacement: 如果内存被占用光了，如何替换？</p>
+<ol>
+<li>如何替换</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241113174923673.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113174923673" src="../assets/note/image-20241113174923673.png" /></a></p>
+<ol>
+<li>选取机制</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241113175006320.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241113175006320" src="../assets/note/image-20241113175006320.png" /></a></p>
+<p>Page Replacement</p>
+<p>Algorithms:</p>
+<ul>
+<li>FIFO 对应 Scheduling 的 FCFS</li>
+<li>OPT 对应 Scheduling 的 Shortest Job First / Shortest Remaining Time First</li>
+<li>LRU</li>
+<li>Least Frequent Use / Most Frequent Use</li>
+</ul>
+<p>必考: 给一串 Page Number 和算法，计算 Page Fault 数量</p>
+<p>调度: 甘特图，Average Waiting Time, Average Turnaround Time</p>
+<p>Thrashing: Locality 不高 Page 被频繁换进换出，CPU 使用率不高</p>
+<p>Alan Ott's Slides:</p>
+<p>Vitrual Memory</p>
+<p>Advantages</p>
+<ul>
+<li>每个程序有不同的内存映射（有自己的页表）</li>
+<li>天然的内存保护</li>
+<li>Kernel RAM 对用户态进程是不可见的</li>
+<li>硬件可以通过 MMIO 映射到内存地址空间</li>
+</ul>
+<p>两个地址空间</p>
+<ul>
+<li>物理地址空间</li>
+<li>Hardware: DMA, peripherals</li>
+<li>虚拟内存空间</li>
+<li>Load/Store instructions (RISC)</li>
+<li>push pop... (CISC)</li>
+</ul>
+<p>MMU: 负责地址转换，一般在 CPU 内部，和 RAM Controller 不同</p>
+<p>Lazy Allocation: 内存分配发生在 access 时</p>
+<p>虚拟地址本分成两部分，低地址给用户，高地址给内核</p>
+<p>32-bit 中，在 0xC0000000 分开 (内核 1G, 用户 3G，在 CONFIG_PAGE_OFFSET)</p>
+<p><code>/proc/self/map</code> 看起来虽然是 f 开头，但前面还有 4 个 0，依然是 User Space 的</p>
+<p>用户态进程 context switch: 切换 mm_struct （以及里面的 PGD）</p>
+<p><code>switch_mm</code></p>
+<p><a class="glightbox" href="../assets/note/image-20241126144021645.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241126144021645" src="../assets/note/image-20241126144021645.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241126144036846.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241126144036846" src="../assets/note/image-20241126144036846.png" /></a></p>
+<p>64-bit 内核空间和用户空间大小区分:</p>
+<p>48 位虚拟地址: </p>
+<p>0xFFFF0000_00000000-0xFFFFFFFF_FFFFFFFF 内核空间: 256 TiB (2^48 - 2^64)</p>
+<p>0x00000000_00000000-0x0000FFFF_FFFFFFFF用户空间: 256 TiB</p>
+<p>中间的无映射</p>
+<p>39 位虚拟地址:</p>
+<p>前25位全0: 用户，全1: 内核，各 512 GiB</p>
+<p>用低39位</p>
+<p>Kernel Logic Address</p>
+<p>如果物理内存比较小</p>
+<p>直接取低 896 MiB = 1 GiB - 128 MiB，Linear Map 映射到 Kernel Logic Address （线性映射）</p>
+<p>对于更大内存的物理设备，取高 128 MiB 不停地重复利用，既可以给内核用，也可以给用户进程用</p>
+<p>可以保证更大的内存可以映射到内核空间（利用这 128 MiB 的空闲）</p>
+<p>low map, high map, fixed map....</p>
+<p>从物理地址找虚拟地址: <code>rmap</code> reverse mapping</p>
+<p>Mass-Storage Strucutre</p>
+<p><a class="glightbox" href="../assets/note/image-20241127171957841.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241127171957841" src="../assets/note/image-20241127171957841.png" /></a></p>
+<p>Hard Disk</p>
+<ul>
+<li>Position time = seek time + rotational latency</li>
+<li>Positioning time: Random-Access time</li>
+</ul>
+<p>Disk Scheduling: 减少 Access Time</p>
+<p>Algorithms:</p>
+<ul>
+<li>FCFS</li>
+<li>SSTF (Shortest Seek Time First)</li>
+<li>SCAN, C-SCAM</li>
+<li>LOOK, C-LOOK</li>
+</ul>
+<p>给 Cylinder Number, 计算</p>
+<p>FCFS:</p>
+<p><a class="glightbox" href="../assets/note/image-20241127173304449.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241127173304449" src="../assets/note/image-20241127173304449.png" /></a></p>
+<p>移动距离: 640</p>
+<p>SSTF: 每次去最近的 Cylinder，<strong>不一定最优</strong>，有可能 Starvation</p>
+<p>SCAN: 电梯算法，从一头到另一头，再从另一头回来，236</p>
+<p><a class="glightbox" href="../assets/note/image-20241127173739123.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241127173739123" src="../assets/note/image-20241127173739123.png" /></a></p>
+<p>C-SCAN: 从小往大扫，到头就归0，每次都从一个方向扫</p>
+<p>LOOK / C-LOOK: 不用走到头，走到最大 / 最小即可</p>
+<p>SSD 没有磁头，FCFS 即可</p>
+<p>IO 比较多: </p>
+<p>IO 不多: </p>
+<p>考点:</p>
+<p>CPU Scheduling 计算 average waiting 和 average turnarount</p>
+<p>Page Replacement 计算 Page Fault 数量</p>
+<p>磁盘调度计算移动距离</p>
+<p>Linux:</p>
+<p>ramdisk 负责在任何文件系统挂载之前，提供一个基本的文件系统</p>
+<p>NAS, NFS, iSCSI, infiniband</p>
+<p>RAID: Redundant array of indexpensive / independent disks</p>
+<ul>
+<li>Data Mirroring: 数据备份</li>
+<li>Data Striping: 把数据切分到多个磁盘上</li>
+<li>ECC</li>
+</ul>
+<p>RAID 0: 只分散，不冗余</p>
+<p>RAID 1: 只冗余（1:1 镜像）</p>
+<p>RAID 2： bit-level 分散到所有磁盘，用 Hamming Code 纠错</p>
+<p><a class="glightbox" href="../assets/note/image-20241203143646933.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203143646933" src="../assets/note/image-20241203143646933.png" /></a></p>
+<p>4 bit data + 3 bit parity</p>
+<p>缺点: 按比特分散，粒度太小，很难拼起来，且写一个字节就要启动 7 块磁盘</p>
+<p>RAID 3:</p>
+<p>Bit-interleaved parity: 以 bit 为粒度的 RAID 5</p>
+<p>RAID 4:</p>
+<p><strong>Block</strong> 为粒度的 RAID 2</p>
+<p>RAID 5:</p>
+<p>Block-interleaved parity</p>
+<p><a class="glightbox" href="../assets/note/image-20241203144040997.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203144040997" src="../assets/note/image-20241203144040997.png" /></a></p>
+<p>RAID can only detect and recover from disk failures</p>
+<p>ZFS</p>
+<p><a class="glightbox" href="../assets/note/image-20241203144447235.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203144447235" src="../assets/note/image-20241203144447235.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241203144545254.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203144545254" src="../assets/note/image-20241203144545254.png" /></a></p>
+<p>I/O System</p>
+<p>Polling: CPU 主动询问</p>
+<p>Interrupt: CPU 被动</p>
+<p>CISC: 比如 x86 的 in, out, ins, outs</p>
+<p>RISC: mmio: memory mapped I/O</p>
+<p>Polling 会造成 busy waiting (spin lock, mutex)</p>
+<p>Spin lock - Semaphore: 线程 sleep 丢到 waiting queue 然后 reschedule</p>
+<p>Intrrupt:</p>
+<ul>
+<li>T1 访问 Device，随后 sleep 并把 task_struct 挂到 Device 的 waiting queue 上，此时 context-switch 到其他线程继续运行</li>
+<li>Device 准备好后发 interrupt，data 准备好，把 T1 放到 ready queue</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241203151737494.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203151737494" src="../assets/note/image-20241203151737494.png" /></a></p>
+<p>Polling vs Interrupt: </p>
+<p>Interrupt vector:</p>
+<p>ARM64 的 system call</p>
+<p>调用 system call 的指令: svc, hvc, smc</p>
+<p>对应的 interrupt: el0_sync: Synchronous 64-bit el0 (User Mode), 5.14 开始就没有这个标号了</p>
+<p><a class="glightbox" href="../assets/note/image-20241203152613366.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203152613366" src="../assets/note/image-20241203152613366.png" /></a></p>
+<p>RISC-V: do_trap_ecall_u</p>
+<p>interrupt 也有 core affinity</p>
+<p>DMA: direct memory access</p>
+<p><a class="glightbox" href="../assets/note/image-20241203153020379.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203153020379" src="../assets/note/image-20241203153020379.png" /></a></p>
+<p>程序: 通过 ioctl 系统调用读取文件，ioctl 对 driver 发送指令</p>
+<p>driver: 驱动，跑在 CPU 上</p>
+<p>controller: 在设备</p>
+<p>DMA: xPU 上的 kernel 能访问 CPU 的共享内存</p>
+<p>I/O 设备的种类:</p>
+<p><a class="glightbox" href="../assets/note/image-20241203154354156.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203154354156" src="../assets/note/image-20241203154354156.png" /></a></p>
+<p>I/O 设备的 waiting queue:</p>
+<p><a class="glightbox" href="../assets/note/image-20241203154647255.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241203154647255" src="../assets/note/image-20241203154647255.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241204162307790.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204162307790" src="../assets/note/image-20241204162307790.png" /></a></p>
+<p>fd_array 的 index 就是 file_descriptor</p>
+<p>所有东西都抽象成文件，方便使用（读写文件的方式都解决了）</p>
+<p>I/O 请求的全流程:</p>
+<p><a class="glightbox" href="../assets/note/image-20241204162601946.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204162601946" src="../assets/note/image-20241204162601946.png" /></a></p>
+<p>提升性能的方法</p>
+<ol>
+<li>smart controller</li>
+<li>DMA</li>
+</ol>
+<p>新的设备到来的时候用 register 告诉操作系统</p>
+<p><a class="glightbox" href="../assets/note/image-20241204163136421.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204163136421" src="../assets/note/image-20241204163136421.png" /></a></p>
+<p><strong>文件系统</strong></p>
+<p>CPU is abstracted to Process</p>
+<p>Memory is absctracted to Address Space</p>
+<p>Storage is abstracted to Filesystem</p>
+<p>文件: Contiguous logical space for storing information</p>
+<p>File Operations: Create, Open, Read/Write, Close</p>
+<p>Directory Structure: single level, two level, acyclic graph, graph, tree ...</p>
+<p>On-disk: 掉电仍然在</p>
+<ul>
+<li>Boot control block</li>
+<li>Volume control block</li>
+<li>Directory</li>
+<li>Per-file File Control Block</li>
+</ul>
+<p>Im-memory structures: 掉电就没，但是可以从 on-disk 的信息中构造出来</p>
+<ul>
+<li>mount table</li>
+<li>directory cache</li>
+<li>global open-file table, per-process open-file table</li>
+</ul>
+<p><strong>File Control Block</strong></p>
+<p>进程元信息 -&gt; PCB: task_struct, 文件元信息 -&gt; FCB: inode</p>
+<p>文件元信息: 名字，大小，权限，时间戳</p>
+<p>相关指令: <code>stat</code> (statistics), <code>file</code></p>
+<p><a class="glightbox" href="../assets/note/image-20241204165311865.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204165311865" src="../assets/note/image-20241204165311865.png" /></a></p>
+<p>Change: 元信息修改，Modify: 文件内容修改</p>
+<p>文件的锁: Mandatory Lock &amp; Advisory Lock</p>
+<p>文件访问: 顺序 sequential access 和随机 direct access / random access</p>
+<p><a class="glightbox" href="../assets/note/image-20241210142527137.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210142527137" src="../assets/note/image-20241210142527137.png" /></a></p>
+<p>磁盘 - Partition / Volume - Directory</p>
+<p>Linux 里目录就是一个特殊的文件</p>
+<p>目录结构: </p>
+<ul>
+<li>One level, two level</li>
+<li>Tree</li>
+<li>Acyclic-Graph (无环图): 存在多个文件指向一个文件的内容</li>
+<li>General Graph Directory 有环的</li>
+</ul>
+<p>链接:</p>
+<ul>
+<li>Hardlink</li>
+<li>引用计数</li>
+<li>Softlink</li>
+</ul>
+<p>Mount: 告诉操作系统有一个新的文件系统来，挂载到一个文件目录下，于是里面的文件就有了路径</p>
+<p><strong>nosuid</strong> - Block the operation of suid, and sgid bits.</p>
+<p>suid: set uid，用文件拥有者的权限执行</p>
+<p>ACL: Access Control List</p>
+<p>文件系统:</p>
+<p>Early - Hierarchical - NFS - Journaling File System - Modern File System</p>
+<p>文件系统的层级: 六层模型</p>
+<p><a class="glightbox" href="../assets/note/image-20241204174508722.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204174508722" src="../assets/note/image-20241204174508722.png" /></a></p>
+<p>文件系统的数据结构: On-disk, In-memory</p>
+<p>文件的操作:</p>
+<ol>
+<li>Open</li>
+</ol>
+<p>先去 Global Open-file Table (系统级别) 找是否有记录，</p>
+<p>如果有记录（说明有其他进程打开过这个文件），就可以直接拿到所有的信息，</p>
+<p>此时直接在 Per-process Open-file Table 添加一项指向 Global Open-file Table</p>
+<p><strong>这里的 index 就是文件描述符 File Descriptor</strong></p>
+<p><a class="glightbox" href="../assets/note/image-20241210142950227.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210142950227" src="../assets/note/image-20241210142950227.png" /></a></p>
+<p>如果没有记录，就要走 directory structure，拿到文件的 inode (FCB)，就能找到文件了</p>
+<blockquote>
+<p>inode 是内存里面的结构</p>
+</blockquote>
+<p>然后在 Global Open-file table 添加一项</p>
+<p><a class="glightbox" href="../assets/note/image-20241210143035662.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210143035662" src="../assets/note/image-20241210143035662.png" /></a></p>
+<p>如果 Open Count 变成 0，就可以将其从 Global Open-file Table 移除了</p>
+<p>随后相同的 File Descriptor 可以被重用</p>
+<p>Inode number is only unique within a file system</p>
+<p>VFS: 操作系统如何处理不同的文件系统</p>
+<p>VFS separates FS <strong>generic</strong> operations from implementation details</p>
+<p>不同的文件系统: FAT32, Btrfs, zfs, ext4, NTFS, APFS</p>
+<blockquote>
+<p>All problems in computer science can be solved by another level of indirection, except for the problem of too many layers of indirection. —— David Wheeler</p>
+</blockquote>
+<p>再加一层抽象: Virtual Filesystem 为操作系统提供统一的接口，由不同的文件系统来提供实现</p>
+<p><a class="glightbox" href="../assets/note/image-20241210143752766.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210143752766" src="../assets/note/image-20241210143752766.png" /></a></p>
+<p>VFS 有四种 object:</p>
+<ul>
+<li>superblock</li>
+<li>inode</li>
+<li>dentry</li>
+<li>file</li>
+</ul>
+<p>Linux 中的 VFS，每个操作都是函数指针，指向具体的实现</p>
+<p><a class="glightbox" href="../assets/note/image-20241210144006542.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210144006542" src="../assets/note/image-20241210144006542.png" /></a></p>
+<p>调用 write:</p>
+<p><a class="glightbox" href="../assets/note/image-20241210144122845.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210144122845" src="../assets/note/image-20241210144122845.png" /></a></p>
+<p>在文件被加载进来的时候，f_op 就指向了对应文件系统的实现</p>
+<p>如 ext4_file_operations, nfs_file_operations</p>
+<p><a class="glightbox" href="../assets/note/image-20241210144645743.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210144645743" src="../assets/note/image-20241210144645743.png" /></a></p>
+<p>Directory Implementation:</p>
+<p>Linux 上 directory = file, Windows 上 directory != file</p>
+<p>Directory 是特殊的文件，它的 data block 内存的是 directory entry (目录项), 比如 ext2_dir_entry</p>
+<p><a class="glightbox" href="../assets/note/image-20241210145129817.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210145129817" src="../assets/note/image-20241210145129817.png" /></a></p>
+<p>为什么需要 <code>rec_len</code>? 用空间换时间，便于查找时候的跳转</p>
+<p>dentry 结构体要求 4 byte 对齐，可以用来 reuse</p>
+<p>找对应 dentry 的代码:</p>
+<p><a class="glightbox" href="../assets/note/image-20241211174111181.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211174111181" src="../assets/note/image-20241211174111181.png" /></a></p>
+<p>比如 /home/stu/ 下面有四个文件 a, bb, ccc, text</p>
+<ul>
+<li>4 个目录项</li>
+<li>格式就是 4 个 dir_entry</li>
+</ul>
+<p>找一个文件，要从根目录 / 的 inode 开始找 home，以此类推</p>
+<p>找文件的方式:</p>
+<p>Linear List</p>
+<p>Hash Table: 适合小文件多的情形</p>
+<p>创建文件的过程:</p>
+<p>创建 inode (FCB), 然后在父目录里写一个目录项</p>
+<p>Disk Block Allocation:</p>
+<p>Contiguous, Linked, Indexed</p>
+<p>Contiguous Allocation</p>
+<p>连续分配的不幸和内存是一样的，文件大小很难变大，这是数组的问题</p>
+<p>为了解决数组的问题，就能想到用链表</p>
+<p>Linked Allocation <strong>FAT 文件系统使用</strong></p>
+<p>每个 Data Block 有一个指针指向下一个 Data Block</p>
+<p>缺点: 慢，Pointer 占空间，浪费了空间，而且如果 Pointer 断了（比如坏块），后面的内容全丢了</p>
+<p>Index Allocation</p>
+<p>一段连续的空间，存一个数组，每项存储对应 data block 的 index</p>
+<p>inode 的 i 就是 index 的意思</p>
+<p>但是超大文件一个 block 都放不下 index，就有了多级</p>
+<p>Linked Free Space: 把空闲的空间用链表连起来</p>
+<p>优点: O(1), 不占空间</p>
+<p>缺点: 链表可能断，且难以找到连续的空间</p>
+<p>Grouping and Counting</p>
+<p>指针指向起始的 block + 空闲长度，然后指向下一个 起始 block + 空闲长度</p>
+<p>文件系统性能的优化</p>
+<ul>
+<li>Cache</li>
+<li>Asynchrnous write 写到 cache，异步写入</li>
+<li>Free-behind and Read-ahead</li>
+<li>读有的时候会比写慢，为什么？</li>
+<li>第一次读: 一级一级去查 inode, dentry 很慢</li>
+</ul>
+<p>Page Cache: 先把文件读到内存里，如果用到了，那就很快，如果没用到，那也不影响（Page Cache 的优先级是最低的，内存不够会优先清除掉）</p>
+<p>Log Structured File Systems</p>
+<p>增强系统稳定性</p>
+<p>Directory: inode 到 symbolic name 的映射</p>
+<p>创建文件的系统调用:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>int open(const char *pathname, int flags, ...
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>                  /* mode_t mode */ );
+</span></code></pre></div>
+<p>文件描述符返回的是 per process 的 open file table 的 index</p>
+<p>但是有三个特殊的:</p>
+<ul>
+<li>0: stdin </li>
+<li>1: stdout</li>
+<li>2: stderr</li>
+</ul>
+<p>用户能拿到的最小的 fd 是从 3 开始的</p>
+<p><a class="glightbox" href="../assets/note/image-20241211163700010.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211163700010" src="../assets/note/image-20241211163700010.png" /></a></p>
+<p>Blocks 是底层的 block 数量，512 字节为单位，所以 4096 / 512 = 8</p>
+<p>删除文件</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>strace rm test.cpp
+</span></code></pre></div>
+<p><a class="glightbox" href="../assets/note/image-20241211163810259.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211163810259" src="../assets/note/image-20241211163810259.png" /></a></p>
+<p>系统调用时 unlinkat</p>
+<p>unlinkat 只是删除了目录项</p>
+<ul>
+<li>Hard Link: 硬链接是一个目录项 dentry</li>
+<li><code>.</code> 是指向当前目录的硬链接</li>
+<li><code>..</code> 是指向父目录的硬链接</li>
+<li>
+<p>Soft link: 软链接是一个文件，文件存储的是被链接的文件的 path</p>
+</li>
+<li>
+<p>两个硬链接指向同一个文件，它的 inode 一样吗?</p>
+</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241211164255352.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211164255352" src="../assets/note/image-20241211164255352.png" /></a></p>
+<p>只是放了一个目录项，并没有生成新的 inode</p>
+<p>硬链接会增加 Link 数量，可以用 <code>ll</code> 看到，删除一个文件实际上是 unlink，只要 link 数还没变成 0，这个文件就还在</p>
+<ol>
+<li>两个软链接指向同一个文件，它的 inode 一样吗?clear</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241211164341279.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211164341279" src="../assets/note/image-20241211164341279.png" /></a></p>
+<p>inode 不一样，软链接创建了新的文件</p>
+<p>inode 在硬盘和内存都有:</p>
+<p>内存中:</p>
+<ul>
+<li>ext2_inode_info 包含了一个 vfs_inode</li>
+</ul>
+<p>硬盘里:</p>
+<ul>
+<li>ext2_inode</li>
+</ul>
+<p>硬盘上的:</p>
+<p><strong><a class="glightbox" href="../assets/note/image-20241211171016510.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211171016510" src="../assets/note/image-20241211171016510.png" /></a></strong></p>
+<p>内存中的:</p>
+<p><a class="glightbox" href="../assets/note/image-20241211171105209.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211171105209" src="../assets/note/image-20241211171105209.png" /></a></p>
+<p>文件分配需要分配 inode, data block, bitmap, super block 的空间</p>
+<p>如果存了很多小文件，inode 用光了，即使硬盘还有空间，也不能存新文件了</p>
+<p>一个 inode 占 256 byte，一个 block 4 KiB 可以放 16 个 inode,</p>
+<p>5 个 block 可以放 80 个 inode，也就是可以存 80 个目录或文件</p>
+<p><a class="glightbox" href="../assets/note/image-20241211171406752.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211171406752" src="../assets/note/image-20241211171406752.png" /></a></p>
+<p>要找第 32 个 inode，可以计算偏移量，比如图片中的是 20 KiB的位置</p>
+<p>读取一个文件发生的全部操作:</p>
+<p><a class="glightbox" href="../assets/note/image-20241211171728997.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211171728997" src="../assets/note/image-20241211171728997.png" /></a></p>
+<p>open(bar) 的过程:</p>
+<ol>
+<li>读 / 的 inode，找 / 的 data block 的 id</li>
+<li>读 / 目录的 data block，也就是 directory entry，找 foo</li>
+<li>读 foo 的 inode，找 foo 的 data block 的 id</li>
+<li>读 /foo 的 dat block, 找 bar</li>
+<li>读 /foo/bar 的 inode，放到内存里的 Open File Table，返回一个 index 作为 file descriptor</li>
+</ol>
+<p>read() 的过程:</p>
+<ol>
+<li>读 /foo/bar 的 inode, 找它的 data block id</li>
+<li>读 /foo/bar 的 data block, 内容返回给用户</li>
+<li>写 inode，更新 access time （这一步造成了 over head）</li>
+</ol>
+<p>写 /foo/bar</p>
+<p><a class="glightbox" href="../assets/note/image-20241211172717181.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241211172717181" src="../assets/note/image-20241211172717181.png" /></a></p>
+<p>create 的过程:</p>
+<ul>
+<li>前面四个 read 是找到 foo 的 dir entry 发现没有该文件，要创建 dir entry</li>
+<li>读取 /foo 的 inode 的 bitmap，申请一块空间，作为 bar 的 inode，修改 bitmap</li>
+<li>给 /foo 的 dir entry 添加一项，记录 bar 的 inode 号</li>
+<li>初始化 bar 的 inode，同时这个 inode 放到内存里 Open File Table，返回 fd</li>
+<li>写 foo 的 inode 修改 modification time, access time 等</li>
+</ul>
+<p>write:</p>
+<ul>
+<li>
+<p>读 bar 的 inode, <strong>找到第一个 data block 的位置，发现指向空，需要申请一个 data block</strong></p>
+</li>
+<li>
+<p>读 bitmap, 找一块空闲的 data block，用来存储 bar</p>
+</li>
+<li>修改 bitmap 申请这块空间</li>
+<li>写入 bar 的 data block</li>
+<li>写 bar 的 inode 修改 modification time 和 access time</li>
+</ul>
+<p>Security and Protection</p>
+<p>工业界的问题: KubeCon, Linux Summit, BlackHat</p>
+<p>期末考:</p>
+<p>40道选择题 x1.5 60'</p>
+<p>10道填空题 x1 10'</p>
+<p>3道大题 30': 内存必考（比较难），Synchronization 必考，Scheduling 必考</p>
+<p><a class="glightbox" href="../assets/note/image-20241217153130235.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241217153130235" src="../assets/note/image-20241217153130235.png" /></a></p>
+<p>为了安全，OS 引入的机制:</p>
+<p>CPU - privileged mode</p>
+<p>Memory - partition and paging</p>
+<p>IO - Access Control List</p>
+<p>安全标准:</p>
+<p>TCSEC (美国国防部, 1983)</p>
+<p><a class="glightbox" href="../assets/note/image-20241217153950719.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241217153950719" src="../assets/note/image-20241217153950719.png" /></a></p>
+<p>ITSEC (欧盟, 1991)</p>
+<p>CC: Common Criteria (美国和欧洲)</p>
+<p>GB17859</p>
+<p><a class="glightbox" href="../assets/note/image-20241217154119281.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241217154119281" src="../assets/note/image-20241217154119281.png" /></a></p>
+<p>Threat Model</p>
+<ol>
+<li>Hack Attack: Pure Software</li>
+<li>Shack Attack: Limited Hardware</li>
+<li>Lab Attack: Unlimited Hardware</li>
+</ol>
+<p>SELinux, NSA</p>
+<p>可信基 (TCB, Trusted Computing Base): set of components(hardware, software) which you trust</p>
+<p>输入密码时的 TCB: OS, 登陆的程序，键盘，CPU, ...</p>
+<p>Application -&gt;Operating System -&gt; BIOS -&gt; Hardware / Architecture</p>
+<p>上层需要信任下面所有层次</p>
+<p>Attack surface 可攻击面</p>
+<p>Defense in-depeth 纵深防御</p>
+<p><a class="glightbox" href="../assets/note/image-20241224143114927.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224143114927" src="../assets/note/image-20241224143114927.png" /></a></p>
+<p>例如: 浏览网页的纵深防御:</p>
+<p><a class="glightbox" href="../assets/note/image-20241224143330416.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224143330416" src="../assets/note/image-20241224143330416.png" /></a></p>
+<p>Protection</p>
+<p>Access Control: 根据访问实体的身份限制其访问对象</p>
+<ul>
+<li>
+<p>Authentication 证明你是你</p>
+</li>
+<li>
+<p>根据 preshared knowlege: 你知道什么（密码），你有什么（usb-key），你是什么（指纹）</p>
+</li>
+<li>
+<p>操作系统会给你创建一个 user struct, 用来做标识 identifier</p>
+<ul>
+<li>Unix: 32 bit number stored in cred structure</li>
+<li>Windows NT: 27 byte number: access token</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241224144635239.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224144635239" src="../assets/note/image-20241224144635239.png" /></a></p>
+</li>
+<li>
+<p>权限矩阵，用户和文件太多就很容易撑爆</p>
+</li>
+<li>
+<p>RBAC: Role-Based Access Control: 把用户分成不同的角色</p>
+</li>
+<li>
+<p>Linux 的密码存储在 /etc/shadow 文件中:</p>
+</li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241224145214973.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224145214973" src="../assets/note/image-20241224145214973.png" /></a></p>
+</li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241224145823620.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224145823620" src="../assets/note/image-20241224145823620.png" /></a></p>
+</li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241224145853426.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224145853426" src="../assets/note/image-20241224145853426.png" /></a></p>
+</li>
+<li>
+<p>安卓，iOS, macOS 等密码存储在 TEE 中</p>
+</li>
+<li>
+<p>为了解决 setuid 的粒度太粗的问题，Linux 引入了 capability</p>
+<ul>
+<li>将 root 权限拆分</li>
+<li>目前有 0-40 共 41 个 capability</li>
+<li>https://elixir.bootlin.com/linux/v6.12.6/source/include/uapi/linux/capability.h#L114</li>
+</ul>
+</li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241224151437986.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224151437986" src="../assets/note/image-20241224151437986.png" /></a></p>
+</li>
+<li>
+<p>Reference Monitor:</p>
+</li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241224152054684.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224152054684" src="../assets/note/image-20241224152054684.png" /></a></p>
+</li>
+<li>
+<p>最大的要求是 reference monitor 不可被绕过 non-bypassable</p>
+</li>
+<li>
+<p><a class="glightbox" href="../assets/note/image-20241224152744971.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224152744971" src="../assets/note/image-20241224152744971.png" /></a></p>
+</li>
+</ul>
+<p>防护: 页表取消 X 不可执行</p>
+<p><a class="glightbox" href="../assets/note/image-20241224153019093.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224153019093" src="../assets/note/image-20241224153019093.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241224153120002.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224153120002" src="../assets/note/image-20241224153120002.png" /></a></p>
+<ul>
+<li></li>
+<li>
+<p>Authorization 授权</p>
+</li>
+<li>
+<p>Auditing: 审计，记录你做了什么</p>
+</li>
+<li>
+<p>Reference Monitor</p>
+</li>
+</ul>
+<p>期末复习</p>
+<p>3 张 A4，可以打印</p>
+<p>英语出卷，可以用中文作答</p>
+<p>尽量写 16进制，尽量用 KiB, MiB, GiB</p>
+<p>Computer Architecture</p>
+<p>三大件: CPU, Memory, I/O System</p>
+<p>Data type 不会存到内存里，内存里就是 raw bits，意义取决于你怎么解释它</p>
+<p>OS: An Overview</p>
+<p>OS 定义: 资源的 abstractor and allocator</p>
+<p>OS 的工作: 由事件驱动，等待 event: interrupt 和 exception</p>
+<p>OS 的原则: lean &amp; mean</p>
+<p>硬件添加 Mode Bit 区分了特权模式，指令分成了 privileged 和 unprivileged</p>
+<p>狭义的操作系统: Kernel Mode 里面的内核</p>
+<p>广义的操作系统: 包含用户态的一些服务</p>
+<p>重点: OS Events</p>
+<p>syscall: 内核为用户提供的接口，让用户能够使用内核提供的特权功能</p>
+<p>timer: 时钟中断让操作系统有了时间的概念</p>
+<p>OS 提供的服务:</p>
+<ul>
+<li><strong>进程管理</strong></li>
+<li><strong>内存管理</strong></li>
+<li>存储管理</li>
+<li>I/O 管理</li>
+</ul>
+<p>OS Structure</p>
+<p>Linux 的 structure: monolithic 宏内核</p>
+<p>重点部分: Linkers and Loaders, System Call</p>
+<p>Syscall: syscall number: syscall table 的 index</p>
+<p><a class="glightbox" href="../assets/note/image-20241225165638522.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225165638522" src="../assets/note/image-20241225165638522.png" /></a></p>
+<p>44944a 的 0x1 是 syscall number，而不是 stdout 的文件描述符</p>
+<p><a class="glightbox" href="../assets/note/image-20241225165552715.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225165552715" src="../assets/note/image-20241225165552715.png" /></a></p>
+<p>Linker and Loader</p>
+<p><a class="glightbox" href="../assets/note/image-20241225165806437.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225165806437" src="../assets/note/image-20241225165806437.png" /></a></p>
+<p>static link, dynamic link </p>
+<p><a class="glightbox" href="../assets/note/image-20241225170007349.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225170007349" src="../assets/note/image-20241225170007349.png" /></a></p>
+<p>红框的每个段是 elf 的哪部分，为什么上面是动态链接的, loader 干了什么</p>
+<p>bss: 未初始化的全局变量，在 elf 文件中大小为 0</p>
+<p><a class="glightbox" href="../assets/note/image-20241225170659136.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225170659136" src="../assets/note/image-20241225170659136.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241225170900096.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225170900096" src="../assets/note/image-20241225170900096.png" /></a></p>
+<p>static linked 回到用户态最先运行的是 _start</p>
+<p>dynamic linked 程序回到用户态最先运行的是 loader</p>
+<p><a class="glightbox" href="../assets/note/image-20241225170958988.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225170958988" src="../assets/note/image-20241225170958988.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241225171009714.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225171009714" src="../assets/note/image-20241225171009714.png" /></a></p>
+<p>Policy 和 Mechanism 要分开</p>
+<p><strong>进程</strong></p>
+<p>进程: resource allocation &amp; protection unit 资源分配和保护单元</p>
+<p>线程: execution unit 执行单元</p>
+<p>神图:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225171331003.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225171331003" src="../assets/note/image-20241225171331003.png" /></a></p>
+<p>进程的内容:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225171436891.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225171436891" src="../assets/note/image-20241225171436891.png" /></a></p>
+<p>来自 elf 的: code, data section</p>
+<p>PCB: Process Control Block</p>
+<p><a class="glightbox" href="../assets/note/image-20241225171541551.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225171541551" src="../assets/note/image-20241225171541551.png" /></a></p>
+<p>每个状态:</p>
+<ul>
+<li>new: fork, exec syscall</li>
+<li>terminated: wait(), zombie, orphan</li>
+<li>ready, running, waiting: context-switch, schedule</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241225171629592.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225171629592" src="../assets/note/image-20241225171629592.png" /></a></p>
+<p>fork:</p>
+<ul>
+<li>
+<p>能返回两个值的原因: 复制了一份 user space context, 修改了 pt_regs</p>
+</li>
+<li>
+<p>fork 之后的进程不会立即运行，进入 ready queue</p>
+</li>
+<li>
+<p>这里代码每一行都很重要:</p>
+</li>
+</ul>
+<p><a class="glightbox" href="../assets/note/image-20241225172940429.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225172940429" src="../assets/note/image-20241225172940429.png" /></a></p>
+<p>exec 后面的指令不会再运行，elf 都被刷掉了</p>
+<p>wait: 如果 parent 没有用 wait 回收 task_struct, 那么就会变成 zombie</p>
+<p>orphan: 父进程挂了</p>
+<p>signal: SIGINT, SIGKILL</p>
+<p><a class="glightbox" href="../assets/note/image-20241225172309771.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225172309771" src="../assets/note/image-20241225172309771.png" /></a></p>
+<p>Context Switch:</p>
+<p>两个重要的: 换 sp, 换 pc (修改 ra, ret)</p>
+<p>pt_regs 和 task_struct 的位置</p>
+<p><a class="glightbox" href="../assets/note/image-20241225172551536.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225172551536" src="../assets/note/image-20241225172551536.png" /></a></p>
+<p>用户态的两个线程 A -&gt; B 的切换必须进入内核态进行，因为他决定了 CPU 的使用权归谁，必须由操作系统来管理</p>
+<p><a class="glightbox" href="../assets/note/image-20241225172722013.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225172722013" src="../assets/note/image-20241225172722013.png" /></a></p>
+<p>用户态 context 存在了哪:</p>
+<p>内核态 context 存在了哪:</p>
+<p>Scheduling 算法:</p>
+<p>要求会画甘特图，Average waiting, Average turnaround time</p>
+<p>有多个 start 怎么算</p>
+<ul>
+<li>First come first serve</li>
+<li>Shortest Job First: 最优解，但是只能离线 (两个版本 preemptive, non-preemptive)</li>
+<li>Round Robin</li>
+<li>Priority</li>
+<li>MQ, Multi level feedback queue</li>
+</ul>
+<p>IPC: 考点不多</p>
+<p>重点: Message Passing, Shared Memory</p>
+<p>Thread:</p>
+<p>线程: execution unit 执行单元</p>
+<p>共享和不共享的内容:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225173855949.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225173855949" src="../assets/note/image-20241225173855949.png" /></a></p>
+<p>神图:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225173807402.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225173807402" src="../assets/note/image-20241225173807402.png" /></a></p>
+<p>神图2:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225173912763.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225173912763" src="../assets/note/image-20241225173912763.png" /></a></p>
+<p>优点: 创建和上下文切换都轻量，天然资源共享，responsiveness, scalability 高</p>
+<p>缺点: 隔离差</p>
+<p>用户线程和内核线程映射:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225174034035.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225174034035" src="../assets/note/image-20241225174034035.png" /></a></p>
+<p>最简单，但是 overhead 实际上会大一些，每个线程都要分配 task_struct 内核栈</p>
+<p>Synchronization:</p>
+<ul>
+<li>Peterson 不现实但是简单</li>
+</ul>
+<p>解决 data race 需要满足下面三个条件 <strong>重要</strong></p>
+<ul>
+<li>Mutual Exclusion: 互斥访问</li>
+<li>Progress: 空闲让进: 如果没有线程在 critical section, 需要让一个线程能够进入 (make progress)</li>
+<li>Bounded waiting: 有限等待, 避免 starvation</li>
+</ul>
+<p>硬件:</p>
+<ul>
+<li>memory barrier: 太难了不考</li>
+<li>hardware instruction: 必考</li>
+<li>compare and swap: x86, arm .. 多核: 锁总线</li>
+<li>test-and-set</li>
+</ul>
+<p>Spin lock / Mutex Lock: 本节课认为会 busy waiting</p>
+<p>Semaphore: wait 和 signal 要求原子操作 (S-&gt;value++ 和 S-&gt;value--，一般用 spin lock 实现)</p>
+<p>Deadlock:</p>
+<p>发生 deadlock 需要四个条件:</p>
+<ol>
+<li>Mutual Exclusion: 资源互斥</li>
+<li>Hold and wait: 拿着一部分资源去请求另一个资源</li>
+<li>No preemption: 资源不能被抢占</li>
+<li>Circular wait: Resource Allocation Graph 中形成了一个环，且环包括了所有的 process</li>
+</ol>
+<p>Deadlock Prevention: 打破死锁形成条件</p>
+<ol>
+<li>Mutual Exclusion: 如果是共享资源就不做成互斥的</li>
+<li>Hold and wait: 只能拿所有资源或者不拿，如果没有所有资源就放弃 - 有 starvation 问题</li>
+<li>No preemption: 线程可以抢占其他线程的资源</li>
+<li>Circular wait: 加一个请求资源的顺序</li>
+</ol>
+<p>死锁的四个话题:</p>
+<ul>
+<li>Prevention: 打破死锁形成条件</li>
+<li>Avoidance: safe state, bankers algorithm</li>
+<li>Detection</li>
+<li>Recovery: Kill Process</li>
+</ul>
+<p>Main Memory</p>
+<ol>
+<li>Partition: base + limit 寄存器，用 offset 做逻辑地址</li>
+</ol>
+<p>Fixed Partition: Internal Fragmentation 内部碎片，内部浪费</p>
+<p>Variable Partition: External Fragmentation 外部碎片，空闲的太小了没法用</p>
+<p>First-fit</p>
+<p>Best-fit</p>
+<p>Worst-fit</p>
+<ol>
+<li>
+<p>Segmentation</p>
+</li>
+<li>
+<p>Segment table: limit, base, permission</p>
+</li>
+</ol>
+<p><a class="glightbox" href="../assets/note/image-20241225185856662.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225185856662" src="../assets/note/image-20241225185856662.png" /></a></p>
+<ul>
+<li>
+<p>Segment number 是 segment table 的 index</p>
+</li>
+<li>
+<p>Paging: fixed partition 所以没有外部碎片</p>
+</li>
+</ul>
+<p>Page: 虚拟，Frame: 物理</p>
+<p>PTE: Valid, Permission, PFN</p>
+<p>TLB:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225190233054.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225190233054" src="../assets/note/image-20241225190233054.png" /></a></p>
+<p>页表: Hierarchy (多级页表节省空间), Hash, Inverted</p>
+<p>Page Table Walk:</p>
+<p><a class="glightbox" href="../assets/note/image-20241112145511426.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241112145511426" src="../assets/note/image-20241112145511426.png" /></a></p>
+<p>32 位: 10+10+12</p>
+<p>SV39: 9+9+9+12</p>
+<p><a class="glightbox" href="../assets/note/image-20241225190559811.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225190559811" src="../assets/note/image-20241225190559811.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241225190605546.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225190605546" src="../assets/note/image-20241225190605546.png" /></a></p>
+<p>Virtual Memory:</p>
+<p>Advanced Techniques:</p>
+<ul>
+<li>Demand Paging <strong>重要重要重要</strong></li>
+</ul>
+<p>神图:</p>
+<p><a class="glightbox" href="../assets/note/image-20241225190824623.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225190824623" src="../assets/note/image-20241225190824623.png" /></a></p>
+<p>神图2: Page Fault 检查的是 vm_area_struct</p>
+<p><a class="glightbox" href="../assets/note/image-20241225190939236.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225190939236" src="../assets/note/image-20241225190939236.png" /></a></p>
+<p><a class="glightbox" href="../assets/note/image-20241225191047603.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225191047603" src="../assets/note/image-20241225191047603.png" /></a></p>
+<ul>
+<li>Copy-on-write</li>
+<li>Page replacement algorithm: FIFO, optimal, LRU 计算 Page Fault 次数</li>
+<li>Allocation of frames</li>
+<li>Thrasing: a process is busy swapping pages in and out</li>
+<li>系统一直忙着将内存换进换出，导致 CPU 占用率不高</li>
+<li>原因: Total number of physical frames &lt; Total size of locality</li>
+<li>Working set</li>
+</ul>
+<p>Mass-Storage Structure:</p>
+<p>Disk scheduling: 给出的是柱面号</p>
+<p><a class="glightbox" href="../assets/note/image-20241225192112488.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241225192112488" src="../assets/note/image-20241225192112488.png" /></a></p>
+<p>Flash: FCFS 就好了</p>
+<p>Acceses time, Position time</p>
+<p>Access time = seek time + rotational latency</p>
+<p>I/O Hardware</p>
+<p>Polling, interrupt</p>
+<p>Filesystem 重要</p>
+<p>File Attribute 存储在 FCB 中</p>
+<p>Linux ext4 的 FCB 叫做 inode</p>
+<p>存储文件名，时间戳等等</p>
+<p>File Descriptor: Per-process open-file table 的 index，不能跨进程，但是是线程间共享的</p>
+<p>0-stdin, 1-stdout, 2-stderr</p>
+<p>VFS: 定义了统一的接口，会被“实例化”成不同的文件系统操作</p>
+<p>Directory Implementation: Soft link, hard link</p>
+<p>重点: dentry 的结构: 用来做 file name 到 inode 的转换，从人能读的转换成机器能读的</p>
+<p>目录是一个文件，但是 data block 装的是 dentry</p>
+<p>Allocation:</p>
+<ul>
+<li>连续分配: 优点 seek time 低，缺点文件没法变长 extend</li>
+<li>Linked Allocation: 用于 FAT 文件系统</li>
+<li>Indexed Allocation: 优点方便扩展，缺点自己占了一个 data block 小文件有高 overhead</li>
+</ul>
+<p>Inode ext2 最大的文件有多大?</p>
+<ul>
+<li>direct blocks</li>
+<li>single indirect</li>
+<li>double indirect</li>
+<li>triple indirect</li>
+</ul>
+<p>Free space management: bitmap</p>
+<p>Hard link: 不能跨文件系统，是一个目录项，inode 不能跨文件系统，FAT 连 inode 都没有</p>
+<p>Soft link: 可以跨文件系统，因为目录 path 可以跨文件系统</p>
+<p>super block</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月11日 18:20:01</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月11日 18:20:01</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments" class="no-number">评论</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="YooLc/notes" data-repo-id="R_kgDONk4Byg"
+    data-category="Announcements" data-category-id="DIC_kwDONk4Bys4ClrHG" data-mapping="pathname" data-strict="0"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+    </script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light"
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+                /* Instruct Giscus to change theme */
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: 操作系统">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                操作系统
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../principles-of-programming-languages/" class="md-footer__link md-footer__link--next" aria-label="Next: 编程语言原理">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                编程语言原理
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      YooLc
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.alicdn.com/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
