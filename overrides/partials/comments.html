@@ -1,5 +1,5 @@
-{% if page.meta.comments %}
-<h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+{% if not page.meta.no_comments %}
+<h2 id="__comments" class="no-number">评论</h2>
 <!-- Insert generated snippet here -->
 <script src="https://giscus.app/client.js" data-repo="YooLc/notes" data-repo-id="R_kgDONk4Byg"
     data-category="Announcements" data-category-id="DIC_kwDONk4Bys4ClrHG" data-mapping="pathname" data-strict="0"

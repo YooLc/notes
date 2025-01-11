@@ -1,18 +1,20 @@
-# 判定训练
+# 期末复习
+
+## 可判定性与图灵机
 
 题目来自: [COMP481 Review Problems - Luay K. Nakhleh](https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06.pdf)
 
 答案: [COMP481 Review Problems (Solution) - Luay K. Nakhleh](https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf)
 
-## 判定工具
+### 判定工具
 
-### Rice's Theorem
+#### Rice's Theorem
 
-### 总结
+#### 总结
 
 [判定问题 - 鹤翔万里的笔记本](https://note.tonycrane.cc/cs/tcs/toc/topic4/)
 
-## 训练题
+### 训练题
 
 ??? tips "比较有意义的题"
     $L_1$ 到 $L_4$ 的分析是后面很多题目的基础, 还有 $L_{26}$ 构造值得学习.

@@ -1,6 +1,3 @@
----
-comments: true
----
 
 # 计算机体系结构
 
@@ -26,6 +23,6 @@ comments: true
 
     虽然这次老师说会避开历年卷出题，但是何水兵老师放出的 22 年历年卷 hit rate 还挺高的，所以还是要好好复习历年卷. 
 
-    本来以为会考很难的 Tomasulo Hardware-Speculation, 结果是 Scoreboard, 指令好像也只有 RAW Hazard, 感谢老师们的仁慈.
+    本来以为会考很难的 Tomasulo Hardware-Speculation, 结果是 Scoreboard, 指令好像也只有 RAW Hazard, 感谢老师们的仁慈. (虽然选择题乱杀)
 
     期末考试里有一些老师没讲过 (或者我印象不深的) 知识点, 需要额外学习一下, 看 “体系结构急急急” 里的交流可以在不同教学班之间互通有无，其他老师讲过的知识点可能是你的盲区.

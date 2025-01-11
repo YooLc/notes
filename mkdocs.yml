@@ -35,6 +35,7 @@ nav:
         - courses/24fall/computer-network/index.md
       - 操作系统:
         - courses/24fall/operating-system/index.md
+        - courses/24fall/operating-system/note.md
       - 编程语言原理:
         - courses/24fall/principles-of-programming-languages/index.md
         - courses/24fall/principles-of-programming-languages/practice.md
