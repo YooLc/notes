@@ -1,14 +1,6 @@
 # 笔记
 
-10 (出勤) + 40 (Lab) + 50
 
-期末:
-
-单选: 40 x 1.5=60
-
-填空 10x1
-
-大题 30: 内存必考（比较难），Synchronization 必考，Scheduling 必考
 
 ## Memory
 

@@ -4,15 +4,24 @@ site_url: https://yoolc.github.io/notes
 repo_name: YooLc/notes
 repo_url: https://github.com/YooLc/notes
 edit_uri: -/tree/main/docs/
-site_description: YooLc 的笔记本
+site_description: Yet another Futsū no Material for MkDocs site
 site_author: YooLc
-copyright: YooLc
+copyright: YooLc 🄯 Copyleft 2024 - 2025
 
 nav:
   - 首页:
     - index.md
-  - 笔记:
+  - "🔥 博客":
+    - blog/index.md
+  - "📝 课程笔记":
     - 大三:
+      - 计算机体系结构:
+        - courses/24fall/computer-architecture/index.md
+        - courses/24fall/computer-architecture/chapter-1.md
+        - courses/24fall/computer-architecture/chapter-2.md
+        - courses/24fall/computer-architecture/chapter-3.md
+        - courses/24fall/computer-architecture/chapter-4.md
+        - courses/24fall/computer-architecture/chapter-5.md
       - 汇编与接口:
         - courses/24fall/assembly-and-interface/index.md
         - courses/24fall/assembly-and-interface/chapter-1.md
@@ -22,13 +31,6 @@ nav:
         - courses/24fall/assembly-and-interface/chapter-9-11.md
         - courses/24fall/assembly-and-interface/note.md
         - courses/24fall/assembly-and-interface/final.md
-      - 计算机体系结构:
-        - courses/24fall/computer-architecture/index.md
-        - courses/24fall/computer-architecture/chapter-1.md
-        - courses/24fall/computer-architecture/chapter-2.md
-        - courses/24fall/computer-architecture/chapter-3.md
-        - courses/24fall/computer-architecture/chapter-4.md
-        - courses/24fall/computer-architecture/chapter-5.md
       - 应用运筹学基础:
         - courses/24fall/applied-operations-research/index.md
       - 计算机网络:
@@ -42,10 +44,16 @@ nav:
       - 计算理论:
         - courses/24fall/theory-of-computation/index.md
         - courses/24fall/theory-of-computation/undecidability.md
+  # - "🛠️ 计算机科学":
+  #   - computer-science/index.md
+  - "🚀 体系结构":
+    - architecture/index.md
+    
 
 theme:
   name: material
   custom_dir: overrides
+  language: zh
   # logo:
   # favicon:
   icon:
@@ -66,6 +74,7 @@ theme:
     text: LXGW WenKai Screen
     code: JetBrains Mono
   features:
+    - announce.dismiss
     # 代码块操作
     - content.code.copy
     - content.code.select
@@ -84,6 +93,8 @@ theme:
     - navigation.tracking
     # 路径
     - navigation.path
+    - navigation.instant.prefetch
+    - navigation.instant.progress
     # 回到顶部
     - navigation.top
     - toc.follow
@@ -160,6 +171,7 @@ extra_css:
   - stylesheets/auto_counter.css
   - stylesheets/theme.css
   - stylesheets/mkdocs-plugins-v1.1.0.css
+  - stylesheets/md-post.css
   - https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css
 
 plugins:
@@ -173,6 +185,15 @@ plugins:
   - tags:
       tags_file: index.md
   - search
-  - rss
+  - rss:
+      match_path: blog/posts/.* 
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
   - include_dir_to_nav:
       recurse: false
+  - blog:
+      archive_toc: true
+      post_excerpt: required
