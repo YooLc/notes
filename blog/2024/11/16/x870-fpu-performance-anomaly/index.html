@@ -1,0 +1,2387 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Yet another Futsū no Material for MkDocs site">
+      
+      
+        <meta name="author" content="YooLc">
+      
+      
+        <link rel="canonical" href="https://yoolc.github.io/notes/blog/2024/11/16/x870-fpu-performance-anomaly/">
+      
+      
+        <link rel="prev" href="../../../09/12/blechley-park-trip/">
+      
+      
+        <link rel="next" href="../../../12/02/foss-inspiration/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Intel x87 FPU 浮点数运算性能异常分析 - 笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../fonts/fonts.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/auto_counter.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/mkdocs-plugins-v1.1.0.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/md-post.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#intel-x87-fpu-浮点数运算性能异常分析" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../.." title="笔记" class="md-header__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Intel x87 FPU 浮点数运算性能异常分析
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="goblue" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YooLc/notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  🔥 博客
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../courses/24fall/computer-architecture/" class="md-tabs__link">
+          
+  
+    
+  
+  📝 课程笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../architecture/" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 体系结构
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="笔记" class="md-nav__button md-logo" aria-label="笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YooLc/notes" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    YooLc/notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔥 博客
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🔥 博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    归档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            归档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    分类
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            分类
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/foss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FOSS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/x86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x86
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    密码学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机体系结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机科学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    📝 课程笔记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            📝 课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    大三
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            大三
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../courses/24fall/computer-architecture/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机体系结构
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机体系结构
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/computer-architecture/chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I - 计算机设计基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/computer-architecture/chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    II - 流水线
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/computer-architecture/chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    III - 内存层次结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/computer-architecture/chapter-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IV - 指令并行 (ILP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/computer-architecture/chapter-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    V - 线程并行 (TLP)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../courses/24fall/assembly-and-interface/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    汇编与接口
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            汇编与接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/assembly-and-interface/chapter-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    预备知识
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/assembly-and-interface/chapter-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    微处理器及其结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/assembly-and-interface/chapter-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    寻址方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/assembly-and-interface/chapter-4-6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x86 汇编指令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/assembly-and-interface/chapter-9-11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    接口
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/assembly-and-interface/note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/assembly-and-interface/final/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末历年卷
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../courses/24fall/applied-operations-research/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    应用运筹学基础
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            应用运筹学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../courses/24fall/computer-network/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机网络
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../courses/24fall/operating-system/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    操作系统
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/operating-system/note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../courses/24fall/principles-of-programming-languages/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    编程语言原理
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_6" id="__nav_3_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/principles-of-programming-languages/practice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课件例题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../courses/24fall/theory-of-computation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算理论
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_7" id="__nav_3_1_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            计算理论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../courses/24fall/theory-of-computation/undecidability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末复习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../architecture/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🚀 体系结构
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            🚀 体系结构
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#浮点数乘法的性能异常" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数乘法的性能异常
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8087-与-x87-浮点运算单元" class="md-nav__link">
+    <span class="md-ellipsis">
+      8087 与 x87 浮点运算单元
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8087-与-8086-的同步" class="md-nav__link">
+    <span class="md-ellipsis">
+      8087 与 8086 的同步
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#现代-x86-处理器与-x87-相关的控制位及异常" class="md-nav__link">
+    <span class="md-ellipsis">
+      现代 x86 处理器与 x87 相关的控制位及异常
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ieee-754-标准" class="md-nav__link">
+    <span class="md-ellipsis">
+      IEEE 754 标准
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IEEE 754 标准">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#扩展精度格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      扩展精度格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#非正规数的运算" class="md-nav__link">
+    <span class="md-ellipsis">
+      非正规数的运算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    回到主页
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    元数据
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2024-11-16 00:00:00+00:00" class="md-ellipsis">2024年11月16日</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            分类于
+                            
+                              <a href="../../../../category/x86/">x86</a>, 
+                              <a href="../../../../category/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              需要 10 分钟阅读时间
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+  
+    <a href="https://github.com/YooLc/notes/-/tree/main/docs/blog/posts/x87.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="intel-x87-fpu-浮点数运算性能异常分析">Intel x87 FPU 浮点数运算性能异常分析<a class="headerlink" href="#intel-x87-fpu-浮点数运算性能异常分析" title="Permanent link">&para;</a></h1>
+<h2 id="浮点数乘法的性能异常">浮点数乘法的性能异常<a class="headerlink" href="#浮点数乘法的性能异常" title="Permanent link">&para;</a></h2>
+<p>在《数据结构基础》课程 Project 1 中，我们需要评估一段计算幂运算代码的运行耗时，以此分析它的时间复杂度。幂运算的算法相对比较简单，下面是一段示例代码:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">double</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">init_val</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">iteration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init_val</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iteration</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">init_val</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">mx</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>从代码中我们可以推出其运行时长应该只与 iteration 变量线性相关，对应该算法复杂度为 <span class="arithmatex">\(O(N)\)</span>.</p>
+<p>然而一部分同学在进行实验时，发现这段代码的运行耗时不仅与幂次方有关，还与底数 init_val 有关。更具体而言，当底数比较大时，性能会发生骤降，比如计算 <span class="arithmatex">\(1.5^n\)</span> 会比 <span class="arithmatex">\(1^n\)</span> 慢十几倍。</p>
+<p>在讨论过程中，同学们初步推断出，由于幂函数增长速度很快，计算较大底数时，很快就会超过 double 类型能表达的数字上限，此时结果将会变为 inf。因此问题的本质不在于底数的选择，而在于运算过程中是否发生了上溢 (overflow) 的问题，如果发生了上溢，那么性能就会骤降。</p>
+<!-- more -->
+
+<p>还有热心的同学提供了在不同平台的测试，确定了在 x86 架构的两家厂商中，Intel CPU 广泛存在该问题，而 AMD CPU 不受影响。同时，通过改变编译器版本编译同一段代码，可发现该问题存在于老版本的 gcc 编译器中。分析其产生的汇编代码，会发现老版本 gcc 编译器默认使用 x87 浮点数单元，而新版本编译器至少会启用 SSE 进行浮点数运算。</p>
+<p>于是我们的问题就进一步缩窄为了: 在 Intel CPU 上，使用 x87 浮点数运算单元时，对非规格数参与的浮点数进行处理时，发生性能骤降的原因。</p>
+<p>在探究问题之前，有必要对 x87 浮点运算单元进行详细的了解与分析，以便提出合理猜想并找到验证途径:</p>
+<h2 id="8087-与-x87-浮点运算单元">8087 与 x87 浮点运算单元<a class="headerlink" href="#8087-与-x87-浮点运算单元" title="Permanent link">&para;</a></h2>
+<p>在 8086 时代，实际上处理器硬件是不具有浮点数处理能力的，想要进行浮点数运算，一种方法是使用软件模拟，另外一种方法是外挂一个浮点数协处理器 (co-processor). Intel 8086 发布于 1976 年，但当时监督 8086 开发的工程师 Bill Pohlman 在设计之初就确保 8086 能够适配一款当时仍处于构思阶段的浮点数协处理器。</p>
+<p>这款浮点数协处理器就是 8087, 发布于 1980 年，也就是 8086 发布后 4 年。8087 是世界上第一款浮点数协处理器，实现了浮点数运算的硬件支持。它不仅可以完成浮点数的基本四则运算，还可以完成三角函数、对数、乘方等等多种丰富的运算，极大地提升了计算机的浮点数运算能力。</p>
+<p><a class="glightbox" href="../../../../assets/x87/8087.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="8087 芯片的正面照片, 图中的芯片丝印内容为 C8087 L6270114 i '80 '84" src="../../../../assets/x87/8087.png" /></a></p>
+<p>8087 逻辑上可以分成两大部分，控制单元和运算单元。控制单元与 8086 处理器相连，并维护两个重要的处理器: Control Word 与 Status Word, 前者控制了 8087 的行为，比如是否处理异常，浮点数的舍入模型等等，后者类似 flags 寄存器，表示当前 8087 处理器的状态。运算单元的核心是一个能存储 8 个 80 位浮点数的寄存器栈，对应地，向 8087 存储和读取浮点数的操作也均是以栈操作的语义实现的，也就是压栈 push 和出栈 pop. 8087 内部的 ROM 上存储了 <span class="arithmatex">\(\pi\)</span>, <span class="arithmatex">\(e\)</span>, <span class="arithmatex">\(\ln 2\)</span> 等常数，配合微码控制的运算电路，可以实现各种复杂的浮点数操作。</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="x87 内部的结构，图中左侧为控制单元，右侧为运算单元，运算单元内有一个宽度 80-bit, 深度 8 个浮点数的栈" src="../../../../assets/x87/image-1.png" /></a></p>
+<p>这篇博客从 die shot 与电路层面，详细剖析了 8087 处理器内部的寄存器以及负责运算的电路的结构：https://www.righto.com/2018/08/inside-die-of-intels-8087-coprocessor.html . （尽管与现代 x87 的硬件实现已经大相径庭，但哪个男孩不喜欢欣赏电路之美呢）</p>
+<h2 id="8087-与-8086-的同步">8087 与 8086 的同步<a class="headerlink" href="#8087-与-8086-的同步" title="Permanent link">&para;</a></h2>
+<p>早期 8087 作为一款协处理器，需要与 8086 处理器进行沟通才能实现浮点数运算的功能。这一方面是指 8086 需要向 8087 发送控制与数据信号，指定 8087 完成对某一浮点数的具体操作，此时 8086 需要等待 8087 完成运算，才能进行下一条指令的执行。另一方面，8087 在运算时如果产生异常，也需要 8086 进行后续的处理。</p>
+<p>在指令编码上，8087 相关的指令都以 0xdf-0xdf 之间的前缀开始，这一前缀代表 Escape to co-processor, 使 8086 执行到相关指令时，8087 能够获得指令并进行解码。8087 的运算与 8086 的指令执行是异步的，如果想要得到正确的结果，就需要等待 8087 完成处理器与协处理器之间的同步。同步过程在 Intel 的设计下是显式地，必须调用一条 fwait 指令来完成。此时 8086 会停下脚步等待 8087 的浮点运算，然后检查是否有异常产生，再进行后续的处理。这条 fwait 指令不需要程序员自行添加，当时的汇编器能够自动地在 8087 浮点指令后插入 fwait 来进行同步。https://stackoverflow.com/questions/42543905/what-are-8086-esc-instruction-opcodes</p>
+<h2 id="现代-x86-处理器与-x87-相关的控制位及异常">现代 x86 处理器与 x87 相关的控制位及异常<a class="headerlink" href="#现代-x86-处理器与-x87-相关的控制位及异常" title="Permanent link">&para;</a></h2>
+<p>尽管现在 x87 协处理器已经变成了 x86 处理器内置的浮点单元了，在 Intel 64 和 IA-32 处理器中，仍然能够看到诸多 x87 的身影:</p>
+<ul>
+<li>CR0 寄存器: 在课程中，我们学习到 CR0 控制了 CPU 的保护模式和内存分页机制，是 CPU 上尤为重要的一个控制寄存器。在如此重要的 CR0 中，有四位是与 x87 处理器直接相关的:
+  <a class="glightbox" href="../../../../assets/x87/image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="CR0 各位作用的说明图" src="../../../../assets/x87/image-2.png" /></a> - ET (Extension type): 用于区分 x87 协处理器的种类，若为 1 则为 Intel 387 DX 及之后，为 0 则代表 Intel 287 及之前的 x87 协处理器。在现代 CPU 上这一位恒为 1. - MP (Monitor Co-processor): 用于控制 wait/fwait 指令是否产生 #NM (Device not available) 异常，现代处理器不需要该机制，且推荐设置恒为 1. - EM (x87 FPU Emulation): 用于控制是否开启模拟 x87 的软件浮点运算，如果 EM 置为 1，那么任何 x87 指令将会导致 #NM 异常，程序员需要在异常处理中进行软件浮点数模拟。同时将会禁止其他浮点指令，如 MMX, SSE 扩展等等，否则会产生 #UD 异常。
+  <a class="glightbox" href="../../../../assets/x87/image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="CR0 寄存器 EM, MP, TS 的所有情况下，对 x87 指令的处理方法" src="../../../../assets/x87/image-3.png" /></a> - NE (Numeric Exception): 用于控制 x87 异常的处理方式，若为 1，则由 CPU 内部通过 #MF 异常进行处理，否则将通过外部硬件的中断请求线同志外部设备，借助外部硬件的逻辑来处理该异常。</li>
+</ul>
+<blockquote>
+<p>The NE (Numeric Exception) flag (bit 5 of the CR0 register) is used in the P6 family, Pentium, and Intel486 processors to determine whether unmasked floating-point exceptions are reported internally through interrupt vector 16 (flag is set) or externally through an external interrupt (flag is clear). On a hardware reset, the NE flag is initialized to 0, so software using the automatic internal error-reporting mechanism must set this flag to 1. This flag is nonexistent on the Intel386 processor.
+<a class="glightbox" href="../../../../assets/x87/image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Intel 64 和 IA-32 架构的通用异常表" src="../../../../assets/x87/image-4.png" /></a></p>
+</blockquote>
+<ul>
+<li>x87 控制寄存器 （Control Word）</li>
+<li>RC 与 PC 控制 x87 的舍入与精度</li>
+<li>低 6 位为 Exception Mask，如果置 1，该类异常不会被触发
+    <a class="glightbox" href="../../../../assets/x87/image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="x87 控制寄存器的各位功能说明" src="../../../../assets/x87/image-5.png" /></a></li>
+</ul>
+<h2 id="ieee-754-标准">IEEE 754 标准<a class="headerlink" href="#ieee-754-标准" title="Permanent link">&para;</a></h2>
+<p>IEEE 754 标准是目前广泛接受与使用的浮点数运算标准，它定义了浮点数的格式和操作，确保了不同计算机系统间浮点运算结果的一致性。从历史角度来看，IEEE 754 标准收到了 8087 协处理器的显著影响，因为 Intel 8087 是历史上第一款硬件浮点协处理器，引入了浮点数的基本概念、运算操作和一些特定的异常处理方法。IEEE 754 标准的许多核心概念，比如舍入模式和异常的定义，都在 8087 中有所体现。可以说 8087 为 IEEE 754 标准的诞生奠定了基础，而 IEEE 754 标准在后来的处理器设计中进一步推广并完善了这些理念，后来 IEEE 754 又反向影响了 80387 及以后 Intel 的浮点数处理单元的规范化设计。</p>
+<h3 id="扩展精度格式">扩展精度格式<a class="headerlink" href="#扩展精度格式" title="Permanent link">&para;</a></h3>
+<p>在 x87 FPU 中，浮点数位数均为 80 位，这一格式在 IEEE 754 中被规范化为扩展精度格式，它包括 1 位符号位，15 位指数位，以及 64 位尾数。其规定的无穷大以及 NaN 数值如下表所示:
+<a class="glightbox" href="../../../../assets/x87/image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="IEEE 754 各类浮点数的编码规则" src="../../../../assets/x87/image-6.png" /></a></p>
+<h3 id="非正规数的运算">非正规数的运算<a class="headerlink" href="#非正规数的运算" title="Permanent link">&para;</a></h3>
+<p>Intel 浮点数参考手册 详细介绍了 SSE 和 AVX 指令对 normal / subnormal / denormal 数字以及他们之间进行运算时产生的结果以及异常位设置。除了异常种类不同，以及 x87 没有 DAZ (Denormal as zero) 以及 FTZ (Flush to zero) 设置之外，其结果应该是相同的:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Intel SSE 和 AVX 扩展对 IEEE 754 非规格数参与的运算结果的约定" src="../../../../assets/x87/image-7.png" /></a></p>
+<h1 id="探究过程">探究过程<a class="headerlink" href="#探究过程" title="Permanent link">&para;</a></h1>
+<h2 id="猜想-1-与-x87-异常产生的中断和操作系统处理有关">猜想 1: 与 x87 异常产生的中断和操作系统处理有关<a class="headerlink" href="#猜想-1-与-x87-异常产生的中断和操作系统处理有关" title="Permanent link">&para;</a></h2>
+<h3 id="分析">分析<a class="headerlink" href="#分析" title="Permanent link">&para;</a></h3>
+<p>在对 x87 进行详细介绍的时候，我们提到 CPU 有多种异常与 x87 有关: 一方面，x87 本身会产生 P, U, O, Z, D, I 这 6 种异常，另一方面，在 x87 运算的过程中，还有可能触发通用异常 #NM, #MF 等等。我们知道一旦发生异常，就会导致 CPU 需要跳转到操作系统指定的代码进行处理，打断原先程序的执行，严重影响性能。</p>
+<p>我们先来分析 x87 本身的异常。在 x87 FPU 的控制寄存器 fpcw 中，存储着异常的掩码 (mask)，一旦对应位置 1， 就代表这一类异常被掩盖住，不会报告给操作系统。</p>
+<p>通过 fnstcw 指令可以获取 fpcw 寄存器的值。在不做任何操作的情况下，可以看到 fpcw 的默认值为 0x037F, 也就是说默认所有的异常都被掩盖住了。</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-8.png" /></a></p>
+<p>如果手动设置 fpcw，将对应的 mask 位解除，在程序没有声明自己的浮点异常处理函数时，会上报给操作系统产生 floating point exception, 并结束程序运行。这与我们问题背景里的情况不太相同，说明原问题并不是因为 x87 本身的异常导致的。</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-9.png" /></a></p>
+<p>然后我们可以分析一下是否产生了 CPU 的通用异常。cr0 是设置与 x87 相关异常的关键寄存器，但通过分析，在现代的 CPU 上，我们实际可以设置的只有 cr0.ne 这位可能会有效果。这个寄存器需要 Ring 0 级别的权限才可以运行，所以我写了一个 Linux 内核模块:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__init</span><span class="w"> </span><span class="nf">cr0_ne_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">cr0</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">cr0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_cr0</span><span class="p">();</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">pr_info</span><span class="p">(</span><span class="s">&quot;Original CR0: 0x%lx</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cr0</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">pr_info</span><span class="p">(</span><span class="s">&quot;Original CR0.NE: %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">cr0</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="c1">// 清除 CR0.NE 位（第5位）</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="n">cr0</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">write_cr0</span><span class="p">(</span><span class="n">cr0</span><span class="p">);</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="n">cr0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_cr0</span><span class="p">();</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">pr_info</span><span class="p">(</span><span class="s">&quot;Modified CR0: 0x%lx</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cr0</span><span class="p">);</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="n">pr_info</span><span class="p">(</span><span class="s">&quot;Modified CR0.NE: %lu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">cr0</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">);</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">__exit</span><span class="w"> </span><span class="nf">cr0_ne_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">cr0</span><span class="p">;</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="c1">// 恢复 CR0.NE 位（设置第5位）</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="n">cr0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_cr0</span><span class="p">();</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="n">cr0</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="n">write_cr0</span><span class="p">(</span><span class="n">cr0</span><span class="p">);</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="n">pr_info</span><span class="p">(</span><span class="s">&quot;CR0.NE restored.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>我在我的笔记本上安装了原生的 Linux 环境，加载该内核模块后，可以在内核消息 dmesg 中看到寄存器成功被修改，但是运行先前的测试，依旧可以观测到性能骤降的问题。这说明实际上这个问题与 cr0.ne 没有关联。</p>
+<h3 id="实验">实验<a class="headerlink" href="#实验" title="Permanent link">&para;</a></h3>
+<p>除了在分析部分体现的小实验外，我还尝试在各种平台、各种操作系统上广泛地尝试。
+我的测试平台为 Intel Core i7-12700H, Intel Celeron 3865U, 以及 Intel Xeon Gold 5320。Intel Core i7-12700 H 为 12 代笔记本 CPU，微架构为 2021 年发布的 Alder Lake; Celeron 3865U 来自我的一块工控板（其命名是致敬 80386 的），属于低端嵌入式产品线，微架构为 2016 年发布的 Kaby Lake; Xeon 5320 为 Inel 第三代志强服务器处理器，微架构为 2019 年的 Ice Lake。这三款 CPU 覆盖了英特尔的 Core、Celeron、Xeon 多个产品线，覆盖了跨度较长的微架构设计，应当具有足够的普遍性。</p>
+<p>测试用到的代码附在作业提交的文件中，代码可以自动对比 x87 与 SSE、AVX 在不同输入（正负 INF， NaN，下溢等）、不同操作（乘法、加法）之下的性能表现。</p>
+<p>首先是 Windows 平台，测量于 Intel i7-12700H:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-10.png" /></a></p>
+<p>其次是 Linux 平台，测量于 Intel Xeon 5320:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-11.png" /></a></p>
+<p>在两个平台上，可以观察到 x87 对于 INF 和 NaN 参与的运算，性能显著低于 SSE 与 AVX，而下溢出 (underflow) 的时间则相近。</p>
+<p>最后我还为 Celeron 3865U 平台安装了 FreeDOS，一款开源的仿 MS-DOS 系统，它支持在现代的平台上继续运行 DOS 系统。FreeDOS 相较于其他两款操作系统，由于可以直接跑在实模式下，且程序运行时具有完全的权限，能够排除很多软件层面的影响。在 FreeDOS 系统下，我选择了 bcc 编译器和手写一个简单的测试程序，因为编译器和构建系统完全不同，只测试了 mul_norm 和 mul_pinf 两种情况。在 FreeDOS 系统中，可以观测到 mul_pinf 的速度显著低于 mul_norm，也可以进一步引证性能异常与操作系统和软件基本无关，属于硬件机制。</p>
+<h2 id="猜想-2-与-cpu-对-x87-异常的处理的微码辅助有关">猜想 2: 与 CPU 对 x87 异常的处理的微码辅助有关<a class="headerlink" href="#猜想-2-与-cpu-对-x87-异常的处理的微码辅助有关" title="Permanent link">&para;</a></h2>
+<h3 id="分析_1">分析<a class="headerlink" href="#分析_1" title="Permanent link">&para;</a></h3>
+<p>perf 是 Linux 上的一款性能分析工具，它可以读取 Intel 提供的性能计数器 (PMU, Performance Monitoring Units) 获取影响 CPU 性能因素的一手数据。perf 可以测量的指标包括 CPU 发射的指令数量，程序运行的总周期数等等，进而可以计算 CPI 等指标衡量 CPU 的性能释放情况。</p>
+<p>在 perf 支持的观测指标中，有一系列与浮点数相关的指标，这吸引了我的兴趣:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>perf<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>...
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>floating<span class="w"> </span>point:
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>arith.fpdiv_active
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">       </span><span class="o">[</span>ARITH.FPDIV_ACTIVE<span class="o">]</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>assists.fp
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">       </span><span class="o">[</span>Counts<span class="w"> </span>all<span class="w"> </span>microcode<span class="w"> </span>FP<span class="w"> </span>assists<span class="o">]</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>assists.sse_avx_mix
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">       </span><span class="o">[</span>ASSISTS.SSE_AVX_MIX<span class="o">]</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span>fp_arith_dispatched.port_0
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">       </span><span class="o">[</span>FP_ARITH_DISPATCHED.PORT_0<span class="o">]</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span>fp_arith_dispatched.port_1
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">       </span><span class="o">[</span>FP_ARITH_DISPATCHED.PORT_1<span class="o">]</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span>fp_arith_dispatched.port_5
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">       </span><span class="o">[</span>FP_ARITH_DISPATCHED.PORT_5<span class="o">]</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w"> </span>...
+</span></code></pre></div>
+<p>我挑选了所有可能与 x87 相关的指标进行了测试，并观察他们的性能指标，果真发现了端倪: 其中 assists.fp 这个指标二者差异很大，而且在异常时，数量极其接近我设置的迭代次数:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-13.png" /></a></p>
+<p>说明这个指标是我们探究问题真相的关键! 首先看它的介绍:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">   </span>assists.fp
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">       </span><span class="o">[</span>Counts<span class="w"> </span>all<span class="w"> </span>microcode<span class="w"> </span>FP<span class="w"> </span>assists<span class="o">]</span>
+</span></code></pre></div>
+<p>也就是统计了在浮点数运算时微码辅助的次数。微码辅助是 Intel CPU 的一种机制，可以结合下图来理解:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-12.png" /></a></p>
+<p>这是一张 Intel CPU 微架构的示意图，其中绿色的是我们可见的 x86 指令，而在 Intel CPU 运行的时候，这些 CISC 指令都会被转换为类似 RISC 的指令——微码 (microcode)。在 Intel CPU 中，有一个单元叫做 Microcode Sequencer，用来从 MS ROM 中读取微码并执行。微码辅助发生在 CPU 内部出现异常并且没有能够处理的硬件单元时，此时前端的指令解码和后端的乱序执行都会被打断 (Machine Clear)，转而启动 Microcode Sequencer 调出处理对应情况的微码并执行。</p>
+<p>这里有一个非常影响性能的操作 —— Machine Clear，如果进一步翻阅英特尔手册 Intel® 64 and IA-32 Architectures Optimization Reference Manual 可以看到如下的描述:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-14.png" /></a></p>
+<p>这完全符合我们所遇到的情况，只不过我们的情况是 subnormal 而非 denormal 数，不过都需要微码来辅助处理结果。进一步用 perf 查看 machine clear 的情况，可以发现它的次数和异常出现次数、迭代次数基本一致，并且远远超过无浮点异常的情况。</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-15.png" /></a></p>
+<p>接着这个分析，我们可以尝试回答这三个问题了:</p>
+<ol>
+<li>为什么 x87 的指令在异常时会如此之慢？</li>
+</ol>
+<blockquote>
+<p>Some instructions (FSIN, FCOS, and other transcendental instructions) are decoded with the assistance of MS-ROM. Frequent occurrences of instructions that required assistance of MS-ROM to decode complex uop flows are opportunity to improve instruction selection to reduce such occurrences. The UOPS_DECODED.MS event can be used to identify code regions that could benefit from better instruction selection. Other situations that can trigger this event are due to FP assists, like performing a numeric operation on denormalized FP values or QNaNs. In such cases the penalty is essentially the uops required for the assist plus the pipeline clearing required to ensure the correct state. Consequently this situation has a very clear signature consisting of MACHINE_CLEAR.CYCLES and uops being inserted by the microcode sequencer, UOPS_DECODED.MS. The execution penalty being the sum of these two contributions. The event codes for these are listed under D1H and C3H. —— Intel® 64 and IA-32 Architectures Optimization Reference Manual</p>
+</blockquote>
+<p>英特尔对于现代 CPU 上的 x87 FPU 的实现依然比较“原始”，但凡涉及到较复杂的处理，能不新设计硬件就不新设计硬件，所以比较复杂的三角函数 (fsin, fcos), 以及像 denormal / subnormal 数的处理，统统使用微码来实现。这就导致在使用 x87 FPU 的时候，稍不注意就有可能遇到异常情况，必须要通过 Machine Clear 打断流水线，从微码 ROM 中调出处理的微码，极大影响了现代 CPU 指令级并行的性能。</p>
+<ol>
+<li>为什么 SSE，AVX 等浮点数运算不会遇到这种情况？</li>
+</ol>
+<p>在设计现代浮点处理单元的时候，就不需要再考虑一些历史遗留问题了，可以设计新的硬件、新的指令体系等等。因此在 SSE，AVX 等运算单元中，对 INF， NaN 这些数字的处理实际上做到了硬件中:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-16.png" /></a></p>
+<p>在新的浮点运算单元中，如果出现了 subnormal / denormal 数，甚至连运算都不会开始，直接根据 DAZ / FTZ 标志，以及对应异常的掩码产生对应的结果，大大加速了异常处理的效率。因此并不会遇到性能骤降的问题。</p>
+<ol>
+<li>为什么 AMD CPU 的 x87 单元没有这种现象？</li>
+</ol>
+<p>在一篇 2003 年对 AMD Opteron CPU (首个 64 位 CPU）微架构的分析技术博客 Detailed Architecture of AMD's 64-bit core 中，有如下的叙述:</p>
+<blockquote>
+<p>The result of all AMD's x87 optimizations is that the Opteron literally runs circles around the Pentium 4 when it comes to x87 processing. It has removed large special purpose circuits for status processing and implemented a few small ones that handle the cases mentioned. The shift to SSE2 floating point however will make removed area overhead more important than the speed-ups.</p>
+<p>AMD 的所有 x87 优化的结果是，Opteron 在 x87 处理方面确实比 Pentium 4 更胜一筹 （原文是：在跑步时可以“套圈”）。它移除了用于状态处理的大型专用电路，并实现了几个处理上述情况的小型电路。然而，转向 SSE2 浮点将使消除面积开销比加速更重要。</p>
+</blockquote>
+<p>也就是说自 AMD 的第一代 64 位 CPU 起，AMD 就对 x87 FPU 进行了大刀阔斧的改造，将很多异常处理机制从微码辅助变成了硬件功能，从而极大地加速了 x87 的性能。在我的 AMD Ryzen 7 7840HS 上经过实测，即使是 x87 运算，也不会出现性能骤降的问题。</p>
+<p>尽管当时 x87 FPU 已经是比较古老的单元，技术的主流是使用 SSE （或者 AMD 更早的 3DNow!）等新的浮点运算指令，AMD 还是对这个不起眼的浮点单元进行了细致的优化，并且领先了 Intel 20 年。反观 Intel，明明已经知道这个问题，还把它写进了手册里，但是就是不愿意优化自己的硬件，而是将其责任推给程序员，说是程序员还在使用 x87 指令的错，他们应该升级自己的技术栈。AMD 和 Intel 对待这个问题态度的反差，结合两家企业目前发展的现状，实在令人唏嘘不已。</p>
+<h3 id="实验_1">实验<a class="headerlink" href="#实验_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>手动插入需要 Microcode Assist 的指令 cpuid</li>
+</ol>
+<p>我写了下面这个小程序，使用 cpuid 来强制触发 Machine Clear，并期望得到原本正常的运算，添加 Machine Clear 之后性能降低的现象</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">trigger_machine_clear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">eax</span><span class="p">,</span><span class="w"> </span><span class="n">ebx</span><span class="p">,</span><span class="w"> </span><span class="n">ecx</span><span class="p">,</span><span class="w"> </span><span class="n">edx</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="s">&quot;cpuid&quot;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;=a&quot;</span><span class="p">(</span><span class="n">eax</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;=b&quot;</span><span class="p">(</span><span class="n">ebx</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;=c&quot;</span><span class="p">(</span><span class="n">ecx</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;=d&quot;</span><span class="p">(</span><span class="n">edx</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">);</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="c1">// Example function that performs floating point operations</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.00000001</span><span class="p">;</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e8</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="cp">#ifdef MACHINE_CLEAR</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="n">trigger_machine_clear</span><span class="p">();</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="cp">#endif</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>结果如下:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-17.png" /></a></p>
+<p>可以看出结果符合我们的预期，原本 0.3s 完成的运算，现在需要 4.2s 才能完成，慢了超过 10 倍。在 eax = 0 时，cpuid 指令只是往寄存器里写入 GenuineIntel 这个字符串而已（可以参考报告接下来的部分），微码操作 uops 数量要比浮点数异常处理少，因此并没有相差像出现 x87 浮点数异常那么多倍。</p>
+<ol>
+<li>使用 Intel VTune Profiler 进行性能分析</li>
+</ol>
+<p>Intel VTune Profiler 对 Machine Clear 和 FP Assists 的介绍和优化建议:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-18.png" /></a></p>
+<p>从上面可以看出 Intel 实际上是知道 x87 对于 denormal 数处理的性能问题的，它给出的建议就是不要用 x87.</p>
+<p>在进行有浮点数异常（subnormal）的实验时，VTune Profiler 测量出这条关键指令的 CPI 甚至达到了 57.5，说明这条指令尤其地慢:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-19.png" /></a></p>
+<p>而如果不出现异常的 normal 情况，那么最慢的指令就是受制于运算的 fmul, 但 CPI 也仅仅只有 8.6, 相较 57.5 小很多:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-20.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-20.png" /></a></p>
+<h2 id="一种有力的验证方法">一种有力的验证方法<a class="headerlink" href="#一种有力的验证方法" title="Permanent link">&para;</a></h2>
+<ol>
+<li>使用 Red Unlock 解锁使用 Intel Goldmont 微架构的 CPU</li>
+</ol>
+<p>如果问题出在微码辅助，那么我们把微码机制改掉不就好了？小白老师说过 <code>If it runs, it can be hacked</code>. 看似坚不可摧的商业机密——微码，又怎能逃脱被破解的命运呢？Chip Red Pill 团队在 2020 年成功破解了 Intel Goldmont 微架构 CPU 的微码，获取了完整的 MSROM dump，分析出了微码指令的结构与功能，甚至还发现了修改微码的方法。这使得我们看似疯狂的想法成为了可能。所以在这一部分我想讨论一下，如果我们能够修改微码，该如何进一步认证我们的猜想。</p>
+<ol>
+<li>通过 hook 动态测试 x87 FPU 异常时所调用的微码区域</li>
+</ol>
+<p>尽管有完整的微码内容，x86 指令的微码之间的关系，也就是微码指令的入口点仍未揭晓。
+想要获得 x86 指令，比如 div 等指令的具体入口，有两种方式:</p>
+<p>第一种是静态分析: xxx 提到，x86 指令的微码入口主要位于微码文件 U0-U1000 的位置，且在微码内部无该地址的引用。利用 Ghidra 反汇编代码，高手可以直接通过逆向的经验和对 x86 指令集极深的理解，直接推测对应的指令。比如一些会改动寄存器的指令，就可以通过这种方式推测出来。以 cpuid 指令为例，该指令有一隐藏操作数 eax，若 eax == 0，则会向 ebx, ecx, edx 这三个寄存器中写入 GenuineIntel 字符串，代表 CPU 的生产厂商。在 Ghidra 反汇编的代码中，可以很清晰地看出这部分的逻辑:</p>
+<p><a class="glightbox" href="../../../../assets/x87/image-21.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/x87/image-21.png" /></a></p>
+<p>通过立即数以及对寄存器的操作，便可以推测出该微码操作属于 cpuid 指令。</p>
+<p>这种方法对分析者的要求极高，且微码仍有很多目前尚未探明的操作，Ghidra 反汇编出的逻辑也不是很清晰，因此很难分析出结果。我想这也是原破解团队仅仅公开了极少数 x86 指令入口点的原因。</p>
+<p>我最开始也想过硬着头皮直接去逆向，并且想到了下面的两种思路:</p>
+<ol>
+<li>从立即数入手</li>
+</ol>
+<p>在 hard_imm.txt 中可以看到，IEEE 754 编码的 32 位浮点数 INF 0x7f800000 和 NaN 0x7fc0000 都存在，如果能找到对这些立即数的引用，或许就能找到与浮点数处理相关的微码操作。</p>
+<p>可惜的是，直接搜索这些立即数，要么是无结果，要么是找不到有意义的微码操作。这是因为在微码程序中，由于经常要读取和设置状态位，里面存在大量的位运算，这也就是说 INF 和 NaN 的判断可能是通过多次位运算进行检测的，而不是直接与立即数进行比较。我搜索了立即数的一部分，比如 0x7ff, 0x7fc 这样的立即数，以及 0x (十进制 52) 这样的偏移量，仍未找到。</p>
+<p>我还搜索了 Pi 这样的常数，这是因为在 x87 依旧是独立于 x86 处理器的浮点单元，也就是 8087, 80287 时代，Pi, e, ln2 这样的常数都是编码在 x87 ROM 当中的，甚至找到爱好者根据 die shot 推测 ROM 内容的文章: . 但是，这些常数并未编码于微码 ROM 中，或许已经做在运算单元中了。</p>
+<ol>
+<li>从异常入手</li>
+</ol>
+<p>原破解团队在公布的代码中找到了生成 #GP, #UD, #MC 这三个异常的微码入口点，并指出 sigevent 操作与其直接相关，但 sigevent 的立即数与异常的具体关系尚不明晰。</p>
+<p>与 x87 FPU 相关的异常有 #OF 溢出异常，以及 # x87 FPU 异常。</p>
+<p>然而，搜索全部的 sigevent 操作，可以发现后面的立即数不尽相同，不能通过某个异常的频次分析出这个异常可能是哪个。</p>
+<p>综上，这两种思路虽然很有希望，但还是极其困难的，最终我没有得到结果。</p>
+<p>第二种是动态测试: xxxx 提到，可以使用插桩+模糊测试的方式来找入口。e 这种方式首先设计了一段微码操作“函数”，可以被调用，且可通过性能寄存器观测出是否被执行，然后不断遍历入口点，将入口点修改为跳转到该指令的微码操作。这样一旦设计的函数被调用，就说明找到了该 x86 指令对应的入口点。</p>
+<p>我认为这种方式虽然暴力，但应该也是目前的唯一可行解了。不过这种方法需要有一款 Intel Goldmont 微架构的 CPU 并且进行 Red Unlock，在 UEFI 中进行测试，所以我暂时还无法进行测试。（好在 Goldmont 有很多低端产品线的 CPU，想要获取一个测试用的硬件可以在 200 元以内解决）</p>
+<ol>
+<li>修改相关微码，取消异常处理</li>
+</ol>
+<p>曾今我们认为微码这种东西是不可能修改的，但现在微码内容已经被破解并分析出来，连带着 Intel 官方对微码更新的程序逻辑也同样被破解，那还有什么不可能的呢？此外，原破解团队甚至还从一条类似 jmp rax （可以在微码中做任意控制流跳转）的微码操作，挖掘出了两条隐藏 x86 指令。利用这两条指令，即使没有 Red Unlock 漏洞，也可以在 UEFI 下面进行微码修改。</p>
+<p>这样一来，只要找到 x87 异常相关的微码处理操作，然后将其修改成直接 uret （微码退出），或者跳转到 cpuid 的微码程序。</p>
+<p>如果我们插桩的确找到了对应的微码程序，并且成功修改了 CPU 对 x87 异常处理的行为，那么就证据确凿，可以引证我们的猜想了。</p>
+<ol>
+<li>重新进行实验测试</li>
+</ol>
+<p>在修改微码（主要是让微码操作变少）之后，我们将预期观察到进行 denormal / subnormal 相关浮点数运算时，x87 指令速度变快，且与 sse 指令插入 cpuid 指令相近。
+这样，我们便不仅可以证明 x87 指令耗时异常原因与 Intel CPU 内部的 Microcode Assist 机制有关，还可获知处理 x87 异常的微码非常复杂，需要极高的周期数才可以完成。</p>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
+<p>浮点数运算的性能问题，尤其是在底数较大时，实际上是由于 x87 浮点数单元处理异常（如 INF 和 NaN）时依赖微码辅助，引起的 Machine Clear 打断指令解码和流水线乱序执行，致使 CPU 的指令级并行丧失，从而显著降低了性能。相比之下，SSE 和 AVX 指令集通过硬件优化解决了这一问题，避免了性能瓶颈。在 AMD 的处理器中，x87 的异常处理得到了更好的优化，因此性能未受明显影响。</p>
+<p>上面的实验与分析启发我们在未来的编程时:</p>
+<ul>
+<li>尽可能使用更新的编译器，以及最新的 CPU 特性</li>
+<li>在针对某款 CPU 进行优化时，可以先对其微架构进行剖析</li>
+<li>遇到性能问题时，多使用 Profiler 比如 perf, Intel VTune 来分析问题</li>
+</ul>
+<h2 id="参考文献">参考文献<a class="headerlink" href="#参考文献" title="Permanent link">&para;</a></h2>
+<ul>
+<li>8087 协处理器结构深入探究: https://www.righto.com/2018/08/inside-die-of-intels-8087-coprocessor.html</li>
+<li>8086 与 8087 处理器的同步: https://stackoverflow.com/questions/42543905/what-are-8086-esc-instruction-opcodes</li>
+<li>Intel 浮点数参考手册: https://www.intel.com/content/www/us/en/developer/articles/technical/floating-point-reference-sheet-for-intel-architecture.html</li>
+<li>Intel 64 与 IA-32 优化手册: https://www.intel.com/content/www/us/en/content-details/671488/intel-64-and-ia-32-architectures-optimization-reference-manual-volume-1.html</li>
+<li>AMD Opteron 架构探究: https://web.archive.org/web/20241002032238/http://www.chip-architect.com/news/2003_09_21_Detailed_Architecture_of_AMDs_64bit_Core.html</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月14日 22:56:58</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月14日 22:56:58</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+<h2 id="__comments" class="no-number">评论</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js" data-repo="YooLc/notes" data-repo-id="R_kgDONk4Byg"
+    data-category="Announcements" data-category-id="DIC_kwDONk4Bys4ClrHG" data-mapping="pathname" data-strict="0"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+    </script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate" ? "dark" : "light"
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+                /* Instruct Giscus to change theme */
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../../09/12/blechley-park-trip/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Blectchley Park 游记">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Blectchley Park 游记
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../12/02/foss-inspiration/" class="md-footer__link md-footer__link--next" aria-label="下一页: 🍺 Free as in free speech, not as in free beer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                🍺 Free as in free speech, not as in free beer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+<div class="md-copyright" style="width: 100%;">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+        <div>
+            
+            <div class="md-copyright__highlight">
+                YooLc 🄯 Copyleft 2024 - 2025
+            </div>
+            
+            
+            使用
+            <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+                Material for MkDocs
+            </a>
+            构建
+            
+        </div>
+        <div style="display: flex; align-items: center; height: 32px; width: fit-content;">
+            <a href="https://notbyai.fyi/" target="_blank" rel="noopener noreferrer" style="margin-right: 10px;">
+                <img src="/notes/assets/by-human-black.svg" alt="by-human" style="height: 32px; margin: 0;">
+            </a>
+            <a href="https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1" target="_blank"
+                rel="license noopener noreferrer" style="margin-right: 3px;">
+                <img style="height: 22px!important; margin: 0;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="">
+            </a>
+            <a href="https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1" target="_blank"
+                rel="license noopener noreferrer">
+                <img style="height: 22px!important; margin: 0;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1" alt="">
+            </a>
+        </div>
+    </div>
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.indexes", "navigation.sections", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.alicdn.com/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
