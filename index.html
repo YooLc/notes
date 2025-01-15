@@ -1766,7 +1766,76 @@
 
 
 <h1 id="welcome">Welcome!<a class="headerlink" href="#welcome" title="Permanent link">&para;</a></h1>
-<p>123123123</p>
+<details class="success" open="open">
+<summary>🎉 恭喜! 现在你是一位 Linux 用户了!</summary>
+<p><!-- A minimal structure for the ScreenAdapter defined in browser/screen.js -->
+<div id="screen_container" style="display: flex;">
+    <div style="white-space: pre; font: 14px monospace; line-height: 14px; margin: auto;"></div>
+    <canvas style="display: none"></canvas>
+</div></p>
+<p>这是使用 <a href="https://github.com/copy/v86">copy/v86</a> 项目运行的 <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> 6.8.12 内核, 使用 <a href="https://webassembly.org/">Web Assembly</a> 技术在你的浏览器上运行了一个虚拟机, 并启动了极简的 <a href="https://buildroot.org/">Buildroot</a> 环境.</p>
+<p>你可以在这里尝试 Linux 常用的命令, 例如 <code>ls</code>, <code>cd</code>, <code>cat</code>, <code>echo</code>, <code>pwd</code>, <code>uname</code>, <code>date</code>, <code>top</code>, <code>ps</code>, <code>clear</code>, <code>exit</code>.</p>
+</details>
+<script src="/notes/javascripts/v86/libv86.js"></script>
+<script>
+"use strict";
+
+// Save references to the original event handler methods
+const originalAddEventListener = window.addEventListener;
+const originalRemoveEventListener = window.removeEventListener;
+
+// Array to store keydown listeners
+const keydownListeners = [];
+
+// Override addEventListener to track keydown listeners
+window.addEventListener = function(type, listener, options) {
+originalAddEventListener.call(window, type, listener, options);
+if (type === 'keydown') {
+    keydownListeners.push({ listener, options });
+}
+};
+
+// Override removeEventListener to update the keydown listeners list
+window.removeEventListener = function(type, listener, options) {
+originalRemoveEventListener.call(window, type, listener, options);
+if (type === 'keydown') {
+    const index = keydownListeners.findIndex(entry => 
+    entry.listener === listener && 
+    (entry.options === options || 
+    (typeof entry.options === 'object' && typeof options === 'object' && 
+        JSON.stringify(entry.options) === JSON.stringify(options))));
+    if (index !== -1) {
+    keydownListeners.splice(index, 1);
+    }
+}
+};
+
+window.onload = function()
+{
+    // Remove key listener from material mkdocs
+    if (keydownListeners.length > 0) {
+        const firstListener = keydownListeners.shift();
+        window.removeEventListener('keydown', firstListener.listener, firstListener.options);
+    }
+
+    var emulator = new V86({
+        wasm_path: "/notes/javascripts/v86/v86.wasm",
+        memory_size: 512 * 1024 * 1024,
+        vga_memory_size: 8 * 1024 * 1024,
+        screen_container: document.getElementById("screen_container"),
+        bios: {
+            url: "/notes/javascripts/v86/seabios.bin",
+        },
+        vga_bios: {
+            url: "/notes/javascripts/v86/vgabios.bin",
+        },
+        bzimage: {
+            url: "/notes/javascripts/v86/buildroot-bzimage68.bin",
+        },
+        autostart: true,
+    });
+};
+</script>
 
 
 
@@ -1789,7 +1858,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月14日 22:56:58</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年1月15日 22:43:33</span>
   </span>
 
     
@@ -1903,7 +1972,7 @@
             </div>
             
             
-            使用
+            基于
             <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
                 Material for MkDocs
             </a>
