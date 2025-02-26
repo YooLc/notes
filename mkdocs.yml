@@ -48,7 +48,15 @@ nav:
   #   - computer-science/index.md
   - "🚀 体系结构":
     - architecture/index.md
-    
+    - "CPU 微架构梳理":
+      - architecture/cpu-uarch/index.md
+      - architecture/cpu-uarch/Intel/index.md
+      - architecture/cpu-uarch/AMD/index.md
+    - "向量化指令扩展":
+      - "ARM":
+        - architecture/simd/ARM/neon.md
+        - architecture/simd/ARM/sve.md
+      - architecture/simd/riscv.md   
 
 theme:
   name: material

@@ -11,6 +11,8 @@
         
     你可以在这里尝试 Linux 常用的命令, 例如 `ls`, `cd`, `cat`, `echo`, `pwd`, `uname`, `date`, `top`, `ps`, `clear`, `exit`.
 
+    注: 如果无法显示，请尝试多刷新几次本页面.
+
 <script src="/notes/javascripts/v86/libv86.js"></script>
 <script>
 "use strict";
